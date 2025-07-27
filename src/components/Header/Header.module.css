@@ -1,0 +1,39 @@
+.header {
+	padding: 0px;
+	background-color: #d9d9d955;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+.header__container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+.header__container-logo {
+	font-family: 'Kapakana';
+	font-size: 2.3rem;
+	transform: rotateZ(-10deg);
+	padding: 0px 10px;
+}
+
+.container__nav-list {
+	display: flex;
+	gap: 90px;
+}
+
+.list__item-link {
+	font-size: 1.4rem;
+	text-decoration: none;
+	color: black;
+}
+.header__container-button {
+	display: flex;
+	flex-direction: row;
+	gap: 10px;
+}
+.container-button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+}
