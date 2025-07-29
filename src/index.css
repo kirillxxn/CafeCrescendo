@@ -1,3 +1,6 @@
+html {
+	scroll-behavior: smooth;
+}
 html,
 body,
 div,
@@ -79,7 +82,7 @@ time,
 mark,
 audio,
 video {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
@@ -101,7 +104,9 @@ section {
 	display: block;
 }
 body {
+	margin: 0 auto;
 	line-height: 1;
+	background-color: #f3f3f3;
 }
 ol,
 ul {

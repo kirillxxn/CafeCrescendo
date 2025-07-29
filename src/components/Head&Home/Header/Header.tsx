@@ -6,18 +6,21 @@ const Header = () => {
 			<header className={styles['header']}>
 				<div className={styles['header__container']}>
 					<span className={styles['header__container-logo']}>
-						Café <br /> Crescendo
+						Café <br />{' '}
+						<span className={styles['container__logo-crescendo']}>
+							Crescendo
+						</span>
 					</span>
 					<nav className={styles['container-nav']}>
 						<ul className={styles['container__nav-list']}>
 							<li className={styles['nav__list-item']}>
 								<a className={styles['list__item-link']} href=''>
-									Магазин
+									Главная
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href=''>
-									Меню
+								<a className={styles['list__item-link']} href='#menu'>
+									Каталог
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>
@@ -26,7 +29,7 @@ const Header = () => {
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href=''>
+								<a className={styles['list__item-link']} href='#ourcafe'>
 									О нас
 								</a>
 							</li>

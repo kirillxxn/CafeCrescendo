@@ -1,6 +1,6 @@
 .header {
 	padding: 0px;
-	background-color: #d9d9d955;
+	background-color: #d9d9d97c;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
 }
@@ -12,11 +12,15 @@
 }
 .header__container-logo {
 	font-family: 'Kapakana';
-	font-size: 2.3rem;
+	font-size: 2.8rem;
 	transform: rotateZ(-10deg);
 	padding: 0px 10px;
+	letter-spacing: 0;
 }
-
+.container__logo-crescendo {
+	transform: translateX(40px);
+	display: inline-block;
+}
 .container__nav-list {
 	display: flex;
 	gap: 90px;
