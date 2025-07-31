@@ -42,7 +42,7 @@
 	transition: box-shadow 0.3s ease-in-out;
 	box-shadow: 1px 2px 20px 3px black;
 }
-.container__btn-text {
+.btn-action {
 	font-family: Arial, Helvetica, sans-serif;
 	color: white;
 	text-shadow: 3px 3px 5px black;
@@ -50,7 +50,7 @@
 }
 .container__btn:hover {
 	backdrop-filter: blur(5px);
-	box-shadow: 10px 10px 10px 3px black;
+	box-shadow: 4px 4px 10px black;
 }
 .container__btn:active {
 	opacity: 0.7;
@@ -101,7 +101,7 @@
 .btn-next:active {
 	opacity: 0.7;
 }
-.btn-hide-slider {
+.btn-hide {
 	position: absolute;
 	bottom: 10%;
 	left: 36%;
@@ -123,10 +123,4 @@
 }
 .btn-hide-slider:active {
 	opacity: 0.7;
-}
-.btn__hider-slider-text {
-	font-family: Arial, Helvetica, sans-serif;
-	color: white;
-	text-shadow: 3px 3px 5px black;
-	font-size: 1.2rem;
 }

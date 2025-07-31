@@ -25,7 +25,7 @@ const OurStory = () => {
 				{text && (
 					<div className={styles['ourstory__section-container']}>
 						<h2 className={styles['container__title']}>Наша история</h2>
-						<p className={styles['container__subtitle']}>
+						<p className={`${styles['container__p']} ${styles['subtitle']}`}>
 							Кафе Crescendo, основанное в 2003 году Муником Бисвасом и Шрути
 							Бисвас, было создано с одной целью: создавать отличный и
 							стабильный кофе и делиться им с как можно большим количеством
@@ -36,39 +36,42 @@ const OurStory = () => {
 							идеально обжарен.
 						</p>
 						<button onClick={handleText} className={styles['container__btn']}>
-							<span className={styles['container__btn-text']}>Читать</span>
+							<span className={styles['btn-action']}>Читать</span>
 						</button>
 					</div>
 				)}
 				{fullText && (
 					<div className={styles['fulltext__section-container']}>
-						<p className={styles['container__fulltext']}>
+						<p className={`${styles['container__p']} ${styles['full-text']}`}>
 							{FullStory[currentList]}
 						</p>
 						<button
-							className={styles['btn__fulltext-prev']}
+							className={`${styles['btn-toggle']} ${styles['prev']}`}
 							onClick={prevList}
 							disabled={currentList <= 0}
 						>
 							<img
-								className={styles['btn__prev-fulltext']}
+								className={styles['btn-icon']}
 								src='/src/assets/icons/arrow-left.svg'
-								alt=''
+								alt='Иконка кнопки для переключения предыдущего текста '
 							/>
 						</button>
 						<button
-							className={styles['btn__fulltext-next']}
+							className={`${styles['btn-toggle']} ${styles['next']}`}
 							onClick={nextList}
 							disabled={currentList >= FullStory.length - 1}
 						>
 							<img
-								className={styles['btn__next-fulltext']}
+								className={styles['btn-icon']}
 								src='/src/assets/icons/arrow-right.svg'
-								alt=''
+								alt='Иконка кнопки для переключения следующего текста'
 							/>
 						</button>
-						<button onClick={handleText} className={styles['fulltext__btn']}>
-							<span className={styles['fulltext__btn-text']}>Скрыть</span>
+						<button
+							onClick={handleText}
+							className={`${styles['container__btn']} ${styles['hide']}`}
+						>
+							<span className={styles['btn-action']}>Скрыть</span>
 						</button>
 					</div>
 				)}
@@ -76,5 +79,4 @@ const OurStory = () => {
 		</>
 	)
 }
-
 export default OurStory

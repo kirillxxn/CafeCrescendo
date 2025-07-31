@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import styles from './OurCafe.module.css'
 import RoomList from './RoomList'
-
 const OurCafe = () => {
 	const [ourCafe, setOurCafe] = useState<boolean>(true)
 	const [slideShow, setSlideShow] = useState<boolean>(false)
@@ -19,7 +18,6 @@ const OurCafe = () => {
 			setCurrentImageIndex(currentImageIndex - 1)
 		}
 	}
-
 	const nextSlide = () => {
 		if (currentImageIndex === RoomList.length - 1) {
 			setCurrentImageIndex(0)
@@ -27,12 +25,10 @@ const OurCafe = () => {
 			setCurrentImageIndex(currentImageIndex + 1)
 		}
 	}
-
 	const handleContent = () => {
 		setOurCafe(!ourCafe)
 		setSlideShow(!slideShow)
 	}
-
 	return (
 		<>
 			<section id='ourcafe' className={styles['ourcafe__section']}>
@@ -48,7 +44,7 @@ const OurCafe = () => {
 							onClick={handleContent}
 							className={styles['container__btn']}
 						>
-							<span className={styles['container__btn-text']}>Посмотреть</span>
+							<span className={styles['btn-action']}>Посмотреть</span>
 						</button>
 					</div>
 				)}
@@ -58,7 +54,7 @@ const OurCafe = () => {
 							<img
 								className={styles['btn__prev-image']}
 								src='/src/assets/icons/arrow-left.svg'
-								alt='Кнопка для переключения предыдущего изображения'
+								alt='Иконка кнопки для переключения предыдущего изображения'
 							/>
 						</button>
 						<img
@@ -69,14 +65,14 @@ const OurCafe = () => {
 							<img
 								className={styles['btn__next-image']}
 								src='/src/assets/icons/arrow-right.svg'
-								alt='Кнопка для переключения следующего изображения'
+								alt='Иконка кнопки для переключения следующего изображения'
 							/>
 						</button>
 						<button
 							onClick={handleContent}
-							className={styles['btn-hide-slider']}
+							className={styles['container__btn']}
 						>
-							<span className={styles['btn__hider-slider-text']}>Скрыть</span>
+							<span className={styles['btn-action']}>Скрыть</span>
 						</button>
 					</div>
 				)}
