@@ -1,12 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './OurCafe.module.css'
 import RoomList from './RoomList'
 
 const OurCafe = () => {
-	const [slideSnow, setSlideSnow] = useState<boolean>(true)
-	const [hideSlideSnow, setHideSlideShow] = useState<boolean>(false)
+	const [ourCafe, setOurCafe] = useState<boolean>(true)
+	const [slideShow, setSlideShow] = useState<boolean>(false)
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
-
+	useEffect(() => {
+		const preloadImage = (images: string[]) => {
+			images.forEach(imageSrc => (new Image().src = imageSrc))
+		}
+		preloadImage(RoomList.map(room => room.image))
+	}, [])
 	const prevSlide = () => {
 		if (currentImageIndex === 0) {
 			setCurrentImageIndex(RoomList.length - 1)
@@ -23,15 +28,15 @@ const OurCafe = () => {
 		}
 	}
 
-	const handleSlideSnow = () => {
-		setSlideSnow(!slideSnow)
-		setHideSlideShow(!hideSlideSnow)
+	const handleContent = () => {
+		setOurCafe(!ourCafe)
+		setSlideShow(!slideShow)
 	}
 
 	return (
 		<>
 			<section id='ourcafe' className={styles['ourcafe__section']}>
-				{slideSnow && (
+				{ourCafe && (
 					<div className={styles['ourcafe__section-container']}>
 						<h2 className={styles['container__title']}>Наше кафе</h2>
 						<p className={styles['container__subtitle']}>
@@ -40,37 +45,35 @@ const OurCafe = () => {
 							насладиться умиротворяющей атмосферой кофейного поместья.
 						</p>
 						<button
-							onClick={handleSlideSnow}
+							onClick={handleContent}
 							className={styles['container__btn']}
 						>
 							<span className={styles['container__btn-text']}>Посмотреть</span>
 						</button>
 					</div>
 				)}
-				{hideSlideSnow && (
+				{slideShow && (
 					<div className={styles['slider__section-container']}>
 						<button className={styles['btn-prev']} onClick={prevSlide}>
 							<img
 								className={styles['btn__prev-image']}
 								src='/src/assets/icons/arrow-left.svg'
-								alt=''
+								alt='Кнопка для переключения предыдущего изображения'
 							/>
 						</button>
 						<img
 							className={styles['slider__image']}
 							src={RoomList[currentImageIndex].image}
-							alt={`Комната ${currentImageIndex + 1}`}
-							loading='lazy'
 						/>
 						<button className={styles['btn-next']} onClick={nextSlide}>
 							<img
 								className={styles['btn__next-image']}
 								src='/src/assets/icons/arrow-right.svg'
-								alt=''
+								alt='Кнопка для переключения следующего изображения'
 							/>
 						</button>
 						<button
-							onClick={handleSlideSnow}
+							onClick={handleContent}
 							className={styles['btn-hide-slider']}
 						>
 							<span className={styles['btn__hider-slider-text']}>Скрыть</span>

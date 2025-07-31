@@ -11,16 +11,17 @@ function App() {
 	return (
 		<>
 			<Header />
-			<Parallax scale={[0.961, 0.5]} opacity={[1, 0]} easing='easeInBack'>
+			<Parallax scale={[0.962, 0.5]} opacity={[1, 0]} easing='easeInBack'>
 				<HomePage />
 			</Parallax>
 
-			<Parallax speed={-14} easing='easeInQuad'>
+			<Parallax speed={-13} easing='easeInQuad'>
 				<Menu />
 			</Parallax>
 			<Parallax easing='easeInBack' opacity={[1, 0]}>
 				<OurCafe />
 			</Parallax>
+
 			<OurStory />
 		</>
 	)

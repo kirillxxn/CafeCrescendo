@@ -37,6 +37,7 @@
 }
 
 .menu__item-image {
+	cursor: zoom-in;
 	width: 170px;
 	object-fit: cover;
 	border-bottom-left-radius: 20px;
