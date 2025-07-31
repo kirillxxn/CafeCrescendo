@@ -3,7 +3,7 @@
 	display: flex;
 }
 .ourcafe__section-container {
-	background-image: url('/src/assets/ourcafe/pixlr-image-generator-43f02ad8-5b9d-467b-98cc-5999f98992e8\ 1\ \(1\).png');
+	background-image: url('/src/assets/background/ourcafe/ourcafebackground.png');
 	object-fit: cover;
 	background-position: center;
 	background-repeat: no-repeat;

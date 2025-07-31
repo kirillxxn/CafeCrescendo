@@ -5,12 +5,11 @@ const Header = () => {
 			<header className={styles['header']}>
 				<div className={styles['header__container']}>
 					<a className={styles['container__logo-link']} href='#'>
-						<span className={styles['header__container-logo']}>
-							Café <br />
-							<span className={styles['container__logo-crescendo']}>
-								Crescendo
-							</span>
-						</span>
+						<img
+							className={styles['logo__link-image']}
+							src='/src/assets/icons/logo.png'
+							alt='Логотип сайта'
+						/>
 					</a>
 
 					<nav className={styles['container-nav']}>
@@ -46,14 +45,14 @@ const Header = () => {
 						<button className={styles['container-button']}>
 							<img
 								className={styles['button-image']}
-								src='/src/assets/icons/profileicon.svg'
+								src='/src/assets/icons/profileicon.png'
 								alt='Иконка личного кабинета'
 							/>
 						</button>
 						<button className={styles['container-button']}>
 							<img
 								className={styles['button-image']}
-								src='/src/assets/icons/basketicon.svg'
+								src='/src/assets/icons/basketicon.png'
 								alt='Иконка корзины'
 							/>
 						</button>

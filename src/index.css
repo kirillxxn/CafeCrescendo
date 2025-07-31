@@ -107,6 +107,7 @@ body {
 	max-width: 1920px;
 	margin: 0 auto;
 	line-height: 1;
+	background: linear-gradient(to left, #f5deb3, #cccccc, #ffe7c6);
 }
 ol,
 ul {
