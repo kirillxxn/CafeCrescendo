@@ -1,0 +1,32 @@
+.notification {
+	position: fixed;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: rgba(67, 112, 112, 0.95);
+	color: white;
+	padding: 12px 28px;
+	font-size: 1.2rem;
+	border-radius: 8px;
+	z-index: 1000;
+	width: 20%;
+	text-align: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	pointer-events: none;
+}
+
+.notify-enter {
+	opacity: 0;
+}
+.notify-enter-active {
+	opacity: 1;
+	transition: opacity 300ms ease-in-out;
+}
+
+.notify-exit {
+	opacity: 1;
+}
+.notify-exit-active {
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
+}

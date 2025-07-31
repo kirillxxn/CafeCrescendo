@@ -9,6 +9,7 @@
 	background-size: cover;
 	overflow: hidden;
 	z-index: 1;
+	margin-bottom: 70px;
 }
 
 .main__container {
