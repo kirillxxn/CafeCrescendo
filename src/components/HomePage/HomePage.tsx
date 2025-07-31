@@ -1,15 +1,21 @@
 import styles from './HomePage.module.css'
 import { MouseParallax } from 'react-just-parallax'
+type TMouseParallax = {
+	isAbsolutelyPositioned?: boolean
+	strength: number
+	lerpEase: number
+}
 const HomePage = () => {
+	const MouseParallaxConfig: TMouseParallax = {
+		isAbsolutelyPositioned: true,
+		strength: 0.01,
+		lerpEase: 0.05,
+	}
 	return (
 		<>
-			<main className={styles['main']}>
+			<main id='homepage' className={styles['main']}>
 				<div className={styles['main__container']}>
-					<MouseParallax
-						isAbsolutelyPositioned={true}
-						strength={0.01}
-						lerpEase={0.05}
-					>
+					<MouseParallax {...MouseParallaxConfig}>
 						<span className={styles['main__container-logo']}>
 							Café Crescendo
 						</span>
@@ -30,5 +36,4 @@ const HomePage = () => {
 		</>
 	)
 }
-
 export default HomePage

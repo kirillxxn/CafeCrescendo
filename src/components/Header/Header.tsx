@@ -1,20 +1,22 @@
 import styles from './Header.module.css'
-
 const Header = () => {
 	return (
 		<>
 			<header className={styles['header']}>
 				<div className={styles['header__container']}>
-					<span className={styles['header__container-logo']}>
-						Café <br />{' '}
-						<span className={styles['container__logo-crescendo']}>
-							Crescendo
+					<a className={styles['container__logo-link']} href='#'>
+						<span className={styles['header__container-logo']}>
+							Café <br />
+							<span className={styles['container__logo-crescendo']}>
+								Crescendo
+							</span>
 						</span>
-					</span>
+					</a>
+
 					<nav className={styles['container-nav']}>
 						<ul className={styles['container__nav-list']}>
 							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href=''>
+								<a className={styles['list__item-link']} href='#'>
 									Главная
 								</a>
 							</li>
@@ -24,13 +26,13 @@ const Header = () => {
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href=''>
-									Наша команда
+								<a className={styles['list__item-link']} href='#ourcafe'>
+									О нас
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href='#ourcafe'>
-									О нас
+								<a className={styles['list__item-link']} href=''>
+									Наша команда
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>
@@ -45,14 +47,14 @@ const Header = () => {
 							<img
 								className={styles['button-image']}
 								src='/src/assets/icons/profileicon.svg'
-								alt=''
+								alt='Иконка личного кабинета'
 							/>
 						</button>
 						<button className={styles['container-button']}>
 							<img
 								className={styles['button-image']}
 								src='/src/assets/icons/basketicon.svg'
-								alt=''
+								alt='Иконка корзины'
 							/>
 						</button>
 					</div>
@@ -61,5 +63,4 @@ const Header = () => {
 		</>
 	)
 }
-
 export default Header

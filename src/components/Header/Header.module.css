@@ -1,15 +1,13 @@
 .header {
 	padding: 0px;
-
 	position: sticky;
 	top: 0;
-	z-index: 9999;
+	z-index: 5;
 	background-image: url('/src/assets/background/background.png');
-
 	background-position: top;
-
 	color: white;
 }
+
 .header__container {
 	backdrop-filter: blur(25px);
 	display: flex;
@@ -17,16 +15,24 @@
 	justify-content: space-between;
 	align-items: center;
 }
+.container__logo-link {
+	color: white;
+	text-decoration: none;
+	transform: rotateZ(-10deg);
+}
 .header__container-logo {
 	font-family: 'Kapakana';
 	font-size: 2.6rem;
-	transform: rotateZ(-10deg);
+
 	letter-spacing: 0;
 }
+
 .container__logo-crescendo {
-	transform: translateX(50px);
+	transform: translateX(60px);
 	display: inline-block;
+	letter-spacing: 0;
 }
+
 .container__nav-list {
 	display: flex;
 	gap: 90px;
@@ -36,18 +42,21 @@
 	font-size: 1.4rem;
 	text-decoration: none;
 	color: white;
+	letter-spacing: 0;
 }
+
 .header__container-button {
 	display: flex;
 	flex-direction: row;
 	gap: 10px;
 }
+
 .container-button {
 	background-color: transparent;
 	border: none;
-
 	cursor: pointer;
 }
+
 .button-image {
 	width: 32px;
 }

@@ -1,9 +1,8 @@
+import MenuList from './MenuList'
+import styles from './Menu.module.css'
 import { useEffect } from 'react'
 import { Fancybox as FancyboxLib } from '@fancyapps/ui'
-import styles from './Menu.module.css'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
-import MenuList from './MenuList'
-
 const Menu = () => {
 	useEffect(() => {
 		FancyboxLib.bind("[data-fancybox='gallery']", {})
@@ -11,10 +10,9 @@ const Menu = () => {
 			FancyboxLib.unbind("[data-fancybox='gallery']")
 		}
 	}, [])
-
 	return (
 		<>
-			<div id='menu' className={styles['menu__page']}>
+			<section id='menu' className={styles['menu__page']}>
 				<nav className={styles['menu']}>
 					<ul className={styles['menu__list']}>
 						{MenuList.map(item => (
@@ -42,9 +40,8 @@ const Menu = () => {
 						))}
 					</ul>
 				</nav>
-			</div>
+			</section>
 		</>
 	)
 }
-
 export default Menu

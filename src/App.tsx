@@ -18,14 +18,7 @@ function App() {
 			<Parallax speed={-14} easing='easeInQuad'>
 				<Menu />
 			</Parallax>
-			<Parallax
-				/* translateX={['0px', '0px']}
-				scale={[0.9, 1]}
-				rotate={[0, 0]} */
-				easing='easeInQuad'
-				opacity={[1, 0]}
-				/* speed={10} */
-			>
+			<Parallax easing='easeInBack' opacity={[1, 0]}>
 				<OurCafe />
 			</Parallax>
 			<OurStory />
