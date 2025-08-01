@@ -1,9 +1,17 @@
 import styles from './HomePage.module.css'
 import { MouseParallax } from 'react-just-parallax'
+import Marquee from 'react-fast-marquee'
+
 type TMouseParallax = {
 	isAbsolutelyPositioned?: boolean
 	strength: number
 	lerpEase: number
+}
+type TMarquee = {
+	speed: number
+	direction: 'left' | 'right' | 'up' | 'down'
+	delay: number
+	gradient: boolean
 }
 const HomePage = () => {
 	const MouseParallaxConfig: TMouseParallax = {
@@ -11,10 +19,22 @@ const HomePage = () => {
 		strength: 0.01,
 		lerpEase: 0.05,
 	}
+	const MarqueeConfig: TMarquee = {
+		speed: 30,
+		direction: 'left',
+		delay: 0,
+		gradient: false,
+	}
 	return (
 		<>
 			<main id='homepage' className={styles['main']}>
 				<div className={styles['main__container']}>
+					<div className={styles['container__marquee']}>
+						<Marquee className={styles['marquee']} {...MarqueeConfig}>
+							При регистрации новые пользователи получают скидку 10% на всю
+							продукцию либо бесплатную доставку.
+						</Marquee>
+					</div>
 					<MouseParallax {...MouseParallaxConfig}>
 						<span className={styles['main__container-logo']}>
 							Café Crescendo

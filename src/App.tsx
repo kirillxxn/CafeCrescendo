@@ -11,7 +11,7 @@ import styles from './App.module.css'
 
 function App() {
 	const [notificationVisible, setNotificationVisible] = useState(false)
-	const notificationRef = useRef(null)
+	const notificationRef = useRef<null>(null)
 
 	const handleBasket = () => {
 		setNotificationVisible(true)
