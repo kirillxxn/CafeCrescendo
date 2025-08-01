@@ -8,6 +8,7 @@ import OurStory from './components/OurStory/OurStory'
 import { useState, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styles from './App.module.css'
+import OurTeam from './components/OurTeam/OurTeam'
 
 function App() {
 	const [notificationVisible, setNotificationVisible] = useState(false)
@@ -50,6 +51,7 @@ function App() {
 					В корзине
 				</span>
 			</CSSTransition>
+			<OurTeam />
 		</>
 	)
 }

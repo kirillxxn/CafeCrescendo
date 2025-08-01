@@ -20,7 +20,7 @@ const HomePage = () => {
 		lerpEase: 0.05,
 	}
 	const MarqueeConfig: TMarquee = {
-		speed: 30,
+		speed: 100,
 		direction: 'left',
 		delay: 0,
 		gradient: false,
@@ -32,7 +32,7 @@ const HomePage = () => {
 					<div className={styles['container__marquee']}>
 						<Marquee className={styles['marquee']} {...MarqueeConfig}>
 							При регистрации новые пользователи получают скидку 10% на всю
-							продукцию либо бесплатную доставку.
+							продукцию.
 						</Marquee>
 					</div>
 					<MouseParallax {...MouseParallaxConfig}>

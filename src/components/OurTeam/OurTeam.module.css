@@ -1,0 +1,37 @@
+.ourteam__section {
+	display: flex;
+}
+.ourteam__section-container {
+	padding: 50px;
+}
+
+.team__list {
+	display: flex;
+	gap: 40px;
+}
+.team__item {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.team__item-name {
+	font-size: 2rem;
+	background-color: black;
+	padding: 10px 20px;
+	border-radius: 50px;
+	color: #ffe7c6;
+	text-shadow: 1px 2px 10px black;
+	font-family: 'Courier New', Courier, monospace;
+}
+.team__item-image {
+	width: 250px;
+	border-radius: 10px;
+}
+.team__item-age {
+	font-family: 'Courier New', Courier, monospace;
+	background-color: black;
+	padding: 10px 80px;
+	border-radius: 50px;
+	color: #ffe7c6;
+	text-shadow: 1px 2px 10px black;
+}
