@@ -35,7 +35,7 @@ const Header = () => {
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href=''>
+								<a className={styles['list__item-link']} href='#contacts'>
 									Контакты
 								</a>
 							</li>

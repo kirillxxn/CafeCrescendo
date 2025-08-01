@@ -9,6 +9,7 @@ import { useState, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styles from './App.module.css'
 import OurTeam from './components/OurTeam/OurTeam'
+import Contacts from './components/Contacts/Contacts'
 
 function App() {
 	const [notificationVisible, setNotificationVisible] = useState(false)
@@ -52,6 +53,7 @@ function App() {
 				</span>
 			</CSSTransition>
 			<OurTeam />
+			<Contacts />
 		</>
 	)
 }
