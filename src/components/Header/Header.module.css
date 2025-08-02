@@ -9,17 +9,9 @@
 	backdrop-filter: blur(50px);
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
 	align-items: center;
 }
-.container__logo-link {
-	color: black;
-	text-decoration: none;
-	transform: rotateZ(-10deg);
-}
-.logo__link-image {
-	width: 64px;
-}
+
 .container__nav-list {
 	display: flex;
 	gap: 90px;

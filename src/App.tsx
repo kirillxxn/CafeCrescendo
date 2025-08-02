@@ -10,6 +10,7 @@ import { CSSTransition } from 'react-transition-group'
 import styles from './App.module.css'
 import OurTeam from './components/OurTeam/OurTeam'
 import Contacts from './components/Contacts/Contacts'
+import Footer from './components/Footer/Footer'
 
 function App() {
 	const [notificationVisible, setNotificationVisible] = useState(false)
@@ -34,7 +35,9 @@ function App() {
 			<Parallax easing='easeInBack' opacity={[1, 0]}>
 				<OurCafe />
 			</Parallax>
-			<OurStory />
+			<Parallax easing='easeIn' scale={[1, 0.5]} speed={-5} opacity={[1, 0]}>
+				<OurStory />
+			</Parallax>
 
 			<CSSTransition
 				in={notificationVisible}
@@ -52,8 +55,12 @@ function App() {
 					В корзине
 				</span>
 			</CSSTransition>
-			<OurTeam />
+			<Parallax easing='easeInBack' scale={[1, 2]} opacity={[1, 0]}>
+				<OurTeam />
+			</Parallax>
+
 			<Contacts />
+			<Footer />
 		</>
 	)
 }

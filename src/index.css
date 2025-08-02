@@ -104,6 +104,7 @@ section {
 	display: block;
 }
 body {
+	overflow-x: hidden;
 	max-width: 1920px;
 	margin: 0 auto;
 	line-height: 1;

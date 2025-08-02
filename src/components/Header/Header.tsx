@@ -1,17 +1,11 @@
+import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
 const Header = () => {
 	return (
 		<>
 			<header className={styles['header']}>
 				<div className={styles['header__container']}>
-					<a className={styles['container__logo-link']} href='#'>
-						<img
-							className={styles['logo__link-image']}
-							src='/src/assets/icons/logo.png'
-							alt='Логотип сайта'
-						/>
-					</a>
-
+					<Logo />
 					<nav className={styles['container-nav']}>
 						<ul className={styles['container__nav-list']}>
 							<li className={styles['nav__list-item']}>

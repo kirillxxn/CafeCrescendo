@@ -1,0 +1,10 @@
+.footer__container {
+	backdrop-filter: blur(50px);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 100px;
+}
+.container__github-logo {
+	width: 50px;
+}

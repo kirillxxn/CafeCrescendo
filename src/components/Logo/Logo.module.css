@@ -1,0 +1,8 @@
+.logo__link {
+	color: black;
+	text-decoration: none;
+	transform: rotateZ(-10deg);
+}
+.logo__link-image {
+	width: 64px;
+}
