@@ -33,6 +33,18 @@
 .select__action-btn:first-child {
 	padding: 20px 40px;
 }
+.select__action-btn.active {
+	background: white;
+	font-weight: bold;
+}
+.select__action-btn:disabled {
+	color: #45454522;
+	cursor: default;
+	border-color: #aaa;
+	box-shadow: none;
+	scale: 1;
+	opacity: 1;
+}
 .modal__close-btn {
 	background-color: transparent;
 	border: none;
@@ -63,7 +75,6 @@
 .modal__form {
 	display: flex;
 	flex-direction: column;
-	gap: 50px;
 	margin: 0;
 }
 .modal__form-container {
@@ -72,10 +83,14 @@
 	align-items: start;
 	margin: 0;
 }
+.form__container-group {
+	width: 100%;
+}
 .form__container-label {
 	font-size: 0.9rem;
 	margin: 15px 0 5px 30px;
 }
+
 .form__container-input {
 	width: 90%;
 	padding: 20px;
@@ -116,6 +131,9 @@
 	z-index: 1;
 }
 .sign-in {
+	margin-top: 80px;
+}
+.registry {
 	margin-top: 40px;
 }
 .form__container-submit::before {
@@ -130,11 +148,11 @@
 	transition: width 0.8s ease-in-out;
 }
 
-.form__container-submit:hover::before {
+.form__container-submit:hover:not(:disabled)::before {
 	width: 100%;
 }
 
-.form__container-submit:hover {
+.form__container-submit:hover:not(:disabled) {
 	color: white;
 }
 .container__submit-text {
@@ -143,4 +161,16 @@
 }
 .form__container-submit:active {
 	opacity: 0.3;
+}
+.form__container-submit:disabled {
+	opacity: 0.3;
+	cursor: default;
+}
+.form__container-submit:disabled {
+	opacity: 0.3;
+	cursor: default;
+}
+.div-error {
+	padding: 5px;
+	color: red;
 }

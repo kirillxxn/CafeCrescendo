@@ -1,5 +1,9 @@
 import { useState } from 'react'
 import styles from './ModalProfile.module.css'
+import { validateLoginSchema, validateRegisterSchema } from './FormFormik'
+import { Formik, Form } from 'formik'
+import Login from './Login'
+import Register from './Register'
 
 type ModalProfileProps = {
 	closeModal: () => void
@@ -7,134 +11,86 @@ type ModalProfileProps = {
 
 const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 	const [registry, setRegistry] = useState<boolean>(false)
+
 	const handleLogin = () => {
 		setRegistry(false)
 	}
+
 	const handleRegistry = () => {
 		setRegistry(true)
 	}
+
+	const initialValues = registry
+		? { name: '', email: '', password: '' }
+		: { name: '', email: '' }
+
+	const validationSchema = registry
+		? validateRegisterSchema
+		: validateLoginSchema
+
 	return (
-		<>
-			<div className={styles['modal']}>
-				<div className={styles['modal__select-actions']}>
-					<button
-						onClick={handleLogin}
-						className={styles['select__action-btn']}
-					>
-						Вход
-					</button>
-					<button
-						onClick={handleRegistry}
-						className={styles['select__action-btn']}
-					>
-						Регистрация
-					</button>
-				</div>
-				<button className={styles['modal__close-btn']} onClick={closeModal}>
-					<img
-						className={styles['close__btn-image']}
-						src='/src/assets/icons/closebutton.png'
-						alt='Иконка закрытия модального окна'
-					/>
+		<div className={styles['modal']}>
+			<div className={styles['modal__select-actions']}>
+				<button
+					disabled={!registry}
+					onClick={handleLogin}
+					className={`${styles['select__action-btn']} ${
+						!registry ? styles.active : ''
+					}`}
+				>
+					Вход
 				</button>
-				{!registry ? (
-					<>
-						<h2 className={styles['title-form']}>Вход</h2>
-						<form id='form__sign-in' className={styles['modal__form']}>
-							<div className={styles['modal__form-container']}>
-								<label
-									className={styles['form__container-label']}
-									htmlFor='email'
-								>
-									Почта
-								</label>
-								<input
-									className={styles['form__container-input']}
-									type='text'
-									name='email'
-									placeholder='Введите почту'
-									id='email'
-								/>
-								<label
-									className={styles['form__container-label']}
-									htmlFor='password'
-								>
-									Пароль
-								</label>
-								<input
-									className={styles['form__container-input']}
-									type='text'
-									name=''
-									id='password'
-									placeholder='Введите пароль'
-								/>
-							</div>
-							<button
-								className={`${styles['form__container-submit']} ${styles['sign-in']}`}
-								type='submit'
-							>
-								<span className={styles['container__submit-text']}>Войти</span>
-							</button>
-						</form>
-					</>
-				) : (
-					<>
-						<h2 className={styles['title-form']}>Регистрация</h2>
-						<form className={styles['modal__form']}>
-							<div className={styles['modal__form-container']}>
-								<label
-									className={styles['form__container-label']}
-									htmlFor='name'
-								>
-									Имя
-								</label>
-								<input
-									className={styles['form__container-input']}
-									type='name'
-									name='name'
-									placeholder='Введите имя'
-									id='email'
-								/>
-								<label
-									className={styles['form__container-label']}
-									htmlFor='email'
-								>
-									Почта
-								</label>
-								<input
-									className={styles['form__container-input']}
-									type='text'
-									name=''
-									placeholder='Введите почту'
-									id='email'
-								/>
-								<label
-									className={styles['form__container-label']}
-									htmlFor='email'
-								>
-									Пароль
-								</label>
-								<input
-									className={styles['form__container-input']}
-									type='text'
-									name=''
-									placeholder='Введите пароль'
-									id='email'
-								/>
-							</div>
-							<button
-								className={`${styles['form__container-submit']} ${styles['registry']}`}
-								type='submit'
-							>
-								<span className={styles['container__submit-text']}>
-									Зарегистрироваться
-								</span>
-							</button>
-						</form>
-					</>
-				)}
+				<button
+					disabled={registry}
+					onClick={handleRegistry}
+					className={`${styles['select__action-btn']} ${
+						registry ? styles.active : ''
+					}`}
+				>
+					Регистрация
+				</button>
 			</div>
-		</>
+
+			<button className={styles['modal__close-btn']} onClick={closeModal}>
+				<img
+					className={styles['close__btn-image']}
+					src='/src/assets/icons/closebutton.png'
+					alt='Иконка закрытия модального окна'
+				/>
+			</button>
+
+			<h2 className={styles['title-form']}>
+				{registry ? 'Регистрация' : 'Вход'}
+			</h2>
+
+			<Formik
+				key={registry ? 'register' : 'login'}
+				initialValues={initialValues}
+				validationSchema={validationSchema}
+				onSubmit={values => alert(JSON.stringify(values, null, 2))}
+			>
+				{({ isValid, dirty }) => (
+					<Form noValidate className={styles['modal__form']}>
+						<div className={styles['modal__form-container']}>
+							<Login styles={styles} />
+
+							{registry && <Register styles={styles} />}
+						</div>
+
+						<button
+							className={`${styles['form__container-submit']} ${styles['registry']}`}
+							type='submit'
+							disabled={!(isValid && dirty)}
+						>
+							<span className={styles['container__submit-text']}>
+								{registry ? 'Зарегистрироваться' : 'Войти'}
+							</span>
+						</button>
+					</Form>
+				)}
+			</Formik>
+		</div>
 	)
 }
+
 export default ModalProfile
