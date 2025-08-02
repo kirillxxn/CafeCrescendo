@@ -2,12 +2,10 @@ import { useState } from 'react'
 import styles from './OurStory.module.css'
 import FullStory from './FullStory'
 const OurStory = () => {
-	const [text, setText] = useState<boolean>(true)
 	const [fullText, setFullText] = useState<boolean>(false)
 	const [currentList, setCurrentList] = useState<number>(0)
-	const handleText = () => {
-		setText(!text)
-		setFullText(!fullText)
+	const toggleText = () => {
+		setFullText(prev => !prev)
 	}
 	const prevList = () => {
 		if (currentList > 0) {
@@ -22,7 +20,7 @@ const OurStory = () => {
 	return (
 		<>
 			<section className={styles['ourstory__section']}>
-				{text && (
+				{!fullText ? (
 					<div className={styles['ourstory__section-container']}>
 						<h2 className={styles['container__title']}>Наша история</h2>
 						<p className={`${styles['container__p']} ${styles['subtitle']}`}>
@@ -35,12 +33,11 @@ const OurStory = () => {
 							оценивается в 86 баллов и выше: он свежий, как и положено, и
 							идеально обжарен.
 						</p>
-						<button onClick={handleText} className={styles['container__btn']}>
+						<button onClick={toggleText} className={styles['container__btn']}>
 							<span className={styles['btn-action']}>Читать</span>
 						</button>
 					</div>
-				)}
-				{fullText && (
+				) : (
 					<div className={styles['fulltext__section-container']}>
 						<p className={`${styles['container__p']} ${styles['full-text']}`}>
 							{FullStory[currentList]}
@@ -68,7 +65,7 @@ const OurStory = () => {
 							/>
 						</button>
 						<button
-							onClick={handleText}
+							onClick={toggleText}
 							className={`${styles['container__btn']} ${styles['hide']}`}
 						>
 							<span className={styles['btn-action']}>Скрыть</span>

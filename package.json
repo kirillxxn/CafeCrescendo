@@ -20,6 +20,7 @@
 		"react-dom": "^19.1.0",
 		"react-fast-marquee": "^1.6.5",
 		"react-just-parallax": "^3.1.16",
+		"react-modal": "^3.16.3",
 		"react-multi-carousel": "^2.8.6",
 		"react-scroll-parallax": "^3.4.5",
 		"react-transition-group": "^4.4.5"
@@ -29,6 +30,7 @@
 		"@types/locomotive-scroll": "^4.1.4",
 		"@types/react": "^19.1.8",
 		"@types/react-dom": "^19.1.6",
+		"@types/react-modal": "^3.16.3",
 		"@types/react-slick": "^0.23.13",
 		"@vitejs/plugin-react": "^4.6.0",
 		"eslint": "^9.30.1",

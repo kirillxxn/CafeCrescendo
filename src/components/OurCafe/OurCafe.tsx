@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import styles from './OurCafe.module.css'
 import RoomList from './RoomList'
 const OurCafe = () => {
-	const [ourCafe, setOurCafe] = useState<boolean>(true)
 	const [slideShow, setSlideShow] = useState<boolean>(false)
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
+	const toggleSlide = () => {
+		setSlideShow(prev => !prev)
+	}
 	useEffect(() => {
 		const preloadImage = (images: string[]) => {
 			images.forEach(imageSrc => (new Image().src = imageSrc))
@@ -25,14 +27,11 @@ const OurCafe = () => {
 			setCurrentImageIndex(currentImageIndex + 1)
 		}
 	}
-	const handleContent = () => {
-		setOurCafe(!ourCafe)
-		setSlideShow(!slideShow)
-	}
+
 	return (
 		<>
 			<section id='ourcafe' className={styles['ourcafe__section']}>
-				{ourCafe && (
+				{!slideShow ? (
 					<div className={styles['ourcafe__section-container']}>
 						<h2 className={styles['container__title']}>Наше кафе</h2>
 						<p className={styles['container__subtitle']}>
@@ -40,15 +39,11 @@ const OurCafe = () => {
 							лучшим выбором кофе, <br /> посетить места обжарки кофе вживую и
 							насладиться умиротворяющей атмосферой кофейного поместья.
 						</p>
-						<button
-							onClick={handleContent}
-							className={styles['container__btn']}
-						>
+						<button onClick={toggleSlide} className={styles['container__btn']}>
 							<span className={styles['btn-action']}>Посмотреть</span>
 						</button>
 					</div>
-				)}
-				{slideShow && (
+				) : (
 					<div className={styles['slider__section-container']}>
 						<button className={styles['btn-prev']} onClick={prevSlide}>
 							<img
@@ -68,10 +63,7 @@ const OurCafe = () => {
 								alt='Иконка кнопки для переключения следующего изображения'
 							/>
 						</button>
-						<button
-							onClick={handleContent}
-							className={styles['container__btn']}
-						>
+						<button onClick={toggleSlide} className={styles['container__btn']}>
 							<span className={styles['btn-action']}>Скрыть</span>
 						</button>
 					</div>

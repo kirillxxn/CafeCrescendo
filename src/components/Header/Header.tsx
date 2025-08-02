@@ -1,6 +1,38 @@
+import { useEffect, useState } from 'react'
 import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
+import Modal from 'react-modal'
+import ModalProfile from '../Modals/ModalProfile/ModalProfile'
+import modalStyles from './Header.module.css'
 const Header = () => {
+	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
+	const [isClosing, setIsClosing] = useState<boolean>(false)
+	const [isOpening, setIsOpening] = useState<boolean>(false)
+
+	const openModal = () => {
+		document.body.style.overflow = 'hidden'
+		setModalIsOpen(true)
+		setIsClosing(false)
+	}
+	useEffect(() => {
+		if (modalIsOpen) {
+			const timeout = setTimeout(() => setIsOpening(true), 10)
+			return () => clearTimeout(timeout)
+		} else {
+			setIsOpening(false)
+		}
+	}, [modalIsOpen])
+
+	const closeModal = () => {
+		document.body.style.overflow = ''
+		setIsOpening(false)
+		setIsClosing(true)
+
+		setTimeout(() => {
+			setModalIsOpen(false)
+			setIsClosing(false)
+		}, 300)
+	}
 	return (
 		<>
 			<header className={styles['header']}>
@@ -36,19 +68,39 @@ const Header = () => {
 						</ul>
 					</nav>
 					<div className={styles['header__container-button']}>
-						<button className={styles['container-button']}>
+						<button onClick={openModal} className={styles['container-button']}>
 							<img
 								className={styles['button-image']}
 								src='/src/assets/icons/profileicon.png'
 								alt='Иконка личного кабинета'
 							/>
+							<p className={styles['button-text']}>Профиль</p>
 						</button>
+						<Modal
+							isOpen={modalIsOpen}
+							onRequestClose={closeModal}
+							shouldCloseOnOverlayClick={true}
+							overlayClassName={`
+		${modalStyles.modalOverlay} 
+		${isOpening ? modalStyles.modalOverlayActive : ''}
+		${isClosing ? modalStyles.modalOverlayAfterClose : ''}
+	`}
+							className={`
+		${modalStyles.modalContent} 
+		${isOpening ? modalStyles.modalContentActive : ''}
+		${isClosing ? modalStyles.modalContentAfterClose : ''}
+	`}
+							closeTimeoutMS={300}
+						>
+							<ModalProfile closeModal={closeModal} />
+						</Modal>
 						<button className={styles['container-button']}>
 							<img
 								className={styles['button-image']}
 								src='/src/assets/icons/basketicon.png'
 								alt='Иконка корзины'
 							/>
+							<p className={styles['button-text']}>Корзина</p>
 						</button>
 					</div>
 				</div>

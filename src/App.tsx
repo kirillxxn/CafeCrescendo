@@ -35,7 +35,12 @@ function App() {
 			<Parallax easing='easeInBack' opacity={[1, 0]}>
 				<OurCafe />
 			</Parallax>
-			<Parallax easing='easeIn' scale={[1, 0.5]} speed={-5} opacity={[1, 0]}>
+			<Parallax
+				easing='easeInQuad'
+				scale={[1, 0.5]}
+				speed={-5}
+				opacity={[1, 0]}
+			>
 				<OurStory />
 			</Parallax>
 
@@ -55,7 +60,12 @@ function App() {
 					В корзине
 				</span>
 			</CSSTransition>
-			<Parallax easing='easeInBack' scale={[1, 2]} opacity={[1, 0]}>
+			<Parallax
+				easing='easeInQuad'
+				scale={[1, 0.5]}
+				speed={-5}
+				opacity={[1, 0]}
+			>
 				<OurTeam />
 			</Parallax>
 
