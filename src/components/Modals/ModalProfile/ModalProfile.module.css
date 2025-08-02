@@ -79,7 +79,7 @@
 }
 .modal__form-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: column-reverse;
 	align-items: start;
 	margin: 0;
 }

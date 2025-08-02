@@ -4,6 +4,7 @@ import { validateLoginSchema, validateRegisterSchema } from './FormFormik'
 import { Formik, Form } from 'formik'
 import Login from './Login'
 import Register from './Register'
+import { supabase } from '../Auth/supabaseClient'
 
 type ModalProfileProps = {
 	closeModal: () => void
@@ -67,7 +68,38 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 				key={registry ? 'register' : 'login'}
 				initialValues={initialValues}
 				validationSchema={validationSchema}
-				onSubmit={values => alert(JSON.stringify(values, null, 2))}
+				onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
+					if (registry) {
+						const { error } = await supabase.auth.signUp({
+							email: values.email,
+							password: values.password ?? '',
+							options: {
+								data: {
+									name: values.name,
+								},
+							},
+						})
+						if (error) {
+							console.error('Ошибка регистрации', error.message)
+							setStatus(error.message)
+						} else {
+							alert('Успешная регистрация')
+							resetForm()
+						}
+					} else {
+						const { error } = await supabase.auth.signInWithPassword({
+							email: values.email,
+							password: values.password ?? '',
+						})
+						if (error) {
+							console.error('Ошибка входа', error.message)
+							setStatus(error.message)
+						} else {
+							alert('Успешный вход')
+						}
+					}
+					setSubmitting(false)
+				}}
 			>
 				{({ isValid, dirty }) => (
 					<Form noValidate className={styles['modal__form']}>
