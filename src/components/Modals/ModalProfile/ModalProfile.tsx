@@ -8,11 +8,23 @@ import { supabase } from '../Auth/supabaseClient'
 import { useUserStore } from '../Auth/store/UserStore'
 import toast from 'react-hot-toast'
 import Preolader from './Preloader/Preloader'
+import Profile from './Profile/Profile'
 type ModalProfileProps = {
 	closeModal: () => void
 }
 
 const ModalProfile = ({ closeModal }: ModalProfileProps) => {
+	const errorMessages: Record<string, string> = {
+		'Invalid login credentials': 'Неверный логин или пароль',
+		'User already registered': 'Пользователь уже зарегистрирован',
+		'Network error': 'Ошибка сети. Проверьте подключение',
+	}
+	function translateError(message: string): string {
+		if (errorMessages[message]) {
+			return errorMessages[message]
+		}
+		return 'Произошла неизвестная ошибка. Попробуйте еще раз'
+	}
 	const { setUser, isLoggedIn, user, logout } = useUserStore()
 
 	const [registry, setRegistry] = useState<boolean>(false)
@@ -30,6 +42,12 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 		toast.success(`Добро пожаловать: ${userName}`)
 		resetForm()
 	}
+	const okRegistry = (resetForm: () => void) => {
+		setLoading(false)
+		toast.success('Успешная регистрация')
+		setRegistry(false)
+		resetForm()
+	}
 	const initialValues = registry
 		? { name: '', email: '', password: '' }
 		: { name: '', email: '' }
@@ -38,38 +56,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 		? validateRegisterSchema
 		: validateLoginSchema
 	if (isLoggedIn) {
-		return (
-			<div className={`${styles['modal']} ${styles['modal-profile']}`}>
-				<button className={styles['modal__close-btn']} onClick={closeModal}>
-					<img
-						className={styles['close__btn-image']}
-						src='/src/assets/icons/closebutton.png'
-						alt='Иконка закрытия модального окна'
-					/>
-				</button>
-				<div className={styles['profile']}>
-					<h2 className={styles['profile-title']}>Профиль</h2>
-					<img
-						className={styles['profile-avatar']}
-						src='/src/assets/icons/avatar.png'
-						alt=''
-					/>
-					<div className={styles['user-info']}>
-						<span className={styles['user__info-name']}>
-							{user?.name || 'Инкогнито'}
-						</span>
-						<span className={styles['user__info-email']}>{user?.email}</span>
-					</div>
-					<button
-						className={`${styles['form__container-submit']} ${styles['logout']}`}
-						type='submit'
-						onClick={logout}
-					>
-						<span className={styles['container__submit-text']}>Выйти</span>
-					</button>
-				</div>
-			</div>
-		)
+		return <Profile closeModal={closeModal} user={user} logout={logout} />
 	}
 	return (
 		<div className={styles['modal']}>
@@ -110,7 +97,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 				key={registry ? 'register' : 'login'}
 				initialValues={initialValues}
 				validationSchema={validationSchema}
-				onSubmit={async (values, { setSubmitting, setStatus, resetForm }) => {
+				onSubmit={async (values, { setSubmitting, resetForm }) => {
 					if (registry) {
 						const { error } = await supabase.auth.signUp({
 							email: values.email,
@@ -122,11 +109,11 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							},
 						})
 						if (error) {
-							console.error('Ошибка регистрации', error.message)
-							setStatus(error.message)
+							const messageRU = translateError(error.message)
+							toast.error(messageRU)
+							setLoading(false)
 						} else {
-							alert('Успешная регистрация')
-							resetForm()
+							okRegistry(resetForm)
 						}
 					} else {
 						const { data, error } = await supabase.auth.signInWithPassword({
@@ -134,8 +121,9 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							password: values.password ?? '',
 						})
 						if (error) {
-							console.error('Ошибка входа', error.message)
-							setStatus(error.message)
+							const messageRU = translateError(error.message)
+							toast.error(messageRU)
+							setLoading(false)
 						} else if (data?.user) {
 							const { id, email, user_metadata } = data.user
 							const userName = user_metadata.name ?? 'Инкогнито'

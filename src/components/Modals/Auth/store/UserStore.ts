@@ -19,3 +19,4 @@ export const useUserStore = create<UserStore>(set => ({
 	setUser: user => set({ user, isLoggedIn: true }),
 	logout: () => set({ user: null, isLoggedIn: false }),
 }))
+export type { User }
