@@ -4,11 +4,12 @@ import styles from './Header.module.css'
 import Modal from 'react-modal'
 import ModalProfile from '../Modals/ModalProfile/ModalProfile'
 import modalStyles from './Header.module.css'
+import { useUserStore } from '../Modals/Auth/store/UserStore'
 const Header = () => {
 	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
 	const [isClosing, setIsClosing] = useState<boolean>(false)
 	const [isOpening, setIsOpening] = useState<boolean>(false)
-
+	const { user, isLoggedIn } = useUserStore()
 	const openModal = () => {
 		document.body.style.overflow = 'hidden'
 		setModalIsOpen(true)
@@ -69,12 +70,23 @@ const Header = () => {
 					</nav>
 					<div className={styles['header__container-button']}>
 						<button onClick={openModal} className={styles['container-button']}>
-							<img
-								className={styles['button-image']}
-								src='/src/assets/icons/profileicon.png'
-								alt='Иконка личного кабинета'
-							/>
-							<p className={styles['button-text']}>Профиль</p>
+							{isLoggedIn ? (
+								<img
+									className={styles['button-image']}
+									src='/src/assets/icons/avatar.png'
+									alt='Иконка личного кабинета'
+								/>
+							) : (
+								<img
+									className={styles['button-image']}
+									src='/src/assets/icons/profileicon.png'
+									alt='Иконка личного кабинета'
+								/>
+							)}
+
+							<p className={styles['button-text']}>
+								{user ? user.name : 'Профиль'}
+							</p>
 						</button>
 						<Modal
 							isOpen={modalIsOpen}

@@ -36,7 +36,7 @@
 .header__container-button {
 	display: flex;
 	flex-direction: row;
-	gap: 10px;
+	gap: 15px;
 }
 
 .container-button {

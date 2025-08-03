@@ -77,6 +77,7 @@
 	flex-direction: column;
 	margin: 0;
 }
+
 .modal__form-container {
 	display: flex;
 	flex-direction: column-reverse;
@@ -173,4 +174,42 @@
 .div-error {
 	padding: 5px;
 	color: red;
+}
+.modal-profile {
+	padding: 40px 0px;
+}
+.profile {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	width: 100%;
+}
+.profile-title {
+	font-size: 2rem;
+}
+.profile-avatar {
+	width: 170px;
+	padding: 10px;
+	background-color: white;
+	border-radius: 50%;
+}
+.user-info {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	justify-content: center;
+	margin: 0;
+	cursor: default;
+}
+.user__info-name {
+	background-color: white;
+	width: 80%;
+	padding: 20px;
+	border-radius: 20px;
+}
+.user__info-email {
+	background-color: white;
+	width: 80%;
+	padding: 20px;
+	border-radius: 20px;
 }

@@ -11,7 +11,7 @@ import styles from './App.module.css'
 import OurTeam from './components/OurTeam/OurTeam'
 import Contacts from './components/Contacts/Contacts'
 import Footer from './components/Footer/Footer'
-
+import { Toaster } from 'react-hot-toast'
 function App() {
 	const [notificationVisible, setNotificationVisible] = useState(false)
 	const notificationRef = useRef<null>(null)
@@ -25,6 +25,7 @@ function App() {
 
 	return (
 		<>
+			<Toaster position='top-right' toastOptions={{ duration: 3000 }} />
 			<Header />
 			<Parallax scale={[0.962, 0.5]} opacity={[1, 0]} easing='easeInBack'>
 				<HomePage />

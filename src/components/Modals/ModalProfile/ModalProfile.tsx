@@ -1,18 +1,22 @@
 import { useState } from 'react'
 import styles from './ModalProfile.module.css'
-import { validateLoginSchema, validateRegisterSchema } from './FormFormik'
+import { validateLoginSchema, validateRegisterSchema } from './Forms/FormFormik'
 import { Formik, Form } from 'formik'
-import Login from './Login'
-import Register from './Register'
+import Login from './Forms/Login'
+import Register from './Forms/Register'
 import { supabase } from '../Auth/supabaseClient'
-
+import { useUserStore } from '../Auth/store/UserStore'
+import toast from 'react-hot-toast'
+import Preolader from './Preloader/Preloader'
 type ModalProfileProps = {
 	closeModal: () => void
 }
 
 const ModalProfile = ({ closeModal }: ModalProfileProps) => {
-	const [registry, setRegistry] = useState<boolean>(false)
+	const { setUser, isLoggedIn, user, logout } = useUserStore()
 
+	const [registry, setRegistry] = useState<boolean>(false)
+	const [loading, setLoading] = useState<boolean>(false)
 	const handleLogin = () => {
 		setRegistry(false)
 	}
@@ -20,7 +24,12 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 	const handleRegistry = () => {
 		setRegistry(true)
 	}
-
+	const okSignIn = (resetForm: () => void, userName: string) => {
+		setLoading(false)
+		closeModal()
+		toast.success(`Добро пожаловать: ${userName}`)
+		resetForm()
+	}
 	const initialValues = registry
 		? { name: '', email: '', password: '' }
 		: { name: '', email: '' }
@@ -28,7 +37,40 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 	const validationSchema = registry
 		? validateRegisterSchema
 		: validateLoginSchema
-
+	if (isLoggedIn) {
+		return (
+			<div className={`${styles['modal']} ${styles['modal-profile']}`}>
+				<button className={styles['modal__close-btn']} onClick={closeModal}>
+					<img
+						className={styles['close__btn-image']}
+						src='/src/assets/icons/closebutton.png'
+						alt='Иконка закрытия модального окна'
+					/>
+				</button>
+				<div className={styles['profile']}>
+					<h2 className={styles['profile-title']}>Профиль</h2>
+					<img
+						className={styles['profile-avatar']}
+						src='/src/assets/icons/avatar.png'
+						alt=''
+					/>
+					<div className={styles['user-info']}>
+						<span className={styles['user__info-name']}>
+							{user?.name || 'Инкогнито'}
+						</span>
+						<span className={styles['user__info-email']}>{user?.email}</span>
+					</div>
+					<button
+						className={`${styles['form__container-submit']} ${styles['logout']}`}
+						type='submit'
+						onClick={logout}
+					>
+						<span className={styles['container__submit-text']}>Выйти</span>
+					</button>
+				</div>
+			</div>
+		)
+	}
 	return (
 		<div className={styles['modal']}>
 			<div className={styles['modal__select-actions']}>
@@ -87,15 +129,18 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							resetForm()
 						}
 					} else {
-						const { error } = await supabase.auth.signInWithPassword({
+						const { data, error } = await supabase.auth.signInWithPassword({
 							email: values.email,
 							password: values.password ?? '',
 						})
 						if (error) {
 							console.error('Ошибка входа', error.message)
 							setStatus(error.message)
-						} else {
-							alert('Успешный вход')
+						} else if (data?.user) {
+							const { id, email, user_metadata } = data.user
+							const userName = user_metadata.name ?? 'Инкогнито'
+							setUser({ id: Number(id), email, name: userName })
+							okSignIn(resetForm, userName)
 						}
 					}
 					setSubmitting(false)
@@ -113,9 +158,16 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							className={`${styles['form__container-submit']} ${styles['registry']}`}
 							type='submit'
 							disabled={!(isValid && dirty)}
+							onClick={() => setLoading(true)}
 						>
 							<span className={styles['container__submit-text']}>
-								{registry ? 'Зарегистрироваться' : 'Войти'}
+								{loading ? (
+									<Preolader />
+								) : registry ? (
+									'Зарегистрироваться'
+								) : (
+									'Войти'
+								)}
 							</span>
 						</button>
 					</Form>
