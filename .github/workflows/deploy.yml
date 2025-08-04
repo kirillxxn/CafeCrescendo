@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # 👉 если у тебя другая ветка, замени здесь
+      - main
 
 jobs:
   deploy:
