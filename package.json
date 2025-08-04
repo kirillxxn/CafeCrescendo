@@ -27,6 +27,7 @@
 		"react-just-parallax": "^3.1.16",
 		"react-modal": "^3.16.3",
 		"react-multi-carousel": "^2.8.6",
+		"react-router-dom": "^7.7.1",
 		"react-scroll-parallax": "^3.4.5",
 		"react-transition-group": "^4.4.5",
 		"yup": "^1.7.0",

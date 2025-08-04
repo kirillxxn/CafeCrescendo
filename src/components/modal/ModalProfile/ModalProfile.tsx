@@ -4,12 +4,14 @@ import { validateLoginSchema, validateRegisterSchema } from './Forms/FormFormik'
 import { Formik, Form } from 'formik'
 import Login from './Forms/Login'
 import Register from './Forms/Register'
-import { supabase } from '../Auth/supabaseClient'
-import { useUserStore } from '../Auth/store/UserStore'
+import { supabase } from '../../auth/supabaseClient'
+import { useUserStore } from '../../auth/store/UserStore'
 import toast from 'react-hot-toast'
-import Preolader from './Preloader/Preloader'
+import Preolader from '../../reusedImg/Preloader/Preloader'
 import Profile from './Profile/Profile'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
+import { handleLogin, handleRegistry } from './buttonAction'
+import { okSignIn } from './buttonAction'
 type ModalProfileProps = {
 	closeModal: () => void
 }
@@ -30,19 +32,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 
 	const [registry, setRegistry] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
-	const handleLogin = () => {
-		setRegistry(false)
-	}
 
-	const handleRegistry = () => {
-		setRegistry(true)
-	}
-	const okSignIn = (resetForm: () => void, userName: string) => {
-		setLoading(false)
-		closeModal()
-		toast.success(`Добро пожаловать: ${userName}`)
-		resetForm()
-	}
 	const okRegistry = (resetForm: () => void) => {
 		setLoading(false)
 		toast.success('Успешная регистрация')
@@ -64,7 +54,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 			<div className={styles['modal__select-actions']}>
 				<button
 					disabled={!registry}
-					onClick={handleLogin}
+					onClick={() => handleLogin(setRegistry)}
 					className={`${styles['select__action-btn']} ${
 						!registry ? styles.active : ''
 					}`}
@@ -73,7 +63,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 				</button>
 				<button
 					disabled={registry}
-					onClick={handleRegistry}
+					onClick={() => handleRegistry(setRegistry)}
 					className={`${styles['select__action-btn']} ${
 						registry ? styles.active : ''
 					}`}
@@ -129,7 +119,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							const { id, email, user_metadata } = data.user
 							const userName = user_metadata.name ?? 'Инкогнито'
 							setUser({ id: Number(id), email, name: userName })
-							okSignIn(resetForm, userName)
+							okSignIn(setLoading, userName, closeModal, resetForm)
 						}
 					}
 					setSubmitting(false)
