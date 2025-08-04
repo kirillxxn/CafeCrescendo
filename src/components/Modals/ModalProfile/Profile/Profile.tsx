@@ -1,6 +1,7 @@
 import styles from '../ModalProfile.module.css'
 import type { User } from '../../Auth/store/UserStore'
-
+import closeButtonImg from '/src/assets/icons/closebutton.png'
+import profileAvatarImg from '/src/assets/icons/avatar.png'
 type ProfileProps = {
 	closeModal: () => void
 	user: User | null
@@ -13,7 +14,7 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 				<button className={styles['modal__close-btn']} onClick={closeModal}>
 					<img
 						className={styles['close__btn-image']}
-						src='/src/assets/icons/closebutton.png'
+						src={closeButtonImg}
 						alt='Иконка закрытия модального окна'
 					/>
 				</button>
@@ -21,8 +22,8 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 					<h2 className={styles['profile-title']}>Профиль</h2>
 					<img
 						className={styles['profile-avatar']}
-						src='/src/assets/icons/avatar.png'
-						alt=''
+						src={profileAvatarImg}
+						alt='Картинка профиля'
 					/>
 					<div className={styles['user-info']}>
 						<span className={styles['user__info-name']}>

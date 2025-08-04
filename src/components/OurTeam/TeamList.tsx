@@ -1,3 +1,8 @@
+import sophiaImg from '/src/assets/team/Sophia.jpeg'
+import roseImg from '/src/assets/team/Rose.jpeg'
+import maksimImg from '/src/assets/team/Maksim.jpeg'
+import katyaImg from '/src/assets/team/Katya.jpeg'
+import raphaelImg from '/src/assets/team/Rafael.jpeg'
 type TTeamList = {
 	id: number
 	name: string
@@ -10,31 +15,31 @@ const TeamList: TTeamList[] = [
 		id: 0,
 		name: 'София',
 		age: 24,
-		image: '/src/assets/team/Sophia.jpeg',
+		image: sophiaImg,
 	},
 	{
 		id: 1,
 		name: 'Роза',
 		age: 26,
-		image: '/src/assets/team/Rose.jpeg',
+		image: roseImg,
 	},
 	{
 		id: 3,
 		name: 'Максим',
 		age: 27,
-		image: '/src/assets/team/Maksim.jpeg',
+		image: maksimImg,
 	},
 	{
 		id: 4,
 		name: 'Катя',
 		age: 22,
-		image: '/src/assets/team/Katya.jpeg',
+		image: katyaImg,
 	},
 	{
 		id: 5,
 		name: 'Рафаель',
 		age: 28,
-		image: '/src/assets/team/Rafael.jpeg',
+		image: raphaelImg,
 	},
 ]
 export default TeamList

@@ -1,3 +1,20 @@
+import nattyImg from '/src/assets/coffelist/natty.jpeg'
+
+import costa from '/src/assets/coffelist/natty.jpeg'
+import ethiopia from '/src/assets/coffelist/natty.jpeg'
+import colombia from '/src/assets/coffelist/natty.jpeg'
+import guatemala from '/src/assets/coffelist/natty.jpeg'
+import jamaica from '/src/assets/coffelist/natty.jpeg'
+import kenya from '/src/assets/coffelist/natty.jpeg'
+import sumatra from '/src/assets/coffelist/natty.jpeg'
+import brazilia from '/src/assets/coffelist/natty.jpeg'
+import peru from '/src/assets/coffelist/natty.jpeg'
+import mexica from '/src/assets/coffelist/natty.jpeg'
+import honduras from '/src/assets/coffelist/natty.jpeg'
+import panama from '/src/assets/coffelist/natty.jpeg'
+import salvador from '/src/assets/coffelist/natty.jpeg'
+import nicaragua from '/src/assets/coffelist/natty.jpeg'
+
 type TMenuList = {
 	id: number
 	name: string
@@ -13,7 +30,7 @@ const MenuList: TMenuList[] = [
 		id: 0,
 		name: 'Натти',
 		price: 689,
-		image: '/src/assets/coffelist/natty.jpeg',
+		image: nattyImg,
 		description: 'Плотный кофе с нотами жареных орехов, печенья и нуги.',
 		country: 'Бразилия',
 		weight: 250,
@@ -22,7 +39,7 @@ const MenuList: TMenuList[] = [
 		id: 1,
 		name: 'Коста-Рика',
 		price: 799,
-		image: '/src/assets/coffelist/costa.jpeg',
+		image: costa,
 		description:
 			'Кофе с ярким вкусом и ароматом, с нотами цитрусовых и шоколада.',
 		country: 'Коста-Рика',
@@ -32,7 +49,7 @@ const MenuList: TMenuList[] = [
 		id: 2,
 		name: 'Эфиопия',
 		price: 899,
-		image: '/src/assets/coffelist/ethiopia.jpeg',
+		image: ethiopia,
 		description:
 			'Легкий кофе с цветочными и фруктовыми нотами, с легкой кислинкой.',
 		country: 'Эфиопия',
@@ -42,7 +59,7 @@ const MenuList: TMenuList[] = [
 		id: 3,
 		name: 'Колумбия',
 		price: 749,
-		image: '/src/assets/coffelist/colombia.jpeg',
+		image: colombia,
 		description:
 			'Кофе с мягким вкусом, нотами карамели и орехов, с легкой кислинкой.',
 		country: 'Колумбия',
@@ -52,7 +69,7 @@ const MenuList: TMenuList[] = [
 		id: 4,
 		name: 'Гватемала',
 		price: 799,
-		image: '/src/assets/coffelist/guatemala.jpeg',
+		image: guatemala,
 		description:
 			'Кофе с насыщенным вкусом, нотами шоколада и специй, с легкой кислинкой.',
 		country: 'Гватемала',
@@ -62,7 +79,7 @@ const MenuList: TMenuList[] = [
 		id: 5,
 		name: 'Ямайка',
 		price: 1299,
-		image: '/src/assets/coffelist/jamaica.jpeg',
+		image: jamaica,
 		description:
 			'Редкий кофе с уникальным вкусом, нотами шоколада и фруктов, с легкой кислинкой.',
 		country: 'Ямайка',
@@ -72,7 +89,7 @@ const MenuList: TMenuList[] = [
 		id: 6,
 		name: 'Кения',
 		price: 899,
-		image: '/src/assets/coffelist/kenya.jpeg',
+		image: kenya,
 		description:
 			'Кофе с ярким вкусом, нотами цитрусовых и ягод, с легкой кислинкой.',
 		country: 'Кения',
@@ -82,7 +99,7 @@ const MenuList: TMenuList[] = [
 		id: 7,
 		name: 'Суматра',
 		price: 799,
-		image: '/src/assets/coffelist/sumatra.jpeg',
+		image: sumatra,
 		description:
 			'Кофе с насыщенным вкусом, нотами земли и специй, с низкой кислинкой.',
 		country: 'Индонезия',
@@ -92,7 +109,7 @@ const MenuList: TMenuList[] = [
 		id: 8,
 		name: 'Бразилия',
 		price: 699,
-		image: '/src/assets/coffelist/brazilia.jpeg',
+		image: brazilia,
 		description:
 			'Кофе с мягким вкусом, нотами шоколада и орехов, с низкой кислинкой.',
 		country: 'Бразилия',
@@ -102,7 +119,7 @@ const MenuList: TMenuList[] = [
 		id: 9,
 		name: 'Перу',
 		price: 749,
-		image: '/src/assets/coffelist/peru.jpeg',
+		image: peru,
 		description:
 			'Кофе с мягким вкусом, нотами карамели и орехов, с легкой кислинкой.',
 		country: 'Перу',
@@ -112,7 +129,7 @@ const MenuList: TMenuList[] = [
 		id: 10,
 		name: 'Мексика',
 		price: 699,
-		image: '/src/assets/coffelist/mexica.jpeg',
+		image: mexica,
 		description:
 			'Кофе с мягким вкусом, нотами шоколада и орехов, с легкой кислинкой.',
 		country: 'Мексика',
@@ -122,7 +139,7 @@ const MenuList: TMenuList[] = [
 		id: 11,
 		name: 'Гондурас',
 		price: 749,
-		image: '/src/assets/coffelist/honduras.jpeg',
+		image: honduras,
 		description:
 			'Кофе с мягким вкусом, нотами карамели и орехов, с легкой кислинкой.',
 		country: 'Гондурас',
@@ -132,7 +149,7 @@ const MenuList: TMenuList[] = [
 		id: 12,
 		name: 'Панама',
 		price: 1299,
-		image: '/src/assets/coffelist/panama.jpeg',
+		image: panama,
 		description:
 			'Кофе с уникальным вкусом, нотами шоколада и фруктов, с легкой кислинкой.',
 		country: 'Панама',
@@ -142,7 +159,7 @@ const MenuList: TMenuList[] = [
 		id: 13,
 		name: 'Сальвадор',
 		price: 799,
-		image: '/src/assets/coffelist/salvador.jpeg',
+		image: salvador,
 		description:
 			'Кофе с мягким вкусом, нотами карамели и орехов, с легкой кислинкой.',
 		country: 'Сальвадор',
@@ -152,7 +169,7 @@ const MenuList: TMenuList[] = [
 		id: 14,
 		name: 'Никарагуа',
 		price: 749,
-		image: '/src/assets/coffelist/nicaragua.jpeg',
+		image: nicaragua,
 		description:
 			'Кофе с мягким вкусом, нотами шоколада и орехов, с легкой кислинкой.',
 		country: 'Никарагуа',

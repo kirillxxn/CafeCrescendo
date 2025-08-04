@@ -5,6 +5,9 @@ import Modal from 'react-modal'
 import ModalProfile from '../Modals/ModalProfile/ModalProfile'
 import modalStyles from './Header.module.css'
 import { useUserStore } from '../Modals/Auth/store/UserStore'
+import avatarIcon from '/src/assets/icons/profileicon.png'
+import avatarIconLogged from '/src/assets/icons/avatar.png'
+import basketIcon from '/src/assets/icons/basketicon.png'
 const Header = () => {
 	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
 	const [isClosing, setIsClosing] = useState<boolean>(false)
@@ -73,13 +76,13 @@ const Header = () => {
 							{isLoggedIn ? (
 								<img
 									className={styles['button-image']}
-									src='/src/assets/icons/avatar.png'
+									src={avatarIconLogged}
 									alt='Иконка личного кабинета'
 								/>
 							) : (
 								<img
 									className={styles['button-image']}
-									src='/src/assets/icons/profileicon.png'
+									src={avatarIcon}
 									alt='Иконка личного кабинета'
 								/>
 							)}
@@ -109,7 +112,7 @@ const Header = () => {
 						<button className={styles['container-button']}>
 							<img
 								className={styles['button-image']}
-								src='/src/assets/icons/basketicon.png'
+								src={basketIcon}
 								alt='Иконка корзины'
 							/>
 							<p className={styles['button-text']}>Корзина</p>

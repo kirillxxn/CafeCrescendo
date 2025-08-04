@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import styles from './OurCafe.module.css'
 import RoomList from './RoomList'
+import arrowLeftImg from '/src/assets/icons/arrow-left.svg'
+import arrowRightImg from '/src/assets/icons/arrow-right.svg'
 const OurCafe = () => {
 	const [slideShow, setSlideShow] = useState<boolean>(false)
 	const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -48,7 +50,7 @@ const OurCafe = () => {
 						<button className={styles['btn-prev']} onClick={prevSlide}>
 							<img
 								className={styles['btn__prev-image']}
-								src='/src/assets/icons/arrow-left.svg'
+								src={arrowLeftImg}
 								alt='Иконка кнопки для переключения предыдущего изображения'
 							/>
 						</button>
@@ -59,7 +61,7 @@ const OurCafe = () => {
 						<button className={styles['btn-next']} onClick={nextSlide}>
 							<img
 								className={styles['btn__next-image']}
-								src='/src/assets/icons/arrow-right.svg'
+								src={arrowRightImg}
 								alt='Иконка кнопки для переключения следующего изображения'
 							/>
 						</button>

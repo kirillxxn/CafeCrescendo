@@ -9,6 +9,7 @@ import { useUserStore } from '../Auth/store/UserStore'
 import toast from 'react-hot-toast'
 import Preolader from './Preloader/Preloader'
 import Profile from './Profile/Profile'
+import closeButtonImg from '/src/assets/icons/closebutton.png'
 type ModalProfileProps = {
 	closeModal: () => void
 }
@@ -84,7 +85,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 			<button className={styles['modal__close-btn']} onClick={closeModal}>
 				<img
 					className={styles['close__btn-image']}
-					src='/src/assets/icons/closebutton.png'
+					src={closeButtonImg}
 					alt='Иконка закрытия модального окна'
 				/>
 			</button>
@@ -109,9 +110,9 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							},
 						})
 						if (error) {
+							setLoading(false)
 							const messageRU = translateError(error.message)
 							toast.error(messageRU)
-							setLoading(false)
 						} else {
 							okRegistry(resetForm)
 						}
@@ -121,9 +122,9 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							password: values.password ?? '',
 						})
 						if (error) {
+							setLoading(false)
 							const messageRU = translateError(error.message)
 							toast.error(messageRU)
-							setLoading(false)
 						} else if (data?.user) {
 							const { id, email, user_metadata } = data.user
 							const userName = user_metadata.name ?? 'Инкогнито'

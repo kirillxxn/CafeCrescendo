@@ -1,3 +1,14 @@
+import room0Img from '/src/assets/rooms/room1.jpg'
+import room1Img from '/src/assets/rooms/room2.jpg'
+import room2Img from '/src/assets/rooms/room3.jpg'
+import room3Img from '/src/assets/rooms/room4.jpg'
+import room4Img from '/src/assets/rooms/room5.jpg'
+import room5Img from '/src/assets/rooms/room6.jpg'
+import room6Img from '/src/assets/rooms/room7.jpg'
+import room7Img from '/src/assets/rooms/room8.jpg'
+import room8Img from '/src/assets/rooms/room9.jpg'
+import room9Img from '/src/assets/rooms/room10.jpg'
+
 type TRoomList = {
 	id: number
 	image: string
@@ -6,43 +17,43 @@ type TRoomList = {
 const RoomList: TRoomList[] = [
 	{
 		id: 0,
-		image: '/src/assets/rooms/room1.jpg',
+		image: room0Img,
 	},
 	{
 		id: 1,
-		image: '/src/assets/rooms/room2.jpg',
+		image: room1Img,
 	},
 	{
 		id: 2,
-		image: '/src/assets/rooms/room3.jpg',
+		image: room2Img,
 	},
 	{
 		id: 3,
-		image: '/src/assets/rooms/room4.jpg',
+		image: room3Img,
 	},
 	{
 		id: 4,
-		image: '/src/assets/rooms/room5.jpg',
+		image: room4Img,
 	},
 	{
 		id: 5,
-		image: '/src/assets/rooms/room6.jpg',
+		image: room5Img,
 	},
 	{
 		id: 6,
-		image: '/src/assets/rooms/room7.jpg',
+		image: room6Img,
 	},
 	{
 		id: 7,
-		image: '/src/assets/rooms/room8.jpg',
+		image: room7Img,
 	},
 	{
 		id: 8,
-		image: '/src/assets/rooms/room9.jpg',
+		image: room8Img,
 	},
 	{
 		id: 9,
-		image: '/src/assets/rooms/room10.jpg',
+		image: room9Img,
 	},
 ]
 

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import styles from './OurStory.module.css'
 import FullStory from './FullStory'
+import arrowLeftImg from '/src/assets/icons/arrow-left.svg'
+import arrowRightImg from '/src/assets/icons/arrow-right.svg'
 const OurStory = () => {
 	const [fullText, setFullText] = useState<boolean>(false)
 	const [currentList, setCurrentList] = useState<number>(0)
@@ -49,7 +51,7 @@ const OurStory = () => {
 						>
 							<img
 								className={styles['btn-icon']}
-								src='/src/assets/icons/arrow-left.svg'
+								src={arrowLeftImg}
 								alt='Иконка кнопки для переключения предыдущего текста '
 							/>
 						</button>
@@ -60,7 +62,7 @@ const OurStory = () => {
 						>
 							<img
 								className={styles['btn-icon']}
-								src='/src/assets/icons/arrow-right.svg'
+								src={arrowRightImg}
 								alt='Иконка кнопки для переключения следующего текста'
 							/>
 						</button>
