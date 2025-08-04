@@ -12,6 +12,7 @@ import Profile from './Profile/Profile'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
 import { handleLogin, handleRegistry } from './buttonAction'
 import { okSignIn } from './buttonAction'
+import { okRegistry } from './buttonAction'
 type ModalProfileProps = {
 	closeModal: () => void
 }
@@ -33,12 +34,6 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 	const [registry, setRegistry] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
 
-	const okRegistry = (resetForm: () => void) => {
-		setLoading(false)
-		toast.success('Успешная регистрация')
-		setRegistry(false)
-		resetForm()
-	}
 	const initialValues = registry
 		? { name: '', email: '', password: '' }
 		: { name: '', email: '' }
@@ -104,7 +99,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							const messageRU = translateError(error.message)
 							toast.error(messageRU)
 						} else {
-							okRegistry(resetForm)
+							okRegistry(setRegistry, setLoading, resetForm)
 						}
 					} else {
 						const { data, error } = await supabase.auth.signInWithPassword({
@@ -119,7 +114,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							const { id, email, user_metadata } = data.user
 							const userName = user_metadata.name ?? 'Инкогнито'
 							setUser({ id: Number(id), email, name: userName })
-							okSignIn(setLoading, userName, closeModal, resetForm)
+							okSignIn(closeModal, userName, setLoading, resetForm)
 						}
 					}
 					setSubmitting(false)

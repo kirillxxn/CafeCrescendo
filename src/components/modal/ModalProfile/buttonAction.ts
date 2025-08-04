@@ -10,13 +10,24 @@ export const handleRegistry = (setRegistry: SetRegistryFn) => {
 }
 
 export const okSignIn = (
-	setLoading: (val: boolean) => void,
-	userName: string,
 	closeModal: () => void,
+	userName: string,
+	setLoading: (val: boolean) => void,
+	resetForm: () => void
+) => {
+	closeModal()
+	toast.success(`Добро пожаловать: ${userName}`)
+	setLoading(false)
+	resetForm()
+}
+
+export const okRegistry = (
+	setRegistry: (val: boolean) => void,
+	setLoading: (val: boolean) => void,
 	resetForm: () => void
 ) => {
 	setLoading(false)
-	closeModal()
-	toast.success(`Добро пожаловать: ${userName}`)
+	toast.success('Успешная регистрация')
+	setRegistry(false)
 	resetForm()
 }
