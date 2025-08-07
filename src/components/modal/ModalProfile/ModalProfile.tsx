@@ -1,34 +1,25 @@
 import { useState } from 'react'
-import styles from './ModalProfile.module.css'
+import { useUserStore } from '../../auth/store/UserStore'
 import { validateLoginSchema, validateRegisterSchema } from './Forms/FormFormik'
+import { supabase } from '../../auth/supabaseClient'
+import { handleLogin, handleRegistry } from './Forms/buttonAction'
+import { okSignIn } from './Forms/buttonAction'
+import { okRegistry } from './Forms/buttonAction'
+import styles from './ModalProfile.module.css'
 import { Formik, Form } from 'formik'
 import Login from './Forms/Login'
 import Register from './Forms/Register'
-import { supabase } from '../../auth/supabaseClient'
-import { useUserStore } from '../../auth/store/UserStore'
 import toast from 'react-hot-toast'
 import Preolader from '../../reusedImg/Preloader/Preloader'
 import Profile from './Profile/Profile'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
-import { handleLogin, handleRegistry } from './buttonAction'
-import { okSignIn } from './buttonAction'
-import { okRegistry } from './buttonAction'
+import translateError from './Forms/ErrorMessages'
+
 type ModalProfileProps = {
 	closeModal: () => void
 }
 
 const ModalProfile = ({ closeModal }: ModalProfileProps) => {
-	const errorMessages: Record<string, string> = {
-		'Invalid login credentials': 'Неверный логин или пароль',
-		'User already registered': 'Пользователь уже зарегистрирован',
-		'Network error': 'Ошибка сети. Проверьте подключение',
-	}
-	function translateError(message: string): string {
-		if (errorMessages[message]) {
-			return errorMessages[message]
-		}
-		return 'Произошла неизвестная ошибка. Попробуйте еще раз'
-	}
 	const { setUser, isLoggedIn, user, logout } = useUserStore()
 
 	const [registry, setRegistry] = useState<boolean>(false)

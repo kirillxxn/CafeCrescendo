@@ -18,6 +18,13 @@ export const validateRegisterSchema = Yup.object({
 		.required('Пароль обязателен')
 		.matches(/\d/, 'Пароль должен содержать минимум одну цифру'),
 })
+export const validateUpdatePassword = Yup.object({
+	password: Yup.string()
+		.min(8, 'Пароль должен иметь минимум 8 символов')
+		.required('Пароль обязателен')
+		.matches(/\d/, 'Пароль должен содержать минимум одну цифру'),
+})
 
 export type TValidateLoginSchema = InferType<typeof validateLoginSchema>
 export type TValidateRegisterSchema = InferType<typeof validateRegisterSchema>
+export type TValidateUpdatePassword = InferType<typeof validateUpdatePassword>
