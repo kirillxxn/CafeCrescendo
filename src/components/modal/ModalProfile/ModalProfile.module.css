@@ -252,3 +252,5 @@
 .btn__profile-action:disabled {
 	cursor: not-allowed;
 }
+@media (max-width: 764px) {
+}

@@ -1,5 +1,5 @@
 import styles from './Contacts.module.css'
-import coffeeBeanImg from '/src/assets/icons/coffeebean.png'
+
 const Contacts = () => {
 	return (
 		<>
@@ -25,12 +25,6 @@ const Contacts = () => {
 							cafecrescendo@cres.com
 						</a>
 					</div>
-
-					<img
-						className={styles['coffee__bean']}
-						src={coffeeBeanImg}
-						alt='Картинка, где изображено слово Coffee из зерен кофе'
-					/>
 				</div>
 			</section>
 		</>

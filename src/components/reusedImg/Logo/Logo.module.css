@@ -6,3 +6,8 @@
 .logo__link-image {
 	width: 64px;
 }
+@media (max-width: 764px) {
+	.logo__link {
+		display: none;
+	}
+}

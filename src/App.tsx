@@ -22,7 +22,21 @@ function App() {
 			setNotificationVisible(false)
 		}, 1500)
 	}
+	interface NavigatorWithMS extends Navigator {
+		msMaxTouchPoints?: number
+	}
 
+	function isTouchDevice(): boolean {
+		if (typeof window === 'undefined') return false // SSR защита
+
+		const nav = navigator as NavigatorWithMS
+
+		return (
+			'ontouchstart' in window ||
+			nav.maxTouchPoints > 0 ||
+			(nav.msMaxTouchPoints ?? 0) > 0
+		)
+	}
 	return (
 		<>
 			<Toaster position='top-right' toastOptions={{ duration: 3000 }} />
@@ -33,10 +47,11 @@ function App() {
 			<Parallax speed={-12} easing='easeInQuad'>
 				<Menu onAddToBasket={handleBasket} />
 			</Parallax>
-			<Parallax easing='easeInBack' opacity={[1, 0]}>
+			<Parallax disabled={isTouchDevice()} easing='easeInBack' opacity={[1, 0]}>
 				<OurCafe />
 			</Parallax>
 			<Parallax
+				disabled={isTouchDevice()}
 				easing='easeInQuad'
 				scale={[1, 0.5]}
 				speed={-5}
@@ -62,6 +77,7 @@ function App() {
 				</span>
 			</CSSTransition>
 			<Parallax
+				disabled={isTouchDevice()}
 				easing='easeInQuad'
 				scale={[1, 0.5]}
 				speed={-5}

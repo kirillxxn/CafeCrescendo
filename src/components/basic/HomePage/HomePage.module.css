@@ -80,3 +80,20 @@
 	margin: 0;
 	font-family: 'Times New Roman', Times, serif;
 }
+@media (max-width: 764px) {
+	.main__container-logo {
+		position: absolute;
+		top: 15%;
+		right: 2%;
+		color: white;
+		font-size: 1.8rem;
+		transform: rotateZ(-10deg);
+		letter-spacing: 0;
+		z-index: 1;
+		text-shadow: 1px 2px 10px black;
+	}
+
+	.shadow {
+		display: none;
+	}
+}
