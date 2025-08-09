@@ -100,7 +100,17 @@
 		width: 100%;
 	}
 }
-@media (max-width: 764px) {
+@media (max-width: 1200px) {
+	.menu__list {
+		padding: 60px 0px;
+		color: white;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: 20px;
+	}
+}
+
+@media (max-width: 768px) {
 	.menu__list {
 		padding: 60px 0px;
 		color: white;

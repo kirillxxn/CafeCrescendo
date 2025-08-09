@@ -36,14 +36,22 @@
 	color: #ffe7c6;
 	text-shadow: 1px 2px 10px black;
 }
+.ourteam__title {
+	text-align: center;
+	margin: 50px 0;
+	font-size: 5rem;
+}
+@media (max-width: 1200px) {
+	.ourteam__section {
+		transform: translateY(-100px);
+	}
+}
 
-@media (max-width: 764px) {
+@media (max-width: 768px) {
 	.team__list {
 		grid-template-columns: repeat(1, 1fr);
 	}
-	@media (max-width: 764px) {
-		.ourteam__section {
-			margin-top: 50px;
-		}
+	.ourteam__section {
+		margin-top: 340px;
 	}
 }

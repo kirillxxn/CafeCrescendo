@@ -8,7 +8,7 @@
 .container__github-logo {
 	width: 50px;
 }
-@media (max-width: 764px) {
+@media (max-width: 768px) {
 	.footer__container {
 		margin-top: 40px;
 		gap: 0px;

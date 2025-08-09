@@ -4,7 +4,7 @@ import closeButtonImg from '/src/assets/icons/closebutton.png'
 import profileAvatarImg from '/src/assets/icons/avatar.png'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { validateUpdatePassword } from '../Forms/FormFormik'
-import { supabase } from '../../../auth/supabaseClient'
+import { supabase } from '../../../auth/supabase/supabaseClient'
 import toast from 'react-hot-toast'
 type ProfileProps = {
 	closeModal: () => void

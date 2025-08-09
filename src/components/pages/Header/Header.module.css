@@ -79,8 +79,8 @@
 
 .modalContent {
 	background: linear-gradient(to bottom, #ffffff, #cccccc, #ffe7c6);
-	width: 500px;
-	height: 90vh;
+	width: 50vh;
+	height: 75vh;
 	border-radius: 12px;
 	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
 	transform: scale(0.95);
@@ -94,7 +94,13 @@
 	transform: scale(1);
 	opacity: 1;
 }
-@media (max-width: 764px) {
+@media (max-width: 1200px) {
+	.modalContent {
+		width: 50vh;
+		height: 50vh;
+	}
+}
+@media (max-width: 768px) {
 	.header__container {
 		flex-direction: row;
 	}
@@ -193,5 +199,6 @@
 	}
 	.modalContent {
 		width: 100%;
+		height: 75vh;
 	}
 }

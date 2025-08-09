@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Logo from '../../reusedImg/Logo/Logo'
+import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
 import Modal from 'react-modal'
 import ModalProfile from '../../modal/ModalProfile/ModalProfile'

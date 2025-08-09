@@ -31,12 +31,13 @@
 	top: 50px;
 	right: 50px;
 }
-@media (max-width: 764px) {
+@media (max-width: 768px) {
 	.contact__section-container {
 		display: flex;
 		flex-direction: column;
 		position: relative;
 		gap: 40px;
+		transform: translateY(-100px);
 	}
 	.container-map {
 		width: 70%;

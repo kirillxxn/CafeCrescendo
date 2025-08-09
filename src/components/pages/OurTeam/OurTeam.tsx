@@ -14,6 +14,7 @@ const OurTeam = () => {
 		<>
 			<section id='team' className={styles['ourteam__section']}>
 				<div className={styles['ourteam__section-container']}>
+					<h2 className={styles['ourteam__title']}>Наша команда</h2>
 					<nav className={styles['section__container-team']}>
 						<ul className={styles['team__list']}>
 							{TeamList.map(item => (

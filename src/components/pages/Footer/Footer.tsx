@@ -1,4 +1,4 @@
-import Logo from '../../reusedImg/Logo/Logo'
+import Logo from '../Logo/Logo'
 import logoGitHub from '/src/assets/icons/githublogo.png'
 import styles from './Footer.module.css'
 const Footer = () => {
