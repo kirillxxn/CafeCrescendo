@@ -41,6 +41,44 @@ const Header = () => {
 		<>
 			<header className={styles['header']}>
 				<div className={styles['header__container']}>
+					<div className={styles['menu']}>
+						<input
+							type='checkbox'
+							id='burger-checkbox'
+							className={styles['burger-checkbox']}
+						/>
+						<label
+							htmlFor='burger-checkbox'
+							className={styles['burger']}
+						></label>
+						<ul className={styles['menu-list']}>
+							<li>
+								<a href='#' className={styles['menu-item']}>
+									Главная
+								</a>
+							</li>
+							<li>
+								<a href='#menu' className={styles['menu-item']}>
+									Каталог
+								</a>
+							</li>
+							<li>
+								<a href='#ourcafe' className={styles['menu-item']}>
+									О нас
+								</a>
+							</li>
+							<li>
+								<a href='#team' className={styles['menu-item']}>
+									Наша команда
+								</a>
+							</li>
+							<li>
+								<a href='#contacts' className={styles['menu-item']}>
+									Контакты
+								</a>
+							</li>
+						</ul>
+					</div>
 					<Logo />
 					<nav className={styles['container-nav']}>
 						<ul className={styles['container__nav-list']}>
