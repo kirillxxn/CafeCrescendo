@@ -1,19 +1,22 @@
 import { useState } from 'react'
 import { useUserStore } from '../../auth/store/UserStore'
-import { validateLoginSchema, validateRegisterSchema } from './Forms/FormFormik'
+import {
+	validateLoginSchema,
+	validateRegisterSchema,
+} from './Forms/Validate/FormFormik'
 import { supabase } from '../../auth/supabase/supabaseClient'
-import { handleLogin, handleRegistry } from './buttonAction'
-import { okSignIn } from './buttonAction'
-import { okRegistry } from './buttonAction'
+import { handleLogin, handleRegistry } from './scripts/buttonAction'
+import { okSignIn } from './scripts/buttonAction'
+import { okRegistry } from './scripts/buttonAction'
 import styles from './ModalProfile.module.css'
 import { Formik, Form } from 'formik'
-import Login from './Forms/Login'
-import Register from './Forms/Register'
+import Login from './Forms/Login/Login'
+import Register from './Forms/Register/Register'
 import toast from 'react-hot-toast'
 import Preolader from '../../pages/Preloader/Preloader'
 import Profile from './Profile/Profile'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
-import translateError from './Forms/ErrorMessages'
+import translateError from './Forms/Validate/ErrorMessages'
 
 type ModalProfileProps = {
 	closeModal: () => void

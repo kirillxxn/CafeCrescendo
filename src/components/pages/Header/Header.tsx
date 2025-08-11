@@ -1,47 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useRef } from 'react'
 import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
-import Modal from 'react-modal'
-import ModalProfile from '../../modal/ModalProfile/ModalProfile'
-import modalStyles from './Header.module.css'
+import Modals from '../../modal/ModalProfile/Modal/Modal'
+import type { TModals } from '../../modal/ModalProfile/Modal/Modal'
 import { useUserStore } from '../../auth/store/UserStore'
 import avatarIcon from '/src/assets/icons/profileicon.png'
 import avatarIconLogged from '/src/assets/icons/avatar.png'
 import basketIcon from '/src/assets/icons/basketicon.png'
 const Header = () => {
-	const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
-	const [isClosing, setIsClosing] = useState<boolean>(false)
-	const [isOpening, setIsOpening] = useState<boolean>(false)
 	const { user, isLoggedIn } = useUserStore()
-	const openModal = () => {
-		document.body.style.overflow = 'hidden'
-		setModalIsOpen(true)
-		setIsClosing(false)
-	}
-	useEffect(() => {
-		if (modalIsOpen) {
-			const timeout = setTimeout(() => setIsOpening(true), 10)
-			return () => clearTimeout(timeout)
-		} else {
-			setIsOpening(false)
-		}
-	}, [modalIsOpen])
+	const modalRef = useRef<TModals>(null)
 
-	const closeModal = () => {
-		document.body.style.overflow = ''
-		setIsOpening(false)
-		setIsClosing(true)
-
-		setTimeout(() => {
-			setModalIsOpen(false)
-			setIsClosing(false)
-		}, 300)
-	}
 	return (
 		<>
 			<header className={styles['header']}>
 				<div className={styles['header__container']}>
-					<div className={styles['menu']}>
+					<nav className={styles['container-nav-mobile']}>
 						<input
 							type='checkbox'
 							id='burger-checkbox'
@@ -51,36 +25,39 @@ const Header = () => {
 							htmlFor='burger-checkbox'
 							className={styles['burger']}
 						></label>
-						<ul className={styles['menu-list']}>
+						<ul className={styles['container__nav-list-mobile']}>
 							<li>
-								<a href='#' className={styles['menu-item']}>
+								<a href='#' className={styles['list__item-link-mobile']}>
 									Главная
 								</a>
 							</li>
 							<li>
-								<a href='#menu' className={styles['menu-item']}>
+								<a href='#menu' className={styles['list__item-link-mobile']}>
 									Каталог
 								</a>
 							</li>
 							<li>
-								<a href='#ourcafe' className={styles['menu-item']}>
+								<a href='#ourcafe' className={styles['list__item-link-mobile']}>
 									О нас
 								</a>
 							</li>
 							<li>
-								<a href='#team' className={styles['menu-item']}>
+								<a href='#team' className={styles['list__item-link-mobile']}>
 									Наша команда
 								</a>
 							</li>
 							<li>
-								<a href='#contacts' className={styles['menu-item']}>
+								<a
+									href='#contacts'
+									className={styles['list__item-link-mobile']}
+								>
 									Контакты
 								</a>
 							</li>
 						</ul>
-					</div>
+					</nav>
 					<Logo />
-					<nav className={styles['container-nav']}>
+					<nav>
 						<ul className={styles['container__nav-list']}>
 							<li className={styles['nav__list-item']}>
 								<a className={styles['list__item-link']} href='#'>
@@ -110,7 +87,10 @@ const Header = () => {
 						</ul>
 					</nav>
 					<div className={styles['header__container-button']}>
-						<button onClick={openModal} className={styles['container-button']}>
+						<button
+							onClick={() => modalRef.current?.openModal()}
+							className={styles['container-button']}
+						>
 							{isLoggedIn ? (
 								<img
 									className={styles['button-image']}
@@ -124,29 +104,11 @@ const Header = () => {
 									alt='Иконка личного кабинета'
 								/>
 							)}
-
 							<p className={styles['button-text']}>
 								{user ? user.name : 'Профиль'}
 							</p>
 						</button>
-						<Modal
-							isOpen={modalIsOpen}
-							onRequestClose={closeModal}
-							shouldCloseOnOverlayClick={true}
-							overlayClassName={`
-		${modalStyles.modalOverlay} 
-		${isOpening ? modalStyles.modalOverlayActive : ''}
-		${isClosing ? modalStyles.modalOverlayAfterClose : ''}
-	`}
-							className={`
-		${modalStyles.modalContent} 
-		${isOpening ? modalStyles.modalContentActive : ''}
-		${isClosing ? modalStyles.modalContentAfterClose : ''}
-	`}
-							closeTimeoutMS={300}
-						>
-							<ModalProfile closeModal={closeModal} />
-						</Modal>
+
 						<button className={styles['container-button']}>
 							<img
 								className={styles['button-image']}
@@ -158,6 +120,7 @@ const Header = () => {
 					</div>
 				</div>
 			</header>
+			<Modals ref={modalRef} />
 		</>
 	)
 }

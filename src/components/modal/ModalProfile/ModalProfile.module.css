@@ -5,11 +5,13 @@
 	padding: 30px;
 	font-family: 'Courier New', Courier, monospace;
 }
+
 .modal__select-actions {
 	display: flex;
 	gap: 50px;
 	padding: 10px;
 }
+
 .select__action-btn {
 	background: linear-gradient(to left, #cccccc, #ffe7c6);
 	border: none;
@@ -21,22 +23,27 @@
 	transition: box-shadow 0.5s ease-in-out;
 	opacity: 1;
 }
+
 .select__action-btn:hover {
 	transition: all 0.5s ease-in-out;
 	box-shadow: 5px 5px 10px 2px black;
 	scale: 1.2;
 }
+
 .select__action-btn:active {
 	opacity: 0.1;
 	transition: all 0.1s ease-in-out;
 }
+
 .select__action-btn:first-child {
 	padding: 20px 40px;
 }
+
 .select__action-btn.active {
 	background: white;
 	font-weight: bold;
 }
+
 .select__action-btn:disabled {
 	color: #45454522;
 	cursor: default;
@@ -45,6 +52,7 @@
 	scale: 1;
 	opacity: 1;
 }
+
 .modal__close-btn {
 	background-color: transparent;
 	border: none;
@@ -53,10 +61,12 @@
 	top: 10px;
 	right: 5px;
 }
+
 .close__btn-image {
 	width: 32px;
 	transition: all 0.5s ease-in-out;
 }
+
 .close__btn-image:hover {
 	transition: all 0.5s ease-in-out;
 	transform: rotateZ(360deg);
@@ -72,6 +82,7 @@
 	margin-top: 20px;
 	margin-bottom: 40px;
 }
+
 .modal__form {
 	display: flex;
 	flex-direction: column;
@@ -84,9 +95,11 @@
 	align-items: start;
 	margin: 0;
 }
+
 .form__container-group {
 	width: 100%;
 }
+
 .form__container-label {
 	font-size: 0.9rem;
 	margin: 15px 0 5px 30px;
@@ -99,14 +112,17 @@
 	border: none;
 	transition: box-shadow 0.5s ease-in-out;
 }
+
 .form__container-input:hover {
 	transition: all 0.5s ease-in-out;
 	box-shadow: 5px 5px 10px 2px black;
 }
+
 .form__container-input:focus {
 	outline: none;
 	border: none;
 }
+
 .form__container-input::placeholder {
 	font-style: italic;
 	opacity: 1;
@@ -114,10 +130,12 @@
 	color: rgba(0, 0, 0, 0.5);
 	transition: opacity 0.5s ease-in-out;
 }
+
 .form__container-input:hover::placeholder {
 	opacity: 0.2;
 	transition: all 0.5s ease-in-out;
 }
+
 .form__container-submit {
 	position: relative;
 	overflow: hidden;
@@ -131,12 +149,15 @@
 	transition: color 0.6s ease-in-out;
 	z-index: 1;
 }
+
 .sign-in {
 	margin-top: 80px;
 }
+
 .registry {
 	margin-top: 40px;
 }
+
 .form__container-submit::before {
 	content: '';
 	position: absolute;
@@ -156,28 +177,35 @@
 .form__container-submit:hover:not(:disabled) {
 	color: white;
 }
+
 .container__submit-text {
 	position: relative;
 	z-index: 1;
 }
+
 .form__container-submit:active {
 	opacity: 0.3;
 }
+
 .form__container-submit:disabled {
 	opacity: 0.3;
 	cursor: default;
 }
+
 .form__container-submit:disabled {
 	opacity: 0.3;
 	cursor: default;
 }
+
 .div-error {
 	padding: 5px;
 	color: red;
 }
+
 .modal-profile {
 	padding: 40px 0px;
 }
+
 .profile {
 	display: flex;
 	flex-direction: column;
@@ -185,15 +213,18 @@
 	width: 100%;
 	height: 100vh;
 }
+
 .profile-title {
 	font-size: 2rem;
 }
+
 .profile-avatar {
 	width: 170px;
 	padding: 10px;
 	background-color: white;
 	border-radius: 50%;
 }
+
 .user-info {
 	display: flex;
 	flex-direction: column;
@@ -202,18 +233,21 @@
 	margin: 0;
 	cursor: default;
 }
+
 .user__info-name {
 	background-color: white;
 	width: 80%;
 	padding: 20px;
 	border-radius: 20px;
 }
+
 .user__info-email {
 	background-color: white;
 	width: 80%;
 	padding: 20px;
 	border-radius: 20px;
 }
+
 .form__updatepassword {
 	width: 100%;
 	display: flex;
@@ -221,6 +255,7 @@
 	justify-content: center;
 	align-items: center;
 }
+
 .form__updatepassword-input {
 	width: 80%;
 	padding: 20px;
@@ -228,6 +263,7 @@
 	border-radius: 20px;
 	border: none;
 }
+
 .form__updatepassword-input::placeholder {
 	font-style: italic;
 	opacity: 1;
@@ -235,34 +271,43 @@
 	color: rgba(0, 0, 0, 0.5);
 	transition: opacity 0.5s ease-in-out;
 }
+
 .form__updatepassword-input:hover::placeholder {
 	opacity: 0.2;
 	transition: all 0.5s ease-in-out;
 }
+
 .btn__profile {
 	width: 100%;
 	display: flex;
 	justify-content: center;
 	gap: 50px;
 }
+
 .btn__profile-action {
 	cursor: pointer;
 	margin-top: 40px;
 	width: 40%;
 }
+
 .btn__profile-action:disabled {
 	cursor: not-allowed;
 }
+
+/* Адаптив под мобильные устройства */
 @media (max-width: 768px) {
 	.profile-avatar {
 		width: 100px;
 	}
+
 	.user-info {
 		gap: 5px;
 	}
+
 	.btn__profile-action {
 		margin-top: 20px;
 	}
+
 	.registry {
 		margin-top: 20px;
 	}

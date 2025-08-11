@@ -1,5 +1,5 @@
 import { Field, ErrorMessage } from 'formik'
-import type { FormProps } from './Login'
+import type { FormProps } from '../Login/Login'
 
 const Register = ({ styles }: FormProps) => {
 	return (
