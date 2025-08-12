@@ -1,10 +1,9 @@
 import Modal from 'react-modal'
-import ModalProfile from '../ModalProfile'
-import modalStyles from './Modal.module.css'
-import { useState, forwardRef, useImperativeHandle, useEffect } from 'react'
 import type { TModals } from '../../TypeModals/TypeModals'
-
-const ProfileModal = forwardRef<TModals>((_, ref) => {
+import modalStyles from './Modal.module.css'
+import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
+import ModalBasket from '../ModalBasket'
+const BasketModal = forwardRef<TModals>((_, ref) => {
 	const [isClosing, setIsClosing] = useState(false)
 	const [isOpening, setIsOpening] = useState(false)
 	const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -27,7 +26,6 @@ const ProfileModal = forwardRef<TModals>((_, ref) => {
 	}
 
 	const openModal = () => {
-		document.body.style.overflow = 'hidden'
 		setModalIsOpen(true)
 		setIsClosing(false)
 		setIsOpening(true)
@@ -58,9 +56,9 @@ const ProfileModal = forwardRef<TModals>((_, ref) => {
 			`}
 			closeTimeoutMS={300}
 		>
-			<ModalProfile closeModal={closeModal} />
+			<ModalBasket closeModal={closeModal} />
 		</Modal>
 	)
 })
 
-export default ProfileModal
+export default BasketModal

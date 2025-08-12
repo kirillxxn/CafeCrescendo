@@ -1,0 +1,69 @@
+.modal_basket {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	font-family: 'Courier New', Courier, monospace;
+}
+.modal__close-btn {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	position: absolute;
+	top: 10px;
+	right: 5px;
+}
+
+.close__btn-image {
+	width: 32px;
+	transition: all 0.5s ease-in-out;
+}
+
+.close__btn-image:hover {
+	transition: all 0.5s ease-in-out;
+	transform: rotateZ(360deg);
+}
+.modal_basket-title {
+	font-size: 3rem;
+	letter-spacing: 0;
+	width: 100%;
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+	text-align: center;
+	margin: 20px 0;
+}
+.item_container {
+	width: 100%;
+	height: 65vh;
+}
+.basket__result {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin-top: 40px;
+}
+.basket__result-sum {
+	font-size: 2rem;
+	margin: 0;
+}
+.basket__result-button {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.basket__result-button:hover {
+	transform: scale(1.1);
+	transition: all 0.2s ease-in-out;
+}
+.basket__result-button:active {
+	opacity: 0.1;
+}
+.result_button-buy {
+	padding: 20px 40px;
+	font-size: 1rem;
+	border-radius: 5px;
+	background-color: black;
+	color: white;
+}

@@ -1,7 +1,6 @@
 import styles from './HomePage.module.css'
 import { MouseParallax } from 'react-just-parallax'
 import Marquee from 'react-fast-marquee'
-
 type TMouseParallax = {
 	isAbsolutelyPositioned?: boolean
 	strength: number

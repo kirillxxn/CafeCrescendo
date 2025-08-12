@@ -16,6 +16,7 @@
 	margin: 0;
 	padding: 10px;
 }
+
 .container__marquee {
 	position: absolute;
 	top: 0px;
@@ -26,12 +27,14 @@
 	text-shadow: 1px 2px 10px black;
 	opacity: 0.5;
 }
+
 .marquee {
 	padding: 10px 0;
 	background: linear-gradient(to left, #ffffff, #f5deb3, #cccccc, #ffe7c6);
 	color: black;
 	overflow: hidden;
 }
+
 .main__container-logo {
 	position: absolute;
 	top: 15%;
@@ -80,11 +83,13 @@
 	margin: 0;
 	font-family: 'Times New Roman', Times, serif;
 }
+
 @media (max-width: 768px) {
 	.main__container {
 		margin: 0;
 		padding: 0;
 	}
+
 	.shadow {
 		display: none;
 	}

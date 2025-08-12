@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-
 import { Fancybox as FancyboxLib } from '@fancyapps/ui'
 import MenuList from './MenuList'
 import styles from './Menu.module.css'
@@ -14,7 +13,6 @@ const Menu = ({ onAddToBasket }: Props) => {
 			FancyboxLib.unbind("[data-fancybox='gallery']")
 		}
 	}, [])
-
 	return (
 		<>
 			<section id='menu' className={styles['menu__page']}>
@@ -52,5 +50,4 @@ const Menu = ({ onAddToBasket }: Props) => {
 		</>
 	)
 }
-
 export default Menu

@@ -1,15 +1,17 @@
 import { useRef } from 'react'
 import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
-import Modals from '../../modal/ModalProfile/Modal/Modal'
-import type { TModals } from '../../modal/ModalProfile/Modal/Modal'
+import ProfileModals from '../../modal/ModalProfile/Modal/Modal'
+import BasketModal from '../../modal/ModalBasket/Modal/Modal'
+import type { TModals } from '../../modal/TypeModals/TypeModals'
 import { useUserStore } from '../../auth/store/UserStore'
 import avatarIcon from '/src/assets/icons/profileicon.png'
 import avatarIconLogged from '/src/assets/icons/avatar.png'
 import basketIcon from '/src/assets/icons/basketicon.png'
 const Header = () => {
 	const { user, isLoggedIn } = useUserStore()
-	const modalRef = useRef<TModals>(null)
+	const modalProfileRef = useRef<TModals>(null)
+	const modalBasketRef = useRef<TModals>(null)
 
 	return (
 		<>
@@ -88,7 +90,7 @@ const Header = () => {
 					</nav>
 					<div className={styles['header__container-button']}>
 						<button
-							onClick={() => modalRef.current?.openModal()}
+							onClick={() => modalProfileRef.current?.openModal()}
 							className={styles['container-button']}
 						>
 							{isLoggedIn ? (
@@ -109,7 +111,10 @@ const Header = () => {
 							</p>
 						</button>
 
-						<button className={styles['container-button']}>
+						<button
+							onClick={() => modalBasketRef.current?.openModal()}
+							className={styles['container-button']}
+						>
 							<img
 								className={styles['button-image']}
 								src={basketIcon}
@@ -120,7 +125,8 @@ const Header = () => {
 					</div>
 				</div>
 			</header>
-			<Modals ref={modalRef} />
+			<ProfileModals ref={modalProfileRef} />
+			<BasketModal ref={modalBasketRef} />
 		</>
 	)
 }
