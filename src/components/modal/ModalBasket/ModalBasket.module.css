@@ -40,6 +40,7 @@
 .basket__item {
 	display: flex;
 	margin-bottom: 10px;
+	border-bottom: 1px black solid;
 }
 .basket__item-info {
 	display: flex;
@@ -67,8 +68,10 @@
 }
 .basket__item-button {
 	display: flex;
+
 	gap: 5px;
 	height: 100%;
+	margin-bottom: 10px;
 }
 .item__button-remove {
 	background-color: black;
@@ -99,6 +102,7 @@
 	margin-top: 40px;
 }
 .basket__result-sum {
+	letter-spacing: 0;
 	font-size: 2rem;
 	margin: 0;
 }
@@ -121,4 +125,28 @@
 	border-radius: 5px;
 	background-color: black;
 	color: white;
+}
+@media (max-width: 1200px) {
+	.basket__empty {
+		position: absolute;
+		top: 50%;
+		left: 30%;
+	}
+}
+@media (max-width: 768px) {
+	.basket__empty {
+		position: absolute;
+		top: 20%;
+		left: 20%;
+	}
+	.basket__item {
+		flex-direction: column;
+	}
+	.basket__item-button {
+		width: 40%;
+	}
+	.basket__result-sum {
+		letter-spacing: 2px;
+		font-size: 1rem;
+	}
 }
