@@ -9,8 +9,11 @@ type BasketItem = TMenuList & {
 type BasketStore = {
 	items: BasketItem[]
 	addToBasket: (productId: number) => void
+	removeToBasket: (productId: number) => void
+	removeToQuantity: (productId: number) => void
+	getTotal(): number
 }
-export const useBasketStore = create<BasketStore>(set => ({
+export const useBasketStore = create<BasketStore>((set, get) => ({
 	items: [],
 	addToBasket: productId => {
 		const product = MenuList.find(p => p.id === productId)
@@ -27,5 +30,27 @@ export const useBasketStore = create<BasketStore>(set => ({
 					: [...state.items, { ...product, quantity: 1 }],
 			}
 		})
+	},
+	removeToBasket: productId => {
+		set(state => ({
+			items: state.items.filter(item => item.id !== productId),
+		}))
+	},
+	removeToQuantity: productId => {
+		set(state => ({
+			items: state.items
+				.map(item =>
+					item.id === productId
+						? { ...item, quantity: item.quantity - 1 }
+						: item
+				)
+				.filter(item => item.quantity > 0),
+		}))
+	},
+	getTotal() {
+		return get().items.reduce(
+			(sum: number, item: BasketItem) => sum + item.price * item.quantity,
+			0
+		)
 	},
 }))

@@ -32,8 +32,14 @@
 	text-align: center;
 	margin: 20px 0;
 }
+.basket__empty {
+	display: flex;
+	margin-top: 300px;
+	font-size: 2rem;
+}
 .basket__item {
 	display: flex;
+	margin-bottom: 10px;
 }
 .basket__item-info {
 	display: flex;
@@ -59,7 +65,29 @@
 .info__description-quantity {
 	margin: 0;
 }
-
+.basket__item-button {
+	display: flex;
+	gap: 5px;
+	height: 100%;
+}
+.item__button-remove {
+	background-color: black;
+	border: none;
+	font-family: inherit;
+	padding: 5px 40px;
+	margin: 0;
+	color: white;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.item__button-remove:hover {
+	transform: scale(1.1);
+	transition: all 0.2s ease-in-out;
+}
+.item__button-remove:active {
+	opacity: 0.1;
+}
 .item_container {
 	width: 100%;
 }

@@ -6,8 +6,8 @@ type ModalBasketProps = {
 }
 
 const ModalBasket = ({ closeModal }: ModalBasketProps) => {
-	const { items } = useBasketStore()
-
+	const { items, removeToBasket, removeToQuantity, getTotal } = useBasketStore()
+	const total = getTotal()
 	return (
 		<>
 			<div className={styles['modal_basket']}>
@@ -44,15 +44,32 @@ const ModalBasket = ({ closeModal }: ModalBasketProps) => {
 											{item.name}
 										</span>
 										<span className={styles['info__description-quantity']}>
-											Кол-во: {item.quantity}
+											Кол-во: {item.quantity} * {item.price}₽ ={' '}
+											{item.quantity * item.price}₽
 										</span>
 									</div>
+								</div>
+								<div className={styles['basket__item-button']}>
+									<button
+										className={styles['item__button-remove']}
+										onClick={() => removeToBasket(item.id)}
+									>
+										Удалить все
+									</button>
+									<button
+										className={styles['item__button-remove']}
+										onClick={() => removeToQuantity(item.id)}
+									>
+										Удалить
+									</button>
 								</div>
 							</div>
 						))}
 						<div className={styles['item_container']}></div>
 						<div className={styles['basket__result']}>
-							<span className={styles['basket__result-sum']}>Итого:</span>
+							<span className={styles['basket__result-sum']}>
+								Итого:{total}₽
+							</span>
 							<button
 								className={styles['basket__result-button']}
 								aria-label='Оформить заказ'
