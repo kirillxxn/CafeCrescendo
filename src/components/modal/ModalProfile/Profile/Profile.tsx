@@ -1,5 +1,5 @@
 import styles from '../ModalProfile.module.css'
-import type { User } from '../../../auth/store/UserStore'
+import type { User } from '../../../store/UserStore'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
 import profileAvatarImg from '/src/assets/icons/avatar.png'
 import { Formik, Form, Field, ErrorMessage } from 'formik'

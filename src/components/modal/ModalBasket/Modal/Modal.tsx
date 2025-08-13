@@ -1,5 +1,5 @@
 import Modal from 'react-modal'
-import type { TModals } from '../../TypeModals/TypeModals'
+import type { TModals } from '../../ModalProfile/TypeModals/TypeModals'
 import modalStyles from './Modal.module.css'
 import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import ModalBasket from '../ModalBasket'
@@ -26,6 +26,7 @@ const BasketModal = forwardRef<TModals>((_, ref) => {
 	}
 
 	const openModal = () => {
+		document.body.style.overflow = 'hidden'
 		setModalIsOpen(true)
 		setIsClosing(false)
 		setIsOpening(true)

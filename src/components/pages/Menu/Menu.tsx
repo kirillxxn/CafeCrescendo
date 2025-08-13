@@ -3,16 +3,22 @@ import { Fancybox as FancyboxLib } from '@fancyapps/ui'
 import MenuList from './MenuList'
 import styles from './Menu.module.css'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
+import { useBasketStore } from '../../store/ BasketStore'
 type Props = {
 	onAddToBasket: () => void
 }
 const Menu = ({ onAddToBasket }: Props) => {
+	const addToBasket = useBasketStore(state => state.addToBasket)
 	useEffect(() => {
 		FancyboxLib.bind("[data-fancybox='gallery']", {})
 		return () => {
 			FancyboxLib.unbind("[data-fancybox='gallery']")
 		}
 	}, [])
+	const handleAddToBasket = (productId: number) => {
+		addToBasket(productId)
+		onAddToBasket()
+	}
 	return (
 		<>
 			<section id='menu' className={styles['menu__page']}>
@@ -35,7 +41,7 @@ const Menu = ({ onAddToBasket }: Props) => {
 									{item.description}
 								</p>
 								<button
-									onClick={onAddToBasket}
+									onClick={() => handleAddToBasket(item.id)}
 									className={styles['menu__item-button']}
 								>
 									<span className={styles['item__button-text']}>

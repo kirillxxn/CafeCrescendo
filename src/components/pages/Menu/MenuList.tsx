@@ -1,21 +1,21 @@
 import nattyImg from '/src/assets/coffelist/natty.jpeg'
 
-import costa from '/src/assets/coffelist/natty.jpeg'
-import ethiopia from '/src/assets/coffelist/natty.jpeg'
-import colombia from '/src/assets/coffelist/natty.jpeg'
-import guatemala from '/src/assets/coffelist/natty.jpeg'
-import jamaica from '/src/assets/coffelist/natty.jpeg'
-import kenya from '/src/assets/coffelist/natty.jpeg'
-import sumatra from '/src/assets/coffelist/natty.jpeg'
-import brazilia from '/src/assets/coffelist/natty.jpeg'
-import peru from '/src/assets/coffelist/natty.jpeg'
-import mexica from '/src/assets/coffelist/natty.jpeg'
-import honduras from '/src/assets/coffelist/natty.jpeg'
-import panama from '/src/assets/coffelist/natty.jpeg'
-import salvador from '/src/assets/coffelist/natty.jpeg'
-import nicaragua from '/src/assets/coffelist/natty.jpeg'
+import costa from '/src/assets/coffelist/costa.jpeg'
+import ethiopia from '/src/assets/coffelist/ethiopia.jpeg'
+import colombia from '/src/assets/coffelist/colombia.jpeg'
+import guatemala from '/src/assets/coffelist/guatemala.jpeg'
+import jamaica from '/src/assets/coffelist/jamaica.jpeg'
+import kenya from '/src/assets/coffelist/kenya.jpeg'
+import sumatra from '/src/assets/coffelist/sumatra.jpeg'
+import brazilia from '/src/assets/coffelist/brazilia.jpeg'
+import peru from '/src/assets/coffelist/peru.jpeg'
+import mexica from '/src/assets/coffelist/mexica.jpeg'
+import honduras from '/src/assets/coffelist/honduras.jpeg'
+import panama from '/src/assets/coffelist/panama.jpeg'
+import salvador from '/src/assets/coffelist/salvador.jpeg'
+import nicaragua from '/src/assets/coffelist/nicaragua.jpeg'
 
-type TMenuList = {
+export type TMenuList = {
 	id: number
 	name: string
 	price: number

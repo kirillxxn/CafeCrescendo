@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useUserStore } from '../../auth/store/UserStore'
+import { useUserStore } from '../../store/UserStore'
 import {
 	validateLoginSchema,
 	validateRegisterSchema,

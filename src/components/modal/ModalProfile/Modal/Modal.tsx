@@ -2,7 +2,7 @@ import Modal from 'react-modal'
 import ModalProfile from '../ModalProfile'
 import modalStyles from './Modal.module.css'
 import { useState, forwardRef, useImperativeHandle, useEffect } from 'react'
-import type { TModals } from '../../TypeModals/TypeModals'
+import type { TModals } from '../TypeModals/TypeModals'
 
 const ProfileModal = forwardRef<TModals>((_, ref) => {
 	const [isClosing, setIsClosing] = useState(false)
