@@ -14,9 +14,15 @@ type UserStore = {
 }
 
 export const useUserStore = create<UserStore>(set => ({
-	user: null,
-	isLoggedIn: false,
-	setUser: user => set({ user, isLoggedIn: true }),
-	logout: () => set({ user: null, isLoggedIn: false }),
+	user: JSON.parse(localStorage.getItem('user') || 'null'),
+	isLoggedIn: !!localStorage.getItem('user'),
+	setUser: user => {
+		localStorage.setItem('user', JSON.stringify(user))
+		set({ user, isLoggedIn: true })
+	},
+	logout: () => {
+		localStorage.removeItem('user')
+		set({ user: null, isLoggedIn: false })
+	},
 }))
 export type { User }

@@ -15,6 +15,7 @@ const Header = () => {
 	const modalBasketRef = useRef<TModals>(null)
 	const { getCount } = useBasketStore()
 	const counter = getCount()
+
 	return (
 		<>
 			<header className={styles['header']}>
