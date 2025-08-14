@@ -45,6 +45,7 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+	position: relative;
 }
 
 .button-image {
@@ -59,7 +60,15 @@
 	color: black;
 	font-family: 'Courier New', Courier, monospace;
 }
-
+.basket-counter {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	padding: 5px;
+	width: 15px;
+	background-color: red;
+	border-radius: 100%;
+}
 @media (max-width: 768px) {
 	.header__container {
 		flex-direction: row;

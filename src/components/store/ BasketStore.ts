@@ -12,6 +12,7 @@ type BasketStore = {
 	removeToBasket: (productId: number) => void
 	removeToQuantity: (productId: number) => void
 	getTotal(): number
+	getCount(): number
 }
 export const useBasketStore = create<BasketStore>((set, get) => ({
 	items: [],
@@ -50,6 +51,12 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
 	getTotal() {
 		return get().items.reduce(
 			(sum: number, item: BasketItem) => sum + item.price * item.quantity,
+			0
+		)
+	},
+	getCount() {
+		return get().items.reduce(
+			(counter: number, item: BasketItem) => counter + item.quantity,
 			0
 		)
 	},

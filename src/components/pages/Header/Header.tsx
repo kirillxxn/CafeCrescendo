@@ -8,11 +8,13 @@ import { useUserStore } from '../../store/UserStore'
 import avatarIcon from '/src/assets/icons/profileicon.png'
 import avatarIconLogged from '/src/assets/icons/avatar.png'
 import basketIcon from '/src/assets/icons/basketicon.png'
+import { useBasketStore } from '../../store/ BasketStore'
 const Header = () => {
 	const { user, isLoggedIn } = useUserStore()
 	const modalProfileRef = useRef<TModals>(null)
 	const modalBasketRef = useRef<TModals>(null)
-
+	const { getCount } = useBasketStore()
+	const counter = getCount()
 	return (
 		<>
 			<header className={styles['header']}>
@@ -121,6 +123,7 @@ const Header = () => {
 								alt='Иконка корзины'
 							/>
 							<p className={styles['button-text']}>Корзина</p>
+							<div className={styles['basket-counter']}>{counter}</div>
 						</button>
 					</div>
 				</div>
