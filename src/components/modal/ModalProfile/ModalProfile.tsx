@@ -24,7 +24,6 @@ type ModalProfileProps = {
 
 const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 	const { setUser, isLoggedIn, user, logout } = useUserStore()
-
 	const [registry, setRegistry] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
 
@@ -121,7 +120,6 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 
 							{registry && <Register styles={styles} />}
 						</div>
-
 						<button
 							className={`${styles['form__container-submit']} ${styles['registry']}`}
 							type='submit'

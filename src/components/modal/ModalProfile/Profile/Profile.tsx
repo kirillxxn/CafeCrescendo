@@ -1,7 +1,7 @@
 import styles from '../ModalProfile.module.css'
 import type { User } from '../../../store/UserStore'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
-import profileAvatarImg from '/src/assets/icons/avatar.png'
+import profileAvatar from '/src/assets/icons/avatar.png'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { validateUpdatePassword } from '../Forms/Validate/FormFormik'
 import { supabase } from '../../../auth/supabase/supabaseClient'
@@ -29,9 +29,10 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 					<h2 className={styles['profile-title']}>Профиль</h2>
 					<img
 						className={styles['profile-avatar']}
-						src={profileAvatarImg}
+						src={profileAvatar}
 						alt='Картинка профиля'
 					/>
+
 					<UserInfo user={user} />
 					<Formik
 						initialValues={{ password: '' }}

@@ -1,6 +1,6 @@
 import UserInfo from '../../ModalProfile/Profile/UserInfo'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { validateOrderNumber } from '../../ModalProfile/Forms/Validate/FormFormik'
+import { validateOrder } from '../../ModalProfile/Forms/Validate/FormFormik'
 import toast from 'react-hot-toast'
 import { useUserStore } from '../../../store/UserStore'
 import { useBasketStore } from '../../../store/ BasketStore'
@@ -37,7 +37,7 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 						email: '',
 					}),
 				}}
-				validationSchema={validateOrderNumber}
+				validationSchema={validateOrder}
 				onSubmit={handleSubmit}
 			>
 				{({ dirty, isValid }) => (

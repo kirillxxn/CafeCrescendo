@@ -103,6 +103,32 @@ nav,
 section {
 	display: block;
 }
+html {
+	height: 100%;
+	overflow-x: hidden;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+body {
+	height: 100%;
+	overflow-x: hidden;
+}
+
+input,
+textarea,
+select {
+	font-size: 16px !important;
+	transform: translateZ(0);
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+	input,
+	textarea {
+		font-size: 16px;
+	}
+}
 body {
 	overflow-x: hidden;
 	max-width: 1920px;

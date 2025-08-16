@@ -43,7 +43,7 @@ const Header = () => {
 							</li>
 							<li>
 								<a href='#ourcafe' className={styles['list__item-link-mobile']}>
-									О нас
+									Наше кафе
 								</a>
 							</li>
 							<li>
@@ -76,7 +76,7 @@ const Header = () => {
 							</li>
 							<li className={styles['nav__list-item']}>
 								<a className={styles['list__item-link']} href='#ourcafe'>
-									О нас
+									Наше кафе
 								</a>
 							</li>
 							<li className={styles['nav__list-item']}>

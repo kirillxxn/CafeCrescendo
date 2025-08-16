@@ -27,7 +27,8 @@ export const validateUpdatePassword = Yup.object({
 		.required('Пароль обязателен')
 		.matches(/\d/, 'Пароль должен содержать минимум одну цифру'),
 })
-export const validateOrderNumber = Yup.object({
+export const validateOrder = Yup.object({
+	email: Yup.string().email('Некорректный email'),
 	phone: Yup.string()
 		.required('Телефон обязателен')
 		.matches(
@@ -41,4 +42,4 @@ export const validateOrderNumber = Yup.object({
 export type TValidateLoginSchema = InferType<typeof validateLoginSchema>
 export type TValidateRegisterSchema = InferType<typeof validateRegisterSchema>
 export type TValidateUpdatePassword = InferType<typeof validateUpdatePassword>
-export type TValidateOrderNumber = InferType<typeof validateOrderNumber>
+export type TValidateOrder = InferType<typeof validateOrder>

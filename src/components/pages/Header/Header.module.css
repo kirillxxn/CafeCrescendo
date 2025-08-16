@@ -159,7 +159,10 @@
 	.container__nav-list {
 		display: none;
 	}
-
+	.basket-counter {
+		top: -10px;
+		right: 0;
+	}
 	.button-image {
 		width: 24px;
 	}
