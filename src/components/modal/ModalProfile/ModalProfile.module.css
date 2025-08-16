@@ -192,11 +192,6 @@
 	cursor: default;
 }
 
-.form__container-submit:disabled {
-	opacity: 0.3;
-	cursor: default;
-}
-
 .div-error {
 	padding: 5px;
 	color: red;

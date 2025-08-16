@@ -13,6 +13,7 @@ type BasketStore = {
 	removeToQuantity: (productId: number) => void
 	getTotal(): number
 	getCount(): number
+	resetBasket: () => void
 }
 export const useBasketStore = create<BasketStore>((set, get) => ({
 	items: JSON.parse(localStorage.getItem('basketItems') || '[]'),
@@ -63,5 +64,9 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
 			(counter: number, item: BasketItem) => counter + item.quantity,
 			0
 		)
+	},
+	resetBasket: () => {
+		set({ items: [] })
+		localStorage.setItem('basketItem', JSON.stringify([]))
 	},
 }))

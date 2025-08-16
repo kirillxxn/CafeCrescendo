@@ -6,11 +6,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { validateUpdatePassword } from '../Forms/Validate/FormFormik'
 import { supabase } from '../../../auth/supabase/supabaseClient'
 import toast from 'react-hot-toast'
+import UserInfo from './UserInfo'
+
 type ProfileProps = {
 	closeModal: () => void
 	user: User | null
 	logout: () => void
 }
+
 const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 	return (
 		<>
@@ -29,12 +32,7 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 						src={profileAvatarImg}
 						alt='Картинка профиля'
 					/>
-					<div className={styles['user-info']}>
-						<span className={styles['user__info-name']}>
-							{user?.name || 'Инкогнито'}
-						</span>
-						<span className={styles['user__info-email']}>{user?.email}</span>
-					</div>
+					<UserInfo user={user} />
 					<Formik
 						initialValues={{ password: '' }}
 						validationSchema={validateUpdatePassword}
@@ -50,7 +48,7 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 							}
 						}}
 					>
-						{({ isSubmitting, isValid, dirty }) => (
+						{({ isValid, dirty }) => (
 							<Form className={styles['form__updatepassword']}>
 								<Field
 									className={styles['form__updatepassword-input']}
@@ -67,7 +65,7 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 									<button
 										className={`${styles['form__container-submit']} ${styles['btn__profile-action']}`}
 										type='submit'
-										disabled={!isValid || !dirty || isSubmitting}
+										disabled={!isValid || !dirty}
 									>
 										<span className={styles['container__submit-text']}>
 											Сохранить
