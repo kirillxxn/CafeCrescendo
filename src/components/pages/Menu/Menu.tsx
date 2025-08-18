@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-import { Fancybox as FancyboxLib } from '@fancyapps/ui'
 import MenuList from './MenuList'
 import styles from './Menu.module.css'
 import '@fancyapps/ui/dist/fancybox/fancybox.css'
@@ -9,12 +7,7 @@ type Props = {
 }
 const Menu = ({ onAddToBasket }: Props) => {
 	const addToBasket = useBasketStore(state => state.addToBasket)
-	useEffect(() => {
-		FancyboxLib.bind("[data-fancybox='gallery']", {})
-		return () => {
-			FancyboxLib.unbind("[data-fancybox='gallery']")
-		}
-	}, [])
+
 	const handleAddToBasket = (productId: number) => {
 		addToBasket(productId)
 		onAddToBasket()

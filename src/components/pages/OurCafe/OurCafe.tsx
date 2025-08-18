@@ -41,9 +41,6 @@ const OurCafe = () => {
 							лучшим выбором кофе, <br /> посетить места обжарки кофе вживую и
 							насладиться умиротворяющей атмосферой кофейного поместья.
 						</p>
-						<button onClick={toggleSlide} className={styles['container__btn']}>
-							<span className={styles['btn-action']}>Посмотреть</span>
-						</button>
 					</div>
 				) : (
 					<div className={styles['slider__section-container']}>
@@ -65,11 +62,13 @@ const OurCafe = () => {
 								alt='Иконка кнопки для переключения следующего изображения'
 							/>
 						</button>
-						<button onClick={toggleSlide} className={styles['container__btn']}>
-							<span className={styles['btn-action']}>Скрыть</span>
-						</button>
 					</div>
 				)}
+				<button onClick={toggleSlide} className={styles['container__btn']}>
+					<span className={styles['btn-action']}>
+						{!slideShow ? 'Посмотреть' : 'Скрыть'}
+					</span>
+				</button>
 			</section>
 		</>
 	)

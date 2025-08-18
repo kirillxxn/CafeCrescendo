@@ -1,4 +1,5 @@
 import './assets/fonts/font.css'
+import { lazy, Suspense } from 'react'
 import Menu from './components/pages/Menu/Menu'
 import { Parallax } from 'react-scroll-parallax'
 import OurCafe from './components/pages/OurCafe/OurCafe'
@@ -9,8 +10,8 @@ import { useState, useRef } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import styles from './App.module.css'
 import OurTeam from './components/pages/OurTeam/OurTeam'
-import Contacts from './components/pages/Contacts/Contacts'
-import Footer from './components/pages/Footer/Footer'
+const Contacts = lazy(() => import('./components/pages/Contacts/Contacts'))
+const Footer = lazy(() => import('./components/pages/Footer/Footer'))
 import { Toaster } from 'react-hot-toast'
 function App() {
 	const [notificationVisible, setNotificationVisible] = useState(false)
@@ -27,7 +28,7 @@ function App() {
 	}
 
 	function isTouchDevice(): boolean {
-		if (typeof window === 'undefined') return false // SSR защита
+		if (typeof window === 'undefined') return false
 
 		const nav = navigator as NavigatorWithMS
 
@@ -47,13 +48,18 @@ function App() {
 			<Parallax speed={-12} easing='easeInQuad'>
 				<Menu onAddToBasket={handleBasket} />
 			</Parallax>
-			<Parallax disabled={isTouchDevice()} easing='easeInBack' opacity={[1, 0]}>
+			<Parallax
+				disabled={isTouchDevice()}
+				speed={-2}
+				easing='easeInBack'
+				opacity={[1, 0]}
+			>
 				<OurCafe />
 			</Parallax>
 			<Parallax
 				disabled={isTouchDevice()}
 				easing='easeInQuad'
-				scale={[1, 0.5]}
+				scale={[1, 0.6]}
 				speed={-5}
 				opacity={[1, 0]}
 			>
@@ -85,9 +91,11 @@ function App() {
 			>
 				<OurTeam />
 			</Parallax>
+			<Suspense fallback={null}>
+				<Contacts />
 
-			<Contacts />
-			<Footer />
+				<Footer />
+			</Suspense>
 		</>
 	)
 }

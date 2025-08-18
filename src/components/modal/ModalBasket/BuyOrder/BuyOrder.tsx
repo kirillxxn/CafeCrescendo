@@ -126,7 +126,7 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 			<span
 				className={`${styles['basket__result-sum']} ${styles['result__sum-order']}`}
 			>
-				К оплате: {total}₽
+				Итого:{total}₽
 			</span>
 		</div>
 	)
