@@ -1,36 +1,111 @@
+/* Основные стили секции */
 .contacts__section {
 	width: 100%;
 }
-.contact__section-container {
-	display: flex;
-	flex-direction: row;
+
+.contacts__section-container {
 	position: relative;
+	padding: 0 50px;
 }
-.container-map {
-	width: 50%;
-}
-.address__container {
+
+/* Контейнер с адресом и телефоном */
+.container__address-info {
+	width: 100%;
 	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	justify-content: center;
+	font-size: 1.2rem;
+	font-family: 'Times New Roman', Times, serif;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 20px;
 	align-items: center;
 }
-.address__container-title {
-	font-size: 2rem;
+
+.address-info {
+	margin: 0;
+	display: flex;
+	align-items: center;
+	gap: 20px;
 }
-.address__container-contacts {
-	font-size: 2rem;
-	font-style: italic;
-	text-decoration: none;
+
+.address-icon {
+	width: 40px;
+}
+
+.address-phone {
+	margin: 0;
 	color: black;
+	text-decoration: none;
 }
-.coffee__bean {
-	position: absolute;
-	width: 500px;
-	top: 50px;
-	right: 50px;
+
+/* Контейнер с картой и действиями */
+.container__map-action {
+	display: flex;
+	gap: 80px;
 }
+
+.container-map {
+	width: 70%;
+	margin: 0;
+}
+
+/* Контейнер с действиями */
+.container__action {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.action-logo {
+	width: 200px;
+}
+
+.action__btn-order {
+	margin-top: 20px;
+	cursor: pointer;
+	padding: 20px 70px;
+	font-size: 1.3rem;
+	background-color: #1e1e1e;
+	color: white;
+	border: none;
+	border-radius: 20px;
+	transition: all 0.4s ease-in-out;
+}
+
+.action__btn-order:hover {
+	transition: all 0.4s ease-in-out;
+	opacity: 1;
+	scale: 1.1;
+}
+
+.action__btn-order:not(:hover) {
+	opacity: 0.8;
+}
+
+/* Социальные иконки */
+.container__nav-list {
+	margin-top: 60px;
+	padding: 20px;
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+}
+
+.social-icon {
+	width: 30px;
+	transition: all 0.2s ease-in-out;
+}
+
+.social-icon:hover {
+	transition: all 0.2s ease-in-out;
+	opacity: 1;
+	scale: 1.2;
+}
+
+.social-icon:not(:hover) {
+	opacity: 0.7;
+}
+
+/* Медиа-запросы */
 @media (max-width: 768px) {
 	.contact__section-container {
 		display: flex;
@@ -39,9 +114,11 @@
 		gap: 40px;
 		transform: translateY(-100px);
 	}
+
 	.container-map {
 		width: 70%;
 	}
+
 	.address__container {
 		display: flex;
 		flex-direction: column;
@@ -49,15 +126,11 @@
 		justify-content: center;
 		align-items: center;
 	}
+
 	.address__container-title {
 		font-size: 2rem;
 	}
-	.address__container-contacts {
-		font-size: 2rem;
-		font-style: italic;
-		text-decoration: none;
-		color: black;
-	}
+
 	.coffee__bean {
 		position: absolute;
 		width: 500px;
