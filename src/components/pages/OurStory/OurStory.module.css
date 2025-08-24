@@ -64,6 +64,7 @@
 }
 
 .full-text {
+	transform: translateY(250px);
 	width: 70%;
 	text-align: center;
 	letter-spacing: 1px;

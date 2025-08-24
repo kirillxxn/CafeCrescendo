@@ -62,7 +62,7 @@ const Header = () => {
 						</ul>
 					</nav>
 					<Logo />
-					<nav>
+					<nav className={styles['container__nav-desktop']}>
 						<ul className={styles['container__nav-list']}>
 							<li className={styles['nav__list-item']}>
 								<a className={styles['list__item-link']} href='#'>

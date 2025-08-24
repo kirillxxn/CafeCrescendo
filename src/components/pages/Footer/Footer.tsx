@@ -3,7 +3,7 @@ import styles from './Footer.module.css'
 const Footer = () => {
 	return (
 		<>
-			<footer className={styles['footer']}>
+			<footer>
 				<div className={styles['footer__container']}>
 					<a className={styles['a']} href='https://github.com/kirillxxn'>
 						<img
@@ -20,5 +20,4 @@ const Footer = () => {
 		</>
 	)
 }
-
 export default Footer

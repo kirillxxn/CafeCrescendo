@@ -107,34 +107,23 @@
 
 /* Медиа-запросы */
 @media (max-width: 768px) {
-	.contact__section-container {
+	.contacts__section-container {
 		display: flex;
 		flex-direction: column;
-		position: relative;
 		gap: 40px;
-		transform: translateY(-100px);
+		padding: 0 20px;
 	}
-
-	.container-map {
-		width: 70%;
+	.container__address-info {
+		font-size: 0.8rem;
 	}
-
-	.address__container {
+	.container__map-action {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
-		justify-content: center;
 		align-items: center;
+		gap: 15px;
 	}
-
-	.address__container-title {
-		font-size: 2rem;
-	}
-
-	.coffee__bean {
-		position: absolute;
-		width: 500px;
-		top: 50px;
-		right: 50px;
+	.container-map {
+		height: 250px;
+		width: 100%;
 	}
 }

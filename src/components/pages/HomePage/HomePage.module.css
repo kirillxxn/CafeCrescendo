@@ -37,10 +37,10 @@
 
 .main__container-logo {
 	position: absolute;
-	top: 15%;
-	right: 2%;
+	top: 10%;
+	right: 0%;
 	color: white;
-	font-size: clamp(1.8rem, -0.8596rem + 8.5106vw, 6.8rem);
+	font-size: clamp(3.8rem, -0.8596rem + 8.5106vw, 6.8rem);
 	transform: rotateZ(-10deg);
 	letter-spacing: 0;
 	z-index: 1;
@@ -49,10 +49,10 @@
 
 .shadow {
 	position: absolute;
-	top: 15.2%;
-	right: 1.7%;
-	color: rgba(0, 0, 0, 0.442);
-	font-size: clamp(1.8rem, -0.8596rem + 8.5106vw, 6.8rem);
+	top: 11%;
+	right: -0.5%;
+	color: rgba(0, 0, 0, 0.1);
+	font-size: clamp(3.8rem, -0.8596rem + 8.5106vw, 6.8rem);
 	transform: rotateZ(-10deg);
 	z-index: -1;
 	letter-spacing: 0;

@@ -1,3 +1,4 @@
+/* Основной контейнер футера */
 .footer__container {
 	backdrop-filter: blur(50px);
 	display: flex;
@@ -6,26 +7,36 @@
 	padding: 20px 50px;
 	justify-content: space-between;
 }
+
+/* Ссылка */
 .a {
 	margin: 0;
 }
+
+/* Логотип GitHub */
 .container__github-logo {
 	width: 50px;
 	opacity: 0.5;
 	transition: all 0.3s ease-in-out;
 }
+
 .container__github-logo:hover {
 	opacity: 1;
 	transition: all 0.3s ease-in-out;
 }
+
+/* Текст футера */
 .footer__container-text {
 	margin: 0;
 }
+
+/* Медиа-запросы */
 @media (max-width: 768px) {
 	.footer__container {
 		margin-top: 40px;
 		gap: 0px;
 	}
+
 	.container__github-logo {
 		width: 50px;
 	}
