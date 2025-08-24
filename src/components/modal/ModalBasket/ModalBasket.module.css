@@ -251,3 +251,15 @@
 		left: 5px;
 	}
 }
+@media (max-width: 375px) {
+	.basket__empty {
+		margin: 0;
+		padding: 200px 0;
+	}
+	.order__buy-address {
+		font-size: 1.1rem;
+	}
+	.result_button-buy {
+		font-size: 0.6rem;
+	}
+}
