@@ -25,34 +25,34 @@ const HomePage = () => {
 		gradient: false,
 	}
 	return (
-		<>
-			<main id='homepage' className={styles['main']}>
-				<div className={styles['main__container']}>
-					<div className={styles['container__marquee']}>
-						<Marquee className={styles['marquee']} {...MarqueeConfig}>
-							При регистрации новые пользователи получают скидку 10% на всю
-							продукцию.
-						</Marquee>
-					</div>
-					<MouseParallax {...MouseParallaxConfig}>
-						<span className={styles['main__container-logo']}>
-							Café Crescendo
-						</span>
-					</MouseParallax>
-					<span className={styles['shadow']}>Café Crescendo</span>
-					<div className={styles['main__container-text']}>
-						<h1 className={styles['container__text-title']}>
-							Крепкий, насыщенный кофе на каждый день
-						</h1>
-						<span className={styles['container__text-subtitle']}>
-							Отличный вариант для новичков. <br />
-							Приобретайте наш френч-пресс в магазине Flat. <br />
-							Скидка 50% при покупке кофе в пакетике.
-						</span>
-					</div>
+		<main id='homepage' className={styles['home']}>
+			<div className={styles['home__container']}>
+				{/* Бегущая строка */}
+				<div className={styles['home__marquee-container']}>
+					<Marquee className={styles['home__marquee']} {...MarqueeConfig}>
+						При регистрации новые пользователи получают скидку 10% на всю
+						продукцию.
+					</Marquee>
 				</div>
-			</main>
-		</>
+				{/* Параллакс логотип */}
+				<MouseParallax {...MouseParallaxConfig}>
+					<span className={styles['home__logo']}>Café Crescendo</span>
+				</MouseParallax>
+				{/* Тень логотипа */}
+				<span className={styles['home__logo-shadow']}>Café Crescendo</span>
+				{/* Текстовый блок */}
+				<div className={styles['home__text-block']}>
+					<h1 className={styles['home__title']}>
+						Крепкий, насыщенный кофе на каждый день
+					</h1>
+					<span className={styles['home__subtitle']}>
+						Отличный вариант для новичков. <br />
+						Приобретайте наш френч-пресс в магазине Flat. <br />
+						Скидка 50% при покупке кофе в пакетике.
+					</span>
+				</div>
+			</div>
+		</main>
 	)
 }
 export default HomePage

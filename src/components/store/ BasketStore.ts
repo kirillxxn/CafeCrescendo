@@ -1,11 +1,9 @@
 import { create } from 'zustand'
 import type { TMenuList } from '../pages/Menu/MenuList'
 import MenuList from '../pages/Menu/MenuList'
-
 type BasketItem = TMenuList & {
 	quantity: number
 }
-
 type BasketStore = {
 	items: BasketItem[]
 	addToBasket: (productId: number) => void
@@ -16,7 +14,9 @@ type BasketStore = {
 	resetBasket: () => void
 }
 export const useBasketStore = create<BasketStore>((set, get) => ({
+	// ===== НАЧАЛЬНОЕ СОСТОЯНИЕ =====
 	items: JSON.parse(localStorage.getItem('basketItems') || '[]'),
+	// ===== ДОБАВЛЕНИЕ ТОВАРА В КОРЗИНУ =====
 	addToBasket: productId => {
 		const product = MenuList.find(p => p.id === productId)
 		if (!product) return
@@ -33,6 +33,7 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
 			return { items: newItems }
 		})
 	},
+	// ===== ПОЛНОЕ УДАЛЕНИЕ ТОВАРА ИЗ КОРЗИНЫ =====
 	removeToBasket: productId => {
 		set(state => {
 			const newItems = state.items.filter(item => item.id !== productId)
@@ -40,6 +41,7 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
 			return { items: newItems }
 		})
 	},
+	// ===== УМЕНЬШЕНИЕ КОЛИЧЕСТВА ТОВАРА =====
 	removeToQuantity: productId => {
 		set(state => {
 			const newItems = state.items
@@ -53,20 +55,23 @@ export const useBasketStore = create<BasketStore>((set, get) => ({
 			return { items: newItems }
 		})
 	},
+	// ===== ПОЛУЧЕНИЕ ОБЩЕЙ СУММЫ ЗАКАЗА =====
 	getTotal() {
 		return get().items.reduce(
 			(sum: number, item: BasketItem) => sum + item.price * item.quantity,
 			0
 		)
 	},
+	// ===== ПОЛУЧЕНИЕ ОБЩЕГО КОЛИЧЕСТВА ТОВАРОВ =====
 	getCount() {
 		return get().items.reduce(
 			(counter: number, item: BasketItem) => counter + item.quantity,
 			0
 		)
 	},
+	// ===== ОЧИСТКА КОРЗИНЫ =====
 	resetBasket: () => {
 		set({ items: [] })
-		localStorage.setItem('basketItem', JSON.stringify([]))
+		localStorage.setItem('basketItems', JSON.stringify([]))
 	},
 }))

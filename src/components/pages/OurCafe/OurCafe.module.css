@@ -1,10 +1,14 @@
-.ourcafe__section {
+/* ===== ОСНОВНАЯ СЕКЦИЯ "НАШЕ КАФЕ" ===== */
+.ourcafe {
 	width: 100%;
 	height: 100vh;
 	display: flex;
 	position: relative;
+	overflow: hidden;
 }
-.ourcafe__section-container {
+
+/* ===== ИНТРО БЛОК С ТЕКСТОМ ===== */
+.ourcafe__intro {
 	background-image: url('/src/assets/background/ourcafe/ourcafebackground.png');
 	object-fit: cover;
 	background-position: center;
@@ -20,15 +24,82 @@
 	text-shadow: 3px 3px 5px black;
 	transition: all 2s ease-in-out;
 }
-.container__title {
+
+.ourcafe__title {
 	font-size: 5rem;
 	color: white;
+	margin: 0;
+	font-weight: bold;
 }
-.container__subtitle {
+
+.ourcafe__description {
 	color: white;
 	font-size: 2rem;
+	margin: 0;
+	line-height: 1.4;
+	max-width: 90%;
 }
-.container__btn {
+
+/* ===== СЛАЙДЕР ГАЛЕРЕИ ===== */
+.ourcafe__slider {
+	width: 100%;
+	height: 100vh;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.ourcafe__slider-image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+/* ===== КНОПКИ СЛАЙДЕРА ===== */
+.ourcafe__slider-btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 15px;
+	z-index: 10;
+	transition: opacity 0.3s ease;
+}
+
+.ourcafe__slider-btn:hover {
+	opacity: 0.8;
+}
+
+.ourcafe__slider-btn:active {
+	opacity: 0.6;
+}
+
+.ourcafe__slider-btn:first-child {
+	left: 20px;
+}
+
+.ourcafe__slider-btn--next {
+	right: 20px;
+}
+
+.ourcafe__slider-arrow {
+	width: 48px;
+	padding: 20px;
+	background-color: rgba(67, 112, 112, 0.95);
+	border-radius: 50%;
+	transition: transform 0.3s ease;
+}
+
+.ourcafe__slider-btn:hover .ourcafe__slider-arrow {
+	transform: scale(1.1);
+}
+
+/* ===== КНОПКА ПЕРЕКЛЮЧЕНИЯ РЕЖИМА ===== */
+.ourcafe__toggle-btn {
 	position: absolute;
 	bottom: 100px;
 	left: 50%;
@@ -39,104 +110,127 @@
 	cursor: pointer;
 	background-color: transparent;
 	border: 1px white solid;
-	background-color: #d9d9d97c;
+	background-color: rgba(217, 217, 217, 0.486);
 	backdrop-filter: blur(20px);
 	border-radius: 40px;
 	transition: all 0.3s ease-in-out;
-	box-shadow: 1px 2px 20px 3px black;
-}
-.btn-action {
-	font-family: Arial, Helvetica, sans-serif;
-	color: white;
-	text-shadow: 3px 3px 5px black;
-	font-size: 1.2rem;
-}
-.container__btn:hover {
-	backdrop-filter: blur(5px);
-	box-shadow: 4px 4px 10px black;
-}
-.container__btn:active {
-	opacity: 0.7;
-}
-.slider__section-container {
-	width: 100%;
-	object-fit: cover;
-	display: flex;
-	height: 100vh;
-	position: relative;
-}
-.btn-prev {
-	position: absolute;
-	left: 0;
-	top: 50%;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-}
-.btn__prev-image {
-	width: 48px;
-	padding: 20px;
-	background-color: rgba(67, 112, 112, 0.949);
-	border-radius: 50%;
-}
-.slider__image {
-	width: 100%;
-	object-fit: cover;
-}
-.btn-next {
-	position: absolute;
-	right: 0;
-	top: 50%;
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-}
-.btn__next-image {
-	width: 48px;
-	padding: 20px;
-	background-color: rgba(67, 112, 112, 0.949);
-	border-radius: 50%;
+	box-shadow: 1px 2px 20px 3px rgba(0, 0, 0, 0.7);
+	z-index: 10;
 }
 
-.btn-prev:active {
-	opacity: 0.7;
+.ourcafe__toggle-btn:hover {
+	backdrop-filter: blur(5px);
+	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+	transform: translateX(-50%) scale(1.05);
 }
-.btn-next:active {
+
+.ourcafe__toggle-btn:active {
 	opacity: 0.7;
+	transform: translateX(-50%) scale(0.95);
+}
+
+.ourcafe__toggle-text {
+	font-family: Arial, Helvetica, sans-serif;
+	color: white;
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.7);
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* ===== АДАПТИВНАЯ ВЕРСТКА ===== */
+@media (max-width: 1024px) {
+	.ourcafe__title {
+		font-size: 4rem;
+	}
+
+	.ourcafe__description {
+		font-size: 1.8rem;
+	}
 }
 
 @media (max-width: 768px) {
-	.ourcafe__section {
+	.ourcafe {
 		margin-top: 20px;
 	}
 
-	.container__subtitle {
+	.ourcafe__intro {
+		gap: 60px;
+	}
+
+	.ourcafe__title {
+		font-size: 3rem;
+	}
+
+	.ourcafe__description {
 		font-size: 1.5rem;
 	}
-	.btn__prev-image {
+
+	.ourcafe__slider-arrow {
 		width: 30px;
+		padding: 15px;
 	}
-	.btn__next-image {
-		width: 30px;
+
+	.ourcafe__toggle-btn {
+		bottom: 80px;
+		padding: 15px;
+	}
+
+	.ourcafe__toggle-text {
+		font-size: 1.1rem;
 	}
 }
+
+@media (max-width: 480px) {
+	.ourcafe__title {
+		font-size: 2.5rem;
+	}
+
+	.ourcafe__description {
+		font-size: 1.2rem;
+		gap: 40px;
+	}
+
+	.ourcafe__slider-btn {
+		padding: 10px;
+	}
+
+	.ourcafe__slider-arrow {
+		width: 20px;
+		padding: 12px;
+	}
+
+	.ourcafe__toggle-btn {
+		bottom: 60px;
+		width: 70%;
+		padding: 12px;
+	}
+
+	.ourcafe__toggle-text {
+		font-size: 1rem;
+	}
+}
+
 @media (max-width: 375px) {
-	.ourcafe__section {
-		margin-top: 0px;
+	.ourcafe {
+		margin-top: 0;
 	}
-	.container__subtitle {
-		transform: translateY(-70px);
+
+	.ourcafe__intro {
+		gap: 40px;
 	}
-	.btn__prev-image {
-		width: 20px;
+
+	.ourcafe__title {
+		font-size: 2rem;
 	}
-	.btn__next-image {
-		width: 20px;
+
+	.ourcafe__description {
+		font-size: 1rem;
+		transform: translateY(-40px);
 	}
-	.container__btn {
-		position: absolute;
+
+	.ourcafe__toggle-btn {
 		bottom: 50px;
-		left: 50%;
-		width: 40%;
+		width: 60%;
+		padding: 10px;
 	}
 }

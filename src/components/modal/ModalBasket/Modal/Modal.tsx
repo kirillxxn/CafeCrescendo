@@ -3,10 +3,14 @@ import type { TModals } from '../../ModalProfile/TypeModals/TypeModals'
 import modalStyles from './Modal.module.css'
 import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import ModalBasket from '../ModalBasket'
+Modal.setAppElement('#root')
 const BasketModal = forwardRef<TModals>((_, ref) => {
 	const [isClosing, setIsClosing] = useState(false)
 	const [isOpening, setIsOpening] = useState(false)
 	const [modalIsOpen, setModalIsOpen] = useState(false)
+	{
+		/* Управление анимациями открытия/закрытия */
+	}
 	useEffect(() => {
 		if (modalIsOpen) {
 			const timeout = setTimeout(() => setIsOpening(true), 10)
@@ -15,6 +19,9 @@ const BasketModal = forwardRef<TModals>((_, ref) => {
 			setIsOpening(false)
 		}
 	}, [modalIsOpen])
+	{
+		/* Закрытие модального окна */
+	}
 	const closeModal = () => {
 		document.body.style.overflow = ''
 		setIsOpening(false)
@@ -24,14 +31,17 @@ const BasketModal = forwardRef<TModals>((_, ref) => {
 			setIsClosing(false)
 		}, 300)
 	}
-
+	{
+		/* Открытие модального окна */
+	}
 	const openModal = () => {
 		document.body.style.overflow = 'hidden'
 		setModalIsOpen(true)
 		setIsClosing(false)
-		setIsOpening(true)
 	}
-
+	{
+		/* Передача методов внешнему компоненту */
+	}
 	useImperativeHandle(ref, () => ({
 		openModal,
 		closeModal,
@@ -39,27 +49,33 @@ const BasketModal = forwardRef<TModals>((_, ref) => {
 		isOpening,
 		modalIsOpen,
 	}))
-
 	return (
 		<Modal
 			isOpen={modalIsOpen}
 			onRequestClose={closeModal}
 			shouldCloseOnOverlayClick={true}
+			shouldCloseOnEsc={true}
 			overlayClassName={`
-				${modalStyles.modalOverlay} 
-				${isOpening ? modalStyles.modalOverlayActive : ''}
-				${isClosing ? modalStyles.modalOverlayAfterClose : ''}
-			`}
+${modalStyles.modal__overlay} 
+${isOpening ? modalStyles['modal__overlay--active'] : ''}
+${isClosing ? modalStyles['modal__overlay--closing'] : ''}
+`}
 			className={`
-				${modalStyles.modalContent} 
-				${isOpening ? modalStyles.modalContentActive : ''}
-				${isClosing ? modalStyles.modalContentAfterClose : ''}
-			`}
+${modalStyles.modal__content} 
+${isOpening ? modalStyles['modal__content--active'] : ''}
+${isClosing ? modalStyles['modal__content--closing'] : ''}
+`}
 			closeTimeoutMS={300}
+			ariaHideApp={true}
+			aria={{
+				modal: true,
+				labelledby: 'basket-modal-title',
+				describedby: 'basket-modal-description',
+			}}
 		>
 			<ModalBasket closeModal={closeModal} />
 		</Modal>
 	)
 })
-
+BasketModal.displayName = 'BasketModal'
 export default BasketModal

@@ -1,20 +1,23 @@
+/* ===== ОСНОВНЫЕ СТИЛИ МОДАЛЬНОГО ОКНА ===== */
 .modal {
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	padding: 30px;
+	padding: 30px 0;
 	font-family: 'Courier New', Courier, monospace;
+	min-height: 500px;
+	margin: 0;
 }
 
+/* ===== ПЕРЕКЛЮЧАТЕЛЬ РЕЖИМОВ (ВХОД/РЕГИСТРАЦИЯ) ===== */
 .modal__select-actions {
 	display: flex;
 	gap: 50px;
 	padding: 10px;
+	justify-content: center;
+	margin-bottom: 20px;
 }
-.select__gender {
-	width: 50%;
-	margin: 0 auto;
-}
+
 .select__action-btn {
 	background: linear-gradient(to left, #cccccc, #ffe7c6);
 	border: none;
@@ -29,14 +32,12 @@
 }
 
 .select__action-btn:hover {
-	transition: all 0.5s ease-in-out;
-	box-shadow: 5px 5px 10px 2px black;
-	scale: 1.2;
+	box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.3);
+	transform: scale(1.1);
 }
 
 .select__action-btn:active {
-	opacity: 0.1;
-	transition: all 0.1s ease-in-out;
+	opacity: 0.7;
 }
 
 .select__action-btn:first-child {
@@ -46,271 +47,517 @@
 .select__action-btn.active {
 	background: white;
 	font-weight: bold;
+	box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .select__action-btn:disabled {
-	color: #45454522;
+	color: #666;
 	cursor: default;
-	border-color: #aaa;
 	box-shadow: none;
-	scale: 1;
-	opacity: 1;
+	transform: none;
+	opacity: 0.7;
 }
 
+/* ===== КНОПКА ЗАКРЫТИЯ ===== */
 .modal__close-btn {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
 	position: absolute;
-	top: 10px;
-	right: 5px;
+	top: -30px;
+	right: -30px;
+	padding: 8px;
+	transition: transform 0.3s ease;
+}
+
+.modal__close-btn:hover {
+	transform: rotate(90deg);
 }
 
 .close__btn-image {
 	width: 32px;
-	transition: all 0.5s ease-in-out;
+	height: 32px;
 }
 
-.close__btn-image:hover {
-	transition: all 0.5s ease-in-out;
-	transform: rotateZ(360deg);
-}
-
+/* ===== ЗАГОЛОВОК ФОРМЫ ===== */
 .title-form {
 	font-size: 2em;
 	letter-spacing: 0;
 	width: 100%;
-	border-top: 1px black solid;
-	border-bottom: 1px black solid;
+	border-top: 2px solid #2c1810;
+	border-bottom: 2px solid #2c1810;
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 40px;
+	margin: 20px 0 40px;
+	padding: 10px 0;
+	color: #2c1810;
 }
 
+/* ===== ФОРМА ===== */
 .modal__form {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
+	width: 100%;
 }
 
 .modal__form-container {
 	display: flex;
 	flex-direction: column-reverse;
-	align-items: start;
+	align-items: center;
 	margin: 0;
+	gap: 15px;
 }
 
-.form__container-group {
+/* ===== ГРУППА ПОЛЕЙ ФОРМЫ ===== */
+.form__group {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	max-width: 400px;
 }
 
-.form__container-label {
-	font-size: 0.9rem;
-	padding: 10px 20px;
-	margin: 0;
-}
-
-.form__container-input {
-	width: 90%;
-	padding: 20px;
-	border-radius: 50px;
-	border: none;
-	transition: box-shadow 0.5s ease-in-out;
-}
-
-.form__container-input:hover {
-	transition: all 0.5s ease-in-out;
-	box-shadow: 5px 5px 10px 2px black;
-}
-
-.form__container-input:focus {
-	outline: none;
-	border: none;
-}
-
-.form__container-input::placeholder {
-	font-style: italic;
-	opacity: 1;
+.form__label {
 	font-size: 1rem;
-	color: rgba(0, 0, 0, 0.5);
-	transition: opacity 0.5s ease-in-out;
+	font-weight: 600;
+	color: #2c1810;
+
+	padding: 0 20px;
 }
 
-.form__container-input:hover::placeholder {
-	opacity: 0.2;
-	transition: all 0.5s ease-in-out;
+.form__input {
+	width: 100%;
+	padding: 15px 20px;
+	border-radius: 50px;
+	border: 2px solid #e0e0e0;
+	background: white;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+	box-sizing: border-box;
 }
 
-.form__container-submit {
+.form__input:hover {
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	border-color: #c1c1c1;
+}
+
+.form__input:focus {
+	outline: none;
+	border-color: #4a3528;
+	box-shadow: 0 0 0 3px rgba(74, 53, 40, 0.1);
+}
+
+.form__input::placeholder {
+	font-style: italic;
+	color: #999;
+	transition: opacity 0.3s ease;
+}
+
+.form__input:hover::placeholder {
+	opacity: 0.5;
+}
+
+/* ===== КНОПКА ОТПРАВКИ ФОРМЫ ===== */
+.form__submit-btn {
 	position: relative;
 	overflow: hidden;
-	padding: 20px;
+	padding: 18px 35px;
 	border-radius: 50px;
-	border: none;
+	border: 2px solid #2c1810;
 	cursor: pointer;
 	background-color: white;
-	font-size: 1.2rem;
-	color: black;
-	transition: color 0.6s ease-in-out;
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: #2c1810;
+	transition: all 0.4s ease;
 	z-index: 1;
+	margin-top: 50px;
+	min-width: 200px;
 }
 
-.sign-in {
-	margin-top: 80px;
-}
-
-.registry {
-	margin-top: 40px;
-}
-
-.form__container-submit::before {
+.form__submit-btn::before {
 	content: '';
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 0%;
 	height: 100%;
-	background-color: black;
-	z-index: 0;
-	transition: width 0.8s ease-in-out;
+	background-color: #2c1810;
+	z-index: -1;
+	transition: width 0.4s ease;
 }
 
-.form__container-submit:hover:not(:disabled)::before {
+.form__submit-btn:hover:not(:disabled)::before {
 	width: 100%;
 }
 
-.form__container-submit:hover:not(:disabled) {
+.form__submit-btn:hover:not(:disabled) {
 	color: white;
+	transform: translateY(-2px);
 }
 
-.container__submit-text {
+.form__submit-text {
 	position: relative;
 	z-index: 1;
 }
 
-.form__container-submit:active {
-	opacity: 0.3;
+.form__submit-btn:active {
+	transform: translateY(0);
 }
 
-.form__container-submit:disabled {
-	opacity: 0.3;
-	cursor: default;
+.form__submit-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	border-color: #ccc;
+	color: #666;
 }
 
-.div-error {
-	padding: 5px;
-	color: red;
+.form__submit-btn:disabled::before {
+	display: none;
 }
-/* Стили для компонента Profile.tsx */
+
+/* ===== СООБЩЕНИЕ ОБ ОШИБКЕ ===== */
+.form__error {
+	color: #dc3545;
+	font-size: 0.9rem;
+	padding: 0px 20px;
+	min-height: 20px;
+}
+
+/* ===== СТИЛИ ДЛЯ ПРОФИЛЯ ===== */
 .modal-profile {
-	padding: 40px 0px;
+	padding: 0px;
+	display: flex;
+	justify-content: center;
 }
 
 .profile {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	gap: 25px;
 	width: 100%;
-	height: 100vh;
+	max-width: 500px;
+	align-items: center;
 }
 
 .profile-title {
-	font-size: 2rem;
+	font-size: 2.2rem;
+	color: #2c1810;
+	text-align: center;
+	margin-bottom: 10px;
+	font-weight: bold;
 }
 
 .profile-avatar {
-	width: 170px;
-	padding: 10px;
-	background-color: white;
+	width: 150px;
+	height: 150px;
+	padding: 15px;
+	background: linear-gradient(45deg, #ffe7c6, #f5deb3);
 	border-radius: 50%;
+	border: 4px solid #2c1810;
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* ===== ИНФОРМАЦИЯ О ПОЛЬЗОВАТЕЛЕ ===== */
 .user-info {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
-	justify-content: center;
-	margin: 0;
-	cursor: default;
+	gap: 15px;
+	width: 100%;
+	align-items: center;
 }
 
 .user__info-name {
-	background-color: white;
+	background: linear-gradient(135deg, #ffffff, #f8f9fa);
+	padding: 20px 30px;
+	border-radius: 25px;
+	font-size: 1.3rem;
+	font-weight: bold;
+	color: #2c1810;
+	text-align: center;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 	width: 80%;
-	padding: 20px;
-	border-radius: 20px;
 }
 
 .user__info-email {
-	background-color: white;
+	background: linear-gradient(135deg, #ffffff, #f8f9fa);
+	padding: 18px 30px;
+	border-radius: 25px;
+	font-size: 1.1rem;
+	color: #4a3528;
+	text-align: center;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 	width: 80%;
-	padding: 20px;
-	border-radius: 20px;
 }
 
+/* ===== ФОРМА ОБНОВЛЕНИЯ ПАРОЛЯ ===== */
 .form__updatepassword {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	margin-top: 20px;
 }
 
 .form__updatepassword-input {
 	width: 80%;
-	padding: 20px;
-	font-size: 1.1rem;
-	border-radius: 20px;
-	border: none;
+	padding: 18px 25px;
+	font-size: 1rem;
+	border-radius: 25px;
+	border: 2px solid #e0e0e0;
+	background: white;
+	transition: all 0.3s ease;
+}
+
+.form__updatepassword-input:focus {
+	outline: none;
+	border-color: #4a3528;
+	box-shadow: 0 0 0 3px rgba(74, 53, 40, 0.1);
 }
 
 .form__updatepassword-input::placeholder {
+	color: #999;
 	font-style: italic;
-	opacity: 1;
-	font-size: 1rem;
-	color: rgba(0, 0, 0, 0.5);
-	transition: opacity 0.5s ease-in-out;
 }
 
-.form__updatepassword-input:hover::placeholder {
-	opacity: 0.2;
-	transition: all 0.5s ease-in-out;
-}
-
+/* ===== КНОПКИ ПРОФИЛЯ ===== */
 .btn__profile {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	gap: 50px;
+	gap: 30px;
 }
 
 .btn__profile-action {
 	cursor: pointer;
-	margin-top: 40px;
-	width: 40%;
+	width: 45%;
+	padding: 16px;
+	border-radius: 50px;
+	border: 2px solid #2c1810;
+	background: white;
+	color: #2c1810;
+	font-size: 1rem;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.btn__profile-action:hover {
+	background: #2c1810;
+	color: white;
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn__profile-action:active {
+	transform: translateY(0);
 }
 
 .btn__profile-action:disabled {
+	opacity: 0.5;
 	cursor: not-allowed;
+	background: #ccc;
+	border-color: #aaa;
+	color: #666;
 }
 
-/* Адаптив под мобильные устройства */
+.btn__profile-action:disabled:hover {
+	transform: none;
+	box-shadow: none;
+	background: #ccc;
+	color: #666;
+}
+
+/* ===== АДАПТИВНАЯ ВЕРСТКА ===== */
 @media (max-width: 768px) {
-	.profile-avatar {
-		width: 100px;
+	.modal {
+		padding: 25px 20px;
 	}
 
-	.user-info {
-		gap: 5px;
+	.modal__select-actions {
+		gap: 25px;
+		justify-content: center;
+		align-items: center;
+		margin: 0;
+	}
+
+	.select__action-btn {
+		width: 200px;
+		padding: 16px;
+		font-size: 0.9rem;
+	}
+
+	.select__action-btn:first-child {
+		padding: 16px;
+		width: 200px;
+	}
+
+	.title-form {
+		font-size: 1.6rem;
+		margin: 15px 0 30px;
+		padding: 8px 0;
+	}
+
+	.form__input {
+		padding: 14px 18px;
+		font-size: 1rem;
+	}
+
+	.form__label {
+		font-size: 0.9rem;
+		padding: 0 15px;
+	}
+
+	.form__submit-btn {
+		padding: 16px 30px;
+		font-size: 1rem;
+		margin-top: 25px;
+		min-width: 180px;
+	}
+
+	/* Адаптив для профиля */
+	.modal-profile {
+		padding: 30px 15px;
+	}
+
+	.profile-title {
+		font-size: 1.8rem;
+	}
+
+	.profile-avatar {
+		width: 120px;
+		height: 120px;
+		padding: 12px;
+	}
+
+	.user__info-name {
+		width: 90%;
+		padding: 16px 25px;
+		font-size: 1.1rem;
+	}
+
+	.user__info-email {
+		width: 90%;
+		padding: 14px 25px;
+		font-size: 1rem;
+	}
+
+	.form__updatepassword-input {
+		width: 90%;
+		padding: 16px 20px;
+		font-size: 1rem;
+	}
+
+	.btn__profile {
+		flex-direction: row;
+		gap: 20px;
+		align-items: center;
 	}
 
 	.btn__profile-action {
-		margin-top: 20px;
+		width: 80%;
+		padding: 14px;
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.modal {
+		padding: 20px 15px;
 	}
 
-	.registry {
-		margin-top: 20px;
+	.select__action-btn {
+		width: 100%;
+		max-width: 250px;
 	}
+
+	.title-form {
+		font-size: 1.4rem;
+		margin: 10px 0 25px;
+	}
+
+	.form__group {
+		max-width: 100%;
+	}
+
+	.form__input {
+		padding: 12px 16px;
+	}
+
+	.form__submit-btn {
+		padding: 14px 25px;
+		font-size: 0.9rem;
+		min-width: 160px;
+	}
+
+	/* Адаптив для профиля */
+	.profile-title {
+		font-size: 1.6rem;
+	}
+
+	.profile-avatar {
+		width: 100px;
+		height: 100px;
+	}
+
+	.user__info-name {
+		font-size: 1rem;
+		padding: 14px 20px;
+	}
+
+	.user__info-email {
+		font-size: 0.9rem;
+		padding: 12px 20px;
+	}
+
+	.form__updatepassword-input {
+		padding: 14px 18px;
+		font-size: 1rem;
+	}
+
+	.btn__profile-action {
+		width: 90%;
+		padding: 12px;
+		font-size: 0.85rem;
+	}
+}
+
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.modal {
+	animation: fadeIn 0.3s ease-out;
+}
+
+/* ===== СКРОЛЛБАР ДЛЯ ФОРМ ===== */
+.modal__form-container {
+	scrollbar-width: thin;
+	scrollbar-color: #c1c1c1 #f1f1f1;
+}
+
+.modal__form-container::-webkit-scrollbar {
+	width: 6px;
+}
+
+.modal__form-container::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 3px;
+}
+
+.modal__form-container::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 3px;
+}
+
+.modal__form-container::-webkit-scrollbar-thumb:hover {
+	background: #a8a8a8;
 }

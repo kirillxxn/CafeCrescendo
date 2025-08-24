@@ -1,24 +1,25 @@
 import { Field, ErrorMessage } from 'formik'
 import type { FormProps } from '../Login/Login'
-
 const Register = ({ styles }: FormProps) => {
 	return (
 		<>
-			<div className={styles['form__container-group']}>
-				<label className={styles['form__container-label']} htmlFor='name'>
+			{/* Группа поля имени */}
+			<div className={styles['form__group']}>
+				<label className={styles['form__label']} htmlFor='name'>
 					Имя
 				</label>
 				<Field
-					className={styles['form__container-input']}
+					className={styles['form__input']}
 					type='text'
 					name='name'
 					id='name'
 					placeholder='Введите имя'
 				/>
+				{/* Сообщение об ошибке */}
 				<ErrorMessage
 					name='name'
 					component='div'
-					className={styles['div-error']}
+					className={styles['form__error']}
 				/>
 			</div>
 		</>

@@ -20,62 +20,71 @@ const OurStory = () => {
 		}
 	}
 	return (
-		<>
-			<section className={styles['ourstory__section']}>
-				{!fullText ? (
-					<div className={styles['ourstory__section-container']}>
-						<h2 className={styles['container__title']}>Наша история</h2>
-						<p className={`${styles['container__p']} ${styles['subtitle']}`}>
-							Кафе Crescendo, основанное в 2003 году Муником Бисвасом и Шрути
-							Бисвас, было создано с одной целью: создавать отличный и
-							стабильный кофе и делиться им с как можно большим количеством
-							людей. Наша цель — найти лучшие сорта обжарки. Они начали этот
-							бизнес с 10-летнего сотрудничества, чтобы воплотить в жизнь свою
-							юношескую идею — дарить людям лучший кофе. Теперь весь наш кофе
-							оценивается в 86 баллов и выше: он свежий, как и положено, и
-							идеально обжарен.
-						</p>
-						<button onClick={toggleText} className={styles['container__btn']}>
-							<span className={styles['btn-action']}>Читать</span>
-						</button>
-					</div>
-				) : (
-					<div className={styles['fulltext__section-container']}>
-						<p className={`${styles['container__p']} ${styles['full-text']}`}>
-							{FullStory[currentList]}
-						</p>
+		<section id='ourstory' className={styles['ourstory']}>
+			{!fullText ? (
+				<div className={styles['ourstory__intro']}>
+					<h2 className={styles['ourstory__title']}>Наша история</h2>
+					<p className={styles['ourstory__description']}>
+						Кафе Crescendo, основанное в 2003 году Муником Бисвасом и Шрути
+						Бисвас, было создано с одной целью: создавать отличный и стабильный
+						кофе и делиться им с как можно большим количеством людей. Наша цель
+						— найти лучшие сорта обжарки. Они начали этот бизнес с 10-летнего
+						сотрудничества, чтобы воплотить в жизнь свою юношескую идею — дарить
+						людям лучший кофе. Теперь весь наш кофе оценивается в 86 баллов и
+						выше: он свежий, как и положено, и идеально обжарен.
+					</p>
+					<button
+						onClick={toggleText}
+						className={styles['ourstory__toggle-btn']}
+						aria-label='Читать полную историю'
+					>
+						<span className={styles['ourstory__toggle-text']}>Читать</span>
+					</button>
+				</div>
+			) : (
+				<div className={styles['ourstory__full']}>
+					<p className={styles['ourstory__full-text']}>
+						{FullStory[currentList]}
+					</p>
+					<div className={styles['ourstory__navigation']}>
 						<button
-							className={`${styles['btn-toggle']} ${styles['prev']}`}
+							className={styles['ourstory__nav-btn']}
 							onClick={prevList}
 							disabled={currentList <= 0}
+							aria-label='Предыдущая часть истории'
 						>
 							<img
-								className={styles['btn-icon']}
+								className={styles['ourstory__nav-icon']}
 								src={arrowLeftImg}
-								alt='Иконка кнопки для переключения предыдущего текста '
+								alt='Предыдущая часть'
 							/>
 						</button>
+						<span className={styles['ourstory__counter']}>
+							{currentList + 1} / {FullStory.length}
+						</span>
 						<button
-							className={`${styles['btn-toggle']} ${styles['next']}`}
+							className={styles['ourstory__nav-btn']}
 							onClick={nextList}
 							disabled={currentList >= FullStory.length - 1}
+							aria-label='Следующая часть истории'
 						>
 							<img
-								className={styles['btn-icon']}
+								className={styles['ourstory__nav-icon']}
 								src={arrowRightImg}
-								alt='Иконка кнопки для переключения следующего текста'
+								alt='Следующая часть'
 							/>
 						</button>
-						<button
-							onClick={toggleText}
-							className={`${styles['container__btn']} ${styles['hide']}`}
-						>
-							<span className={styles['btn-action']}>Скрыть</span>
-						</button>
 					</div>
-				)}
-			</section>
-		</>
+					<button
+						onClick={toggleText}
+						className={`${styles['ourstory__toggle-btn']} ${styles['ourstory__toggle-btn--hide']}`}
+						aria-label='Скрыть полную историю'
+					>
+						<span className={styles['ourstory__toggle-text']}>Скрыть</span>
+					</button>
+				</div>
+			)}
+		</section>
 	)
 }
 export default OurStory

@@ -1,4 +1,9 @@
-/* Основной контейнер футера */
+/* ===== ОСНОВНОЙ ФУТЕР ===== */
+.footer {
+	width: 100%;
+}
+
+/* ===== КОНТЕЙНЕР ФУТЕРА ===== */
 .footer__container {
 	backdrop-filter: blur(50px);
 	display: flex;
@@ -8,36 +13,45 @@
 	justify-content: space-between;
 }
 
-/* Ссылка */
-.a {
+/* ===== ССЫЛКА НА GITHUB ===== */
+.footer__link {
 	margin: 0;
+	display: inline-block;
 }
 
-/* Логотип GitHub */
-.container__github-logo {
+/* ===== ЛОГОТИП GITHUB ===== */
+.footer__github-logo {
 	width: 50px;
 	opacity: 0.5;
 	transition: all 0.3s ease-in-out;
 }
 
-.container__github-logo:hover {
+.footer__github-logo:hover {
 	opacity: 1;
 	transition: all 0.3s ease-in-out;
+	transform: scale(1.05);
 }
 
-/* Текст футера */
-.footer__container-text {
+/* ===== ТЕКСТ ФУТЕРА ===== */
+.footer__text {
 	margin: 0;
+	font-size: 1rem;
+	color: #333;
 }
 
-/* Медиа-запросы */
+/* ===== АДАПТИВНАЯ ВЕРСТКА ===== */
 @media (max-width: 768px) {
 	.footer__container {
-		margin-top: 40px;
-		gap: 0px;
+		gap: 15px;
+		padding: 10px 20px;
+		flex-direction: row;
 	}
 
-	.container__github-logo {
-		width: 50px;
+	.footer__github-logo {
+		width: 40px;
+	}
+
+	.footer__text {
+		font-size: 0.9rem;
 	}
 }

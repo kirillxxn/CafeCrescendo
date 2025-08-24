@@ -15,116 +15,110 @@ const Header = () => {
 	const modalBasketRef = useRef<TModals>(null)
 	const { getCount } = useBasketStore()
 	const counter = getCount()
-
 	return (
 		<>
 			<header className={styles['header']}>
 				<div className={styles['header__container']}>
-					<nav className={styles['container-nav-mobile']}>
+					{/* Мобильная навигация */}
+					<nav className={styles['header__mobile-nav']}>
 						<input
 							type='checkbox'
 							id='burger-checkbox'
-							className={styles['burger-checkbox']}
+							className={styles['header__burger-checkbox']}
 						/>
 						<label
 							htmlFor='burger-checkbox'
-							className={styles['burger']}
+							className={styles['header__burger']}
 						></label>
-						<ul className={styles['container__nav-list-mobile']}>
-							<li>
-								<a href='#' className={styles['list__item-link-mobile']}>
+						<ul className={styles['header__mobile-list']}>
+							<li className={styles['header__mobile-item']}>
+								<a href='#' className={styles['header__mobile-link']}>
 									Главная
 								</a>
 							</li>
-							<li>
-								<a href='#menu' className={styles['list__item-link-mobile']}>
+							<li className={styles['header__mobile-item']}>
+								<a href='#menu' className={styles['header__mobile-link']}>
 									Каталог
 								</a>
 							</li>
-							<li>
-								<a href='#ourcafe' className={styles['list__item-link-mobile']}>
+							<li className={styles['header__mobile-item']}>
+								<a href='#ourcafe' className={styles['header__mobile-link']}>
 									Наше кафе
 								</a>
 							</li>
-							<li>
-								<a href='#team' className={styles['list__item-link-mobile']}>
+							<li className={styles['header__mobile-item']}>
+								<a href='#team' className={styles['header__mobile-link']}>
 									Наша команда
 								</a>
 							</li>
-							<li>
-								<a
-									href='#contacts'
-									className={styles['list__item-link-mobile']}
-								>
+							<li className={styles['header__mobile-item']}>
+								<a href='#contacts' className={styles['header__mobile-link']}>
 									Контакты
 								</a>
 							</li>
 						</ul>
 					</nav>
 					<Logo />
-					<nav className={styles['container__nav-desktop']}>
-						<ul className={styles['container__nav-list']}>
-							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href='#'>
+					{/* Десктопная навигация */}
+					<nav className={styles['header__desktop-nav']}>
+						<ul className={styles['header__nav-list']}>
+							<li className={styles['header__nav-item']}>
+								<a className={styles['header__nav-link']} href='#'>
 									Главная
 								</a>
 							</li>
-							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href='#menu'>
+							<li className={styles['header__nav-item']}>
+								<a className={styles['header__nav-link']} href='#menu'>
 									Каталог
 								</a>
 							</li>
-							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href='#ourcafe'>
+							<li className={styles['header__nav-item']}>
+								<a className={styles['header__nav-link']} href='#ourcafe'>
 									Наше кафе
 								</a>
 							</li>
-							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href='#team'>
+							<li className={styles['header__nav-item']}>
+								<a className={styles['header__nav-link']} href='#team'>
 									Наша команда
 								</a>
 							</li>
-							<li className={styles['nav__list-item']}>
-								<a className={styles['list__item-link']} href='#contacts'>
+							<li className={styles['header__nav-item']}>
+								<a className={styles['header__nav-link']} href='#contacts'>
 									Контакты
 								</a>
 							</li>
 						</ul>
 					</nav>
-
+					{/* Кнопка профиля */}
 					<button
 						onClick={() => modalProfileRef.current?.openModal()}
-						className={styles['container-button']}
-					>
-						{isLoggedIn ? (
-							<img
-								className={styles['button-image']}
-								src={avatarIconLogged}
-								alt='Иконка личного кабинета'
-							/>
-						) : (
-							<img
-								className={styles['button-image']}
-								src={avatarIcon}
-								alt='Иконка личного кабинета'
-							/>
-						)}
-						<p className={styles['button-text']}>
-							{user ? user.name : 'Профиль'}
-						</p>
-					</button>
-
-					<button
-						onClick={() => modalBasketRef.current?.openModal()}
-						className={styles['container-button']}
+						className={styles['header__button']}
+						aria-label='Открыть профиль'
 					>
 						<img
-							className={styles['button-image']}
+							className={styles['header__button-icon']}
+							src={isLoggedIn ? avatarIconLogged : avatarIcon}
+							alt='Иконка профиля'
+						/>
+						<span className={styles['header__button-text']}>
+							{user ? user.name : 'Профиль'}
+						</span>
+					</button>
+					{/* Кнопка корзины */}
+					<button
+						onClick={() => modalBasketRef.current?.openModal()}
+						className={styles['header__button']}
+						aria-label='Открыть корзину'
+					>
+						<img
+							className={styles['header__button-icon']}
 							src={basketIcon}
 							alt='Иконка корзины'
 						/>
-						<p className={styles['button-text']}>Корзина</p>
-						<div className={styles['basket-counter']}>{counter}</div>
+						<span className={styles['header__button-text']}>Корзина</span>
+						{counter > 0 && (
+							<div className={styles['header__basket-counter']}>{counter}</div>
+						)}
 					</button>
 				</div>
 			</header>

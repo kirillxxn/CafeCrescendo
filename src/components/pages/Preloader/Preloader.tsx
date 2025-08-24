@@ -1,12 +1,10 @@
 import styles from './Preloader.module.css'
-const Preolader = () => {
+const Preloader = () => {
 	return (
-		<>
-			<div className={styles['spinner-container']}>
-				<span className={styles['spinner-text']}>Загрузка</span>
-				<div className={styles['spinner']}></div>
-			</div>
-		</>
+		<div className={styles['preloader']}>
+			<span className={styles['preloader__text']}>Загрузка</span>
+			<div className={styles['preloader__spinner']}></div>
+		</div>
 	)
 }
-export default Preolader
+export default Preloader

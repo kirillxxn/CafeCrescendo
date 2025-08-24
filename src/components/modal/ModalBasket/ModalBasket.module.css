@@ -1,11 +1,16 @@
-.modal_basket {
+/* ===== ОСНОВНЫЕ СТИЛИ МОДАЛЬНОГО ОКНА КОРЗИНЫ ===== */
+.modal-basket {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 30px;
+	margin: 0;
 	font-family: 'Courier New', Courier, monospace;
+	position: relative;
 }
-.modal__close-btn {
+
+/* ===== КНОПКА ЗАКРЫТИЯ ===== */
+.modal-basket__close-btn {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
@@ -14,16 +19,17 @@
 	right: 5px;
 }
 
-.close__btn-image {
+.modal-basket__close-icon {
 	width: 32px;
 	transition: all 0.5s ease-in-out;
 }
 
-.close__btn-image:hover {
-	transition: all 0.5s ease-in-out;
+.modal-basket__close-icon:hover {
 	transform: rotateZ(360deg);
 }
-.modal_basket-title {
+
+/* ===== ЗАГОЛОВОК ===== */
+.modal-basket__title {
 	font-size: 3rem;
 	letter-spacing: 0;
 	width: 100%;
@@ -32,243 +38,363 @@
 	text-align: center;
 	margin: 20px 0;
 }
-.basket__order {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	gap: 5px;
-}
-.div-error {
-	padding: 1px;
-	color: red;
-}
-.basket__order-form {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	gap: 5px;
-}
-.basket__order-field {
-	margin: 0 auto;
-	background-color: white;
-	width: 80%;
-	padding: 20px;
-	border-radius: 20px;
-	border: none;
-	font-size: 1rem;
-}
-.basket__order-address {
-	margin-top: 30px;
-	width: 100%;
-	display: flex;
-	gap: 100px;
-	align-items: center;
-}
-.order__buy-map {
-	width: 50%;
-	height: 250px;
-}
-.order__buy-address {
-	font-size: 2.4rem;
-}
-.order__buy-info {
-	padding: 10px;
-	width: 100%;
-	display: flex;
-	position: absolute;
-	gap: 120px;
-	bottom: 20px;
-	right: -10%;
-}
-.basket__empty {
+
+/* ===== ПУСТАЯ КОРЗИНА ===== */
+.modal-basket__empty {
 	display: flex;
 	margin-top: 300px;
+}
+
+.modal-basket__empty-text {
 	font-size: 2rem;
 }
-.basket__result-action {
-	position: absolute;
-	bottom: 5%;
-	right: 10%;
+
+/* ===== КОНТЕНТ КОРЗИНЫ ===== */
+.modal-basket__content {
+	width: 100%;
 }
-.basket__item {
+
+/* ===== СПИСОК ТОВАРОВ ===== */
+.modal-basket__items {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.modal-basket__item {
 	display: flex;
 	margin-bottom: 10px;
 	border-bottom: 1px black solid;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
 }
-.result__sum-order {
-	position: absolute;
-	bottom: 5%;
-	left: 10%;
-}
-.basket__item-info {
+
+.modal-basket__item-info {
 	display: flex;
-	margin-bottom: 10px;
+	align-items: center;
+	gap: 20px;
+	flex: 1;
 }
-.item__info-image {
-	margin: 0;
-	width: 10%;
+
+.modal-basket__item-image {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+	border-radius: 8px;
 }
-.item__info-description {
+
+.modal-basket__item-details {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	gap: 10px;
-	justify-content: center;
-	margin: 0;
-	margin-left: 20px;
-	font-size: 1.2rem;
-}
-.info__description-name {
-	margin: 0;
-}
-.info__description-quantity {
-	margin: 0;
-}
-.basket__item-button {
-	display: flex;
 	gap: 5px;
-	height: 100%;
-	margin-bottom: 10px;
 }
-.item__button-remove {
+
+.modal-basket__item-name {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin: 0;
+}
+
+.modal-basket__item-quantity {
+	font-size: 1rem;
+	margin: 0;
+}
+
+/* ===== КНОПКИ УПРАВЛЕНИЯ ТОВАРОМ ===== */
+.modal-basket__item-actions {
+	display: flex;
+	gap: 15px;
+}
+
+.modal-basket__action-btn {
 	background-color: black;
 	border: none;
-	font-family: inherit;
-	padding: 5px 40px;
-	margin: 0;
+	padding: 15px 40px;
 	color: white;
 	border-radius: 5px;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
+	font-family: inherit;
 }
-.item__button-remove:hover {
+
+.modal-basket__action-btn:hover {
 	transform: scale(1.1);
-	transition: all 0.2s ease-in-out;
 }
-.item__button-remove:active {
+
+.modal-basket__action-btn:active {
 	opacity: 0.1;
 }
-.item_container {
+
+/* ===== РАЗДЕЛИТЕЛЬ ===== */
+.modal-basket__spacer {
 	width: 100%;
+	height: 1px;
+	margin: 20px 0;
 }
-.basket__result {
+
+/* ===== ФУТЕР С ИТОГОМ ===== */
+.modal-basket__footer {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	width: 100%;
 	margin-top: 40px;
 }
-.basket__result-sum {
-	letter-spacing: 0;
+
+.modal-basket__total {
 	font-size: 2rem;
 	margin: 0;
+	letter-spacing: 0;
 }
-.basket__result-button {
+
+.modal-basket__checkout-btn {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 }
-.basket__result-button:hover {
+
+.modal-basket__checkout-btn:hover {
 	transform: scale(1.1);
-	transition: all 0.2s ease-in-out;
 }
-.basket__result-button:disabled {
-	opacity: 0.3;
-	cursor: not-allowed;
-}
-.basket__result-button:disabled:hover {
-	transform: none;
-}
-.basket__result-button:disabled:active {
-	opacity: 0.3;
-}
-.basket__result-button:active {
+
+.modal-basket__checkout-btn:active {
 	opacity: 0.1;
 }
 
-.result_button-buy {
+.modal-basket__checkout-text {
+	padding: 20px 40px;
+	font-size: 1rem;
+	border-radius: 25px;
+	background-color: black;
+	color: white;
+}
+
+/* ===== СТИЛИ ДЛЯ ФОРМЫ ОФОРМЛЕНИЯ (BuyOrder) ===== */
+.buy-order {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.buy-order__form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	gap: 5px;
+}
+
+.buy-order__field {
+	margin: 0;
+	background-color: white;
+	width: 82%;
+	padding: 20px;
+	border-radius: 20px;
+	border: none;
+	font-size: 1rem;
+}
+
+.buy-order__error {
+	padding: 1px;
+	color: red;
+	font-size: 0.9rem;
+}
+
+.buy-order__actions {
+	position: absolute;
+	bottom: -5%;
+	right: 10%;
+	display: flex;
+	gap: 10px;
+}
+
+.buy-order__back-btn {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.buy-order__back-btn:hover {
+	transform: scale(1.1);
+}
+
+.buy-order__back-btn:active {
+	opacity: 0.1;
+}
+
+.buy-order__back-text {
+	padding: 20px 40px;
+	font-size: 1rem;
+	border-radius: 5px;
+	background-color: white;
+	color: black;
+}
+
+.buy-order__submit-btn {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.buy-order__submit-btn:hover:not(:disabled) {
+	transform: scale(1.1);
+}
+
+.buy-order__submit-btn:disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+}
+
+.buy-order__submit-btn:disabled:hover {
+	transform: none;
+}
+
+.buy-order__submit-btn:disabled:active {
+	opacity: 0.3;
+}
+
+.buy-order__submit-btn:active {
+	opacity: 0.1;
+}
+
+.buy-order__submit-text {
 	padding: 20px 40px;
 	font-size: 1rem;
 	border-radius: 5px;
 	background-color: black;
 	color: white;
 }
-.back-btn {
-	background-color: white;
-	color: black;
+
+.buy-order__delivery {
+	margin-top: 30px;
+	width: 100%;
+	display: flex;
+	gap: 100px;
+	align-items: center;
 }
+
+.buy-order__map {
+	width: 50%;
+	height: 250px;
+	border: none;
+	border-radius: 8px;
+}
+
+.buy-order__address {
+	font-size: 2.4rem;
+}
+
+.buy-order__total {
+	position: absolute;
+	bottom: -5%;
+	left: 10%;
+	font-size: 1.5rem;
+}
+
+/* ===== АДАПТИВНАЯ ВЕРСТКА ===== */
 @media (max-width: 1200px) {
-	.order__buy-address {
+	.buy-order__address {
 		font-size: 1.1rem;
 	}
-	.result_button-buy {
+
+	.modal-basket__checkout-text {
 		font-size: 0.7rem;
 	}
-	.basket__result-sum {
+
+	.modal-basket__total {
 		font-size: 1.5rem;
 	}
 }
+
 @media (max-width: 768px) {
-	.basket__empty {
+	.modal-basket__close-btn {
+		top: 20px;
+		right: 0px;
+	}
+	.modal-basket__empty {
 		margin: 0;
 		padding: 20px;
 	}
-	.basket__item {
+
+	.modal-basket__item {
 		flex-direction: column;
+		align-items: stretch;
+		gap: 15px;
 	}
-	.basket__item-button {
-		width: 40%;
-	}
-	.basket__result-sum {
-		letter-spacing: 2px;
-		font-size: 1rem;
-	}
-	.result_button-buy {
-		padding: 10px 10px;
-		font-size: 0.8rem;
-		border-radius: 5px;
-		background-color: black;
-		color: white;
-	}
-	.basket__order-address {
-		margin-top: 10px;
+
+	.modal-basket__item-actions {
 		width: 100%;
-		display: flex;
+		justify-content: center;
+	}
+
+	.modal-basket__footer {
+		flex-direction: column;
+		gap: 20px;
+		text-align: center;
+	}
+
+	.modal-basket__total {
+		font-size: 1rem;
+		letter-spacing: 2px;
+	}
+
+	.modal-basket__checkout-text {
+		padding: 15px;
+		font-size: 0.8rem;
+	}
+	.buy-order__submit-text {
+		padding: 20px 40px;
+		font-size: 0.8rem;
+	}
+	.buy-order__delivery {
 		flex-direction: column;
 		gap: 30px;
-		align-items: center;
+		margin-top: 10px;
 	}
-	.order__buy-map {
+
+	.buy-order__map {
 		width: 100%;
 		height: 120px;
 	}
-	.order__buy-address {
-		font-size: 1.5rem;
+
+	.buy-order__address {
+		font-size: 1rem;
 	}
 
-	.basket__result-action {
+	.buy-order__actions {
 		position: absolute;
-		bottom: 5%;
+		bottom: -8%;
 		right: 0;
 	}
-	.result__sum-order {
+
+	.buy-order__total {
 		position: absolute;
-		font-size: 1.1rem;
-		bottom: 5%;
+		font-size: 1rem;
+		bottom: 0%;
 		left: 5px;
 	}
 }
+
 @media (max-width: 375px) {
-	.basket__empty {
+	.modal-basket__empty {
 		margin: 0;
 		padding: 200px 0;
 	}
-	.order__buy-address {
-		font-size: 1.1rem;
+
+	.buy-order__address {
+		font-size: 0.9rem;
 	}
-	.result_button-buy {
+
+	.modal-basket__checkout-text {
 		font-size: 0.6rem;
+	}
+	.buy-order__submit-text {
+		padding: 20px 40px;
+		font-size: 0.7rem;
 	}
 }

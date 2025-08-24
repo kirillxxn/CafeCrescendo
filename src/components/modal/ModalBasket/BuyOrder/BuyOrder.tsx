@@ -5,18 +5,15 @@ import toast from 'react-hot-toast'
 import { useUserStore } from '../../../store/UserStore'
 import { useBasketStore } from '../../../store/ BasketStore'
 import styles from '../ModalBasket.module.css'
-
 type TBuyOrderProps = {
 	buy: boolean
 	closeModal: () => void
 	total: number
 	handleBuyButton: () => void
 }
-
 const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 	const { user, isLoggedIn } = useUserStore()
 	const { resetBasket } = useBasketStore()
-
 	const handleSubmit = () => {
 		closeModal()
 		toast.success(
@@ -24,11 +21,9 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 		)
 		resetBasket()
 	}
-
 	return (
-		<div className={styles['basket__order']}>
+		<div className={styles['buy-order']}>
 			{isLoggedIn && <UserInfo user={user} />}
-
 			<Formik
 				initialValues={{
 					phone: '',
@@ -41,11 +36,11 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 				onSubmit={handleSubmit}
 			>
 				{({ dirty, isValid }) => (
-					<Form className={styles['basket__order-form']}>
+					<Form className={styles['buy-order__form']}>
 						{!isLoggedIn && (
 							<>
 								<Field
-									className={styles['basket__order-field']}
+									className={styles['buy-order__field']}
 									type='text'
 									name='name'
 									placeholder='Ваше имя'
@@ -54,11 +49,10 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 								<ErrorMessage
 									name='name'
 									component='div'
-									className={styles['div-error']}
+									className={styles['buy-order__error']}
 								/>
-
 								<Field
-									className={styles['basket__order-field']}
+									className={styles['buy-order__field']}
 									type='email'
 									name='email'
 									placeholder='Ваш email'
@@ -67,13 +61,12 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 								<ErrorMessage
 									name='email'
 									component='div'
-									className={styles['div-error']}
+									className={styles['buy-order__error']}
 								/>
 							</>
 						)}
-
 						<Field
-							className={styles['basket__order-field']}
+							className={styles['buy-order__field']}
 							type='tel'
 							name='phone'
 							placeholder='+7 (XXX) XXX-XX-XX'
@@ -82,29 +75,25 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 						<ErrorMessage
 							name='phone'
 							component='div'
-							className={styles['div-error']}
+							className={styles['buy-order__error']}
 						/>
-
-						<div className={styles['basket__result-action']}>
+						<div className={styles['buy-order__actions']}>
 							<button
 								onClick={handleBuyButton}
-								className={styles['basket__result-button']}
+								className={styles['buy-order__back-btn']}
 								aria-label='Вернуться'
 							>
-								<span
-									className={`${styles['result_button-buy']} ${styles['back-btn']}`}
-								>
+								<span className={styles['buy-order__back-text']}>
 									Вернуться
 								</span>
 							</button>
-
 							<button
 								type='submit'
-								className={styles['basket__result-button']}
+								className={styles['buy-order__submit-btn']}
 								aria-label='Оформить заказ'
 								disabled={!isValid || !dirty}
 							>
-								<span className={styles['result_button-buy']}>
+								<span className={styles['buy-order__submit-text']}>
 									{isLoggedIn ? 'Оформить' : 'Отправить заказ'}
 								</span>
 							</button>
@@ -112,24 +101,17 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 					</Form>
 				)}
 			</Formik>
-
-			<div className={styles['basket__order-address']}>
+			<div className={styles['buy-order__delivery']}>
 				<iframe
-					className={styles['order__buy-map']}
+					className={styles['buy-order__map']}
 					src='https://yandex.ru/map-widget/v1/?um=constructor%3A0010577ee842b44cc46545929d9f0a2dad5653bc8c2017548508772a7cfbc353&amp;source=constructor'
 				/>
-				<span className={styles['order__buy-address']}>
+				<span className={styles['buy-order__address']}>
 					Самовывоз из магазина: <br /> Москва, улица Арбат, 11
 				</span>
 			</div>
-
-			<span
-				className={`${styles['basket__result-sum']} ${styles['result__sum-order']}`}
-			>
-				Итого:{total}₽
-			</span>
+			<span className={styles['buy-order__total']}>Итого:{total}₽</span>
 		</div>
 	)
 }
-
 export default BuyOrder

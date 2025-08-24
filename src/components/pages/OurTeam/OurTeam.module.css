@@ -1,57 +1,218 @@
-.ourteam__section {
+/* ===== ОСНОВНАЯ СЕКЦИЯ "НАША КОМАНДА" ===== */
+.team {
 	width: 100%;
-}
-.ourteam__section-container {
-	padding: 150px 0;
+
+	padding: 100px 0;
 }
 
-.team__list {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 40px;
+.team__container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 20px;
 }
+
+/* ===== ЗАГОЛОВОК СЕКЦИИ ===== */
+.team__title {
+	text-align: center;
+	margin: 0 0 80px 0;
+	font-size: 4rem;
+	color: #2c1810;
+	font-weight: bold;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== КОНТЕЙНЕР С КОМАНДОЙ ===== */
+.team__content {
+	width: 100%;
+}
+
+/* ===== СПИСОК КОМАНДЫ ===== */
+.team__list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 60px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+/* ===== КАРТОЧКА ЧЛЕНА КОМАНДЫ ===== */
 .team__item {
 	display: flex;
 	flex-direction: column;
-	gap: 20px;
+	align-items: center;
+	gap: 25px;
+	padding: 30px;
+	background: rgba(255, 255, 255, 0.9);
+	border-radius: 20px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
 }
-.team__item-name {
-	font-size: 2rem;
-	background-color: black;
-	padding: 10px 20px;
-	border-radius: 50px;
-	color: #ffe7c6;
-	text-shadow: 1px 2px 10px black;
-	font-family: 'Courier New', Courier, monospace;
+
+.team__item::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, #8b4513, #d2691e, #cd853f);
 }
+
+.team__item:hover {
+	transform: translateY(-10px);
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== ИЗОБРАЖЕНИЕ ЧЛЕНА КОМАНДЫ ===== */
 .team__item-image {
-	width: 250px;
-	border-radius: 10px;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 4px solid #8b4513;
+	transition: all 0.3s ease;
 }
+
+.team__item:hover .team__item-image {
+	border-color: #d2691e;
+	transform: scale(1.05);
+}
+
+/* ===== ИНФОРМАЦИЯ О ЧЛЕНЕ КОМАНДЫ ===== */
+.team__item-info {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.team__item-name {
+	font-size: 1.8rem;
+	background: linear-gradient(135deg, #2c1810, #4a3528);
+	color: white;
+	padding: 12px 24px;
+	border-radius: 30px;
+	margin: 0;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 .team__item-age {
 	font-family: 'Courier New', Courier, monospace;
-	background-color: black;
-	padding: 10px 80px;
-	border-radius: 50px;
+	background: linear-gradient(135deg, #4a3528, #2c1810);
 	color: #ffe7c6;
-	text-shadow: 1px 2px 10px black;
+	padding: 10px 20px;
+	border-radius: 25px;
+	margin: 0;
+	font-size: 1.2rem;
+	text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
-.ourteam__title {
-	text-align: center;
-	margin: 50px 0;
-	font-size: 5rem;
-}
+
+/* ===== АДАПТИВНАЯ ВЕРСТКА ===== */
 @media (max-width: 1200px) {
-	.ourteam__section {
-		transform: translateY(-100px);
+	.team {
+		padding: 80px 0;
+	}
+
+	.team__title {
+		font-size: 3.5rem;
+		margin-bottom: 60px;
+	}
+
+	.team__list {
+		gap: 40px;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	}
+
+	.team__item {
+		padding: 25px;
+	}
+
+	.team__item-image {
+		width: 180px;
+		height: 180px;
+	}
+
+	.team__item-name {
+		font-size: 1.6rem;
+		padding: 10px 20px;
+	}
+
+	.team__item-age {
+		font-size: 1.1rem;
+		padding: 8px 16px;
 	}
 }
 
 @media (max-width: 768px) {
-	.team__list {
-		grid-template-columns: repeat(1, 1fr);
+	.team {
+		padding: 60px 0;
 	}
-	.ourteam__section {
-		margin-top: 340px;
+
+	.team__title {
+		font-size: 3rem;
+		margin-bottom: 50px;
+	}
+
+	.team__list {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 30px;
+	}
+
+	.team__item {
+		padding: 20px;
+		gap: 20px;
+	}
+
+	.team__item-image {
+		width: 160px;
+		height: 160px;
+	}
+
+	.team__item-name {
+		font-size: 1.4rem;
+		padding: 8px 16px;
+	}
+
+	.team__item-age {
+		font-size: 1rem;
+		padding: 6px 12px;
+	}
+}
+
+@media (max-width: 480px) {
+	.team__container {
+		padding: 0 15px;
+	}
+
+	.team__title {
+		font-size: 2.5rem;
+		margin-bottom: 40px;
+	}
+
+	.team__list {
+		grid-template-columns: 1fr;
+		max-width: 320px;
+		margin: 0 auto;
+		gap: 25px;
+	}
+
+	.team__item {
+		padding: 25px 20px;
+	}
+
+	.team__item-image {
+		width: 140px;
+		height: 140px;
+	}
+
+	.team__item-name {
+		font-size: 1.3rem;
 	}
 }

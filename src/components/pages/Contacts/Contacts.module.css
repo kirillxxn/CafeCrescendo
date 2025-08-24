@@ -1,127 +1,268 @@
-/* Основные стили секции */
-.contacts__section {
+/* ===== ОСНОВНАЯ СЕКЦИЯ КОНТАКТОВ ===== */
+.contacts {
 	width: 100%;
+	padding: 60px 0;
+	background: linear-gradient(to bottom, #ffffff, #f8f9fa);
 }
 
-.contacts__section-container {
+.contacts__container {
 	position: relative;
 	padding: 0 50px;
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
-/* Контейнер с адресом и телефоном */
-.container__address-info {
+/* ===== БЛОК С КОНТАКТНОЙ ИНФОРМАЦИЕЙ ===== */
+.contacts__info {
 	width: 100%;
 	display: flex;
 	font-size: 1.2rem;
 	font-family: 'Times New Roman', Times, serif;
 	flex-direction: row;
 	justify-content: space-between;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 	align-items: center;
+	gap: 30px;
 }
 
-.address-info {
+.contacts__address {
 	margin: 0;
 	display: flex;
 	align-items: center;
 	gap: 20px;
+	color: #2c1810;
+	font-style: normal;
 }
 
-.address-icon {
+.contacts__address-icon {
 	width: 40px;
+	height: 40px;
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 }
 
-.address-phone {
+.contacts__phone {
 	margin: 0;
-	color: black;
+	color: #2c1810;
 	text-decoration: none;
+	font-weight: 600;
+	transition: color 0.3s ease;
 }
 
-/* Контейнер с картой и действиями */
-.container__map-action {
+.contacts__phone:hover {
+	color: #4a3528;
+	text-decoration: underline;
+}
+
+/* ===== БЛОК С КАРТОЙ И ДЕЙСТВИЯМИ ===== */
+.contacts__map-action {
 	display: flex;
 	gap: 80px;
+	align-items: flex-start;
 }
 
-.container-map {
+.contacts__map {
 	width: 70%;
+	height: 400px;
 	margin: 0;
+	border-radius: 12px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+	border: none;
+	transition: all 0.3s ease;
+}
+.contacts__map:hover {
+	scale: 1.1;
+	transition: all 0.3s ease;
 }
 
-/* Контейнер с действиями */
-.container__action {
+/* ===== БЛОК С ДЕЙСТВИЯМИ (кнопка, соцсети) ===== */
+.contacts__action {
 	margin: 0;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	gap: 25px;
+	flex: 1;
 }
 
-.action-logo {
+.contacts__logo {
 	width: 200px;
+	height: auto;
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
-.action__btn-order {
-	margin-top: 20px;
+/* ===== КНОПКА ОФОРМЛЕНИЯ ЗАКАЗА ===== */
+.contacts__order-btn {
+	margin-top: 0;
 	cursor: pointer;
-	padding: 20px 70px;
+	padding: 20px 40px;
 	font-size: 1.3rem;
-	background-color: #1e1e1e;
+	background: linear-gradient(135deg, #2c1810, #4a3528);
 	color: white;
 	border: none;
-	border-radius: 20px;
-	transition: all 0.4s ease-in-out;
+	border-radius: 50px;
+	transition: all 0.3s ease;
+	font-weight: 600;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+	min-width: 250px;
 }
 
-.action__btn-order:hover {
-	transition: all 0.4s ease-in-out;
-	opacity: 1;
-	scale: 1.1;
+.contacts__order-btn:hover {
+	transform: translateY(-3px) scale(1.05);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.action__btn-order:not(:hover) {
-	opacity: 0.8;
+.contacts__order-btn:active {
+	transform: translateY(0) scale(1);
 }
 
-/* Социальные иконки */
-.container__nav-list {
-	margin-top: 60px;
-	padding: 20px;
+/* ===== СОЦИАЛЬНЫЕ СЕТИ ===== */
+.contacts__social {
+	margin-top: 40px;
+	width: 100%;
+}
+
+.contacts__social-list {
+	padding: 0;
 	display: flex;
-	flex-direction: row;
-	gap: 20px;
+	justify-content: center;
+	gap: 25px;
+	margin: 0;
 }
 
-.social-icon {
+.contacts__social-item {
+	list-style: none;
+}
+
+.contacts__social-icon {
 	width: 30px;
-	transition: all 0.2s ease-in-out;
+	height: 30px;
+	transition: all 0.3s ease;
 }
 
-.social-icon:hover {
-	transition: all 0.2s ease-in-out;
-	opacity: 1;
-	scale: 1.2;
+.contacts__social-icon:hover {
+	transform: scale(1.2);
+	opacity: 0.8;
+	transform: translateY(-3px) scale(1.05);
+}
+.contacts__social-icon:active {
+	transform: translateY(0) scale(1);
 }
 
-.social-icon:not(:hover) {
-	opacity: 0.7;
+/* ===== АДАПТИВНАЯ ВЕРСТКА ===== */
+@media (max-width: 1024px) {
+	.contacts__container {
+		padding: 0 30px;
+	}
+
+	.contacts__map-action {
+		gap: 50px;
+	}
+
+	.contacts__map {
+		width: 60%;
+	}
 }
 
-/* Медиа-запросы */
 @media (max-width: 768px) {
-	.contacts__section-container {
-		gap: 40px;
+	.contacts {
+		padding: 40px 0;
+	}
+
+	.contacts__container {
 		padding: 0 20px;
+		gap: 30px;
 	}
-	.container__address-info {
-		font-size: 0.8rem;
-	}
-	.container__map-action {
-		display: flex;
+
+	.contacts__info {
 		flex-direction: column;
+		gap: 20px;
+		text-align: center;
+		margin-bottom: 30px;
+		font-size: 1rem;
+	}
+
+	.contacts__map-action {
+		flex-direction: column;
+		gap: 30px;
 		align-items: center;
+	}
+
+	.contacts__map {
+		width: 100%;
+		height: 300px;
+		order: 2;
+	}
+
+	.contacts__action {
+		order: 1;
+		gap: 20px;
+	}
+
+	.contacts__logo {
+		width: 150px;
+	}
+
+	.contacts__order-btn {
+		padding: 16px 32px;
+		font-size: 1.1rem;
+		min-width: 200px;
+	}
+
+	.contacts__social {
+		margin-top: 30px;
+	}
+
+	.contacts__social-list {
+		gap: 20px;
+	}
+
+	.contacts__social-icon {
+		width: 30px;
+		height: 30px;
+	}
+}
+
+@media (max-width: 480px) {
+	.contacts__container {
+		padding: 0 15px;
+	}
+
+	.contacts__info {
+		font-size: 0.9rem;
 		gap: 15px;
 	}
-	.container-map {
+
+	.contacts__address {
+		flex-direction: column;
+		gap: 10px;
+		text-align: center;
+	}
+
+	.contacts__address-icon {
+		width: 32px;
+		height: 32px;
+	}
+
+	.contacts__map {
 		height: 250px;
-		width: 100%;
+	}
+
+	.contacts__logo {
+		width: 120px;
+	}
+
+	.contacts__order-btn {
+		padding: 14px 28px;
+		font-size: 1rem;
+		min-width: 180px;
+	}
+
+	.contacts__social-list {
+		gap: 15px;
+	}
+
+	.contacts__social-icon {
+		width: 28px;
+		height: 28px;
 	}
 }

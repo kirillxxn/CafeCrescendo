@@ -12,75 +12,102 @@ const Contacts = () => {
 	const modalBasketRef = useRef<TModals>(null)
 	return (
 		<>
-			<section id='contacts' className={styles['contacts__section']}>
-				<div className={styles['contacts__section-container']}>
-					<div className={styles['container__address-info']}>
-						<address className={styles['address-info']}>
+			{/* Секция контактов */}
+			<section id='contacts' className={styles['contacts']}>
+				<div className={styles['contacts__container']}>
+					{/* Блок с контактной информацией */}
+					<div className={styles['contacts__info']}>
+						<address className={styles['contacts__address']}>
 							<img
-								className={styles['address-icon']}
+								className={styles['contacts__address-icon']}
 								src={mapLocationIcon}
 								alt='Иконка карты'
 							/>
 							Москва, улица Арбат 11, офис 1
 						</address>
-						<a className={styles['address-phone']} href='tel:+01234567890'>
+						<a className={styles['contacts__phone']} href='tel:+01234567890'>
 							+0 (123) 456 78-90
 						</a>
 					</div>
-					<div className={styles['container__map-action']}>
+					{/* Блок с картой и действиями */}
+					<div className={styles['contacts__map-action']}>
 						<iframe
-							className={styles['container-map']}
+							className={styles['contacts__map']}
 							src='https://yandex.ru/map-widget/v1/?um=constructor%3A0010577ee842b44cc46545929d9f0a2dad5653bc8c2017548508772a7cfbc353&amp;source=constructor'
 							height='400'
+							title='Карта расположения кафе'
+							loading='lazy'
 						></iframe>
-						<div className={styles['container__action']}>
+						{/* Блок с кнопкой и соцсетями */}
+						<div className={styles['contacts__action']}>
 							<img
-								className={styles['action-logo']}
+								className={styles['contacts__logo']}
 								src={Logo}
-								alt='Логотип сайта'
+								alt='Логотип Café Crescendo'
 							/>
+							{/* Кнопка оформления заказа */}
 							<button
 								onClick={() => modalBasketRef.current?.openModal()}
-								className={styles['action__btn-order']}
-								aria-label='Кнопка оформления заказа'
+								className={styles['contacts__order-btn']}
+								aria-label='Оформить заказ'
 							>
 								Оформить заказ
 							</button>
-							<nav>
-								<ul className={styles['container__nav-list']}>
-									<li>
-										<a target='_blank' href='https://t.me/thismyteIegram'>
+							{/* Социальные сети */}
+							<nav
+								className={styles['contacts__social']}
+								aria-label='Социальные сети'
+							>
+								<ul className={styles['contacts__social-list']}>
+									<li className={styles['contacts__social-item']}>
+										<a
+											target='_blank'
+											href='https://t.me/thismyteIegram'
+											rel='noopener noreferrer'
+										>
 											<img
-												className={styles['social-icon']}
+												className={styles['contacts__social-icon']}
 												src={telegramIcon}
-												alt=''
+												alt='Telegram'
 											/>
 										</a>
 									</li>
-									<li>
-										<a target='_blank' href='https://wa.me/79773118312'>
+									<li className={styles['contacts__social-item']}>
+										<a
+											target='_blank'
+											href='https://wa.me/79773118312'
+											rel='noopener noreferrer'
+										>
 											<img
-												className={styles['social-icon']}
+												className={styles['contacts__social-icon']}
 												src={whatsAppIcon}
-												alt=''
+												alt='WhatsApp'
 											/>
 										</a>
 									</li>
-									<li>
-										<a target='_blank' href='https://m.vk.com/i__vladimirovich'>
+									<li className={styles['contacts__social-item']}>
+										<a
+											target='_blank'
+											href='https://m.vk.com/i__vladimirovich'
+											rel='noopener noreferrer'
+										>
 											<img
-												className={styles['social-icon']}
+												className={styles['contacts__social-icon']}
 												src={vkIcon}
-												alt=''
+												alt='VKontakte'
 											/>
 										</a>
 									</li>
-									<li>
-										<a target='_blank' href='mailto:the@kirillxxn.ru'>
+									<li className={styles['contacts__social-item']}>
+										<a
+											target='_blank'
+											href='mailto:the@kirillxxn.ru'
+											rel='noopener noreferrer'
+										>
 											<img
-												className={styles['social-icon']}
+												className={styles['contacts__social-icon']}
 												src={emailIcon}
-												alt=''
+												alt='Email'
 											/>
 										</a>
 									</li>
@@ -90,6 +117,7 @@ const Contacts = () => {
 					</div>
 				</div>
 			</section>
+			{/* Модальное окно корзины */}
 			<BasketModal ref={modalBasketRef} />
 		</>
 	)

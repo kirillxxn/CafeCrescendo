@@ -14,8 +14,6 @@
 	"homepage": "https://kirillxxn.github.io/CafeCrescendo",
 	"dependencies": {
 		"@supabase/supabase-js": "^2.53.0",
-		"bootstrap": "^5.3.7",
-		"clsx": "^2.1.1",
 		"formik": "^2.4.6",
 		"motion": "^12.23.9",
 		"react": "^19.1.0",
@@ -24,9 +22,6 @@
 		"react-hot-toast": "^2.5.2",
 		"react-just-parallax": "^3.1.16",
 		"react-modal": "^3.16.3",
-		"react-multi-carousel": "^2.8.6",
-		"react-photo-view": "^1.2.7",
-		"react-router-dom": "^7.7.1",
 		"react-scroll-parallax": "^3.4.5",
 		"react-transition-group": "^4.4.5",
 		"yet-another-react-lightbox": "^3.25.0",

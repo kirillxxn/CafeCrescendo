@@ -8,12 +8,10 @@ import room6Img from '/src/assets/rooms/room7.jpg'
 import room7Img from '/src/assets/rooms/room8.jpg'
 import room8Img from '/src/assets/rooms/room9.jpg'
 import room9Img from '/src/assets/rooms/room10.jpg'
-
 type TRoomList = {
 	id: number
 	image: string
 }
-
 const RoomList: TRoomList[] = [
 	{
 		id: 0,
@@ -56,5 +54,4 @@ const RoomList: TRoomList[] = [
 		image: room9Img,
 	},
 ]
-
 export default RoomList

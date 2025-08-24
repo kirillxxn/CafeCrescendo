@@ -1,5 +1,4 @@
 import nattyImg from '/src/assets/coffelist/natty.jpeg'
-
 import costa from '/src/assets/coffelist/costa.jpeg'
 import ethiopia from '/src/assets/coffelist/ethiopia.jpeg'
 import colombia from '/src/assets/coffelist/colombia.jpeg'
@@ -14,7 +13,6 @@ import honduras from '/src/assets/coffelist/honduras.jpeg'
 import panama from '/src/assets/coffelist/panama.jpeg'
 import salvador from '/src/assets/coffelist/salvador.jpeg'
 import nicaragua from '/src/assets/coffelist/nicaragua.jpeg'
-
 export type TMenuList = {
 	id: number
 	name: string
@@ -24,7 +22,6 @@ export type TMenuList = {
 	country: string
 	weight: number
 }
-
 const MenuList: TMenuList[] = [
 	{
 		id: 0,
@@ -176,5 +173,4 @@ const MenuList: TMenuList[] = [
 		weight: 250,
 	},
 ]
-
 export default MenuList

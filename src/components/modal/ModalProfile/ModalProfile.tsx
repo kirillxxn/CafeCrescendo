@@ -17,28 +17,34 @@ import Preolader from '../../pages/Preloader/Preloader'
 import Profile from './Profile/Profile'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
 import translateError from './Forms/Validate/ErrorMessages'
-
 type ModalProfileProps = {
 	closeModal: () => void
 }
-
 const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 	const { setUser, isLoggedIn, user, logout } = useUserStore()
 	const [registry, setRegistry] = useState<boolean>(false)
 	const [loading, setLoading] = useState<boolean>(false)
-
+	{
+		/* Начальные значения формы */
+	}
 	const initialValues = registry
 		? { name: '', email: '', password: '' }
 		: { name: '', email: '' }
-
+	{
+		/* Валидационная схема */
+	}
 	const validationSchema = registry
 		? validateRegisterSchema
 		: validateLoginSchema
+	{
+		/* Если пользователь авторизован */
+	}
 	if (isLoggedIn) {
 		return <Profile closeModal={closeModal} user={user} logout={logout} />
 	}
 	return (
 		<div className={styles['modal']}>
+			{/* Переключатель режимов */}
 			<div className={styles['modal__select-actions']}>
 				<button
 					disabled={!registry}
@@ -59,7 +65,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 					Регистрация
 				</button>
 			</div>
-
+			{/* Кнопка закрытия */}
 			<button className={styles['modal__close-btn']} onClick={closeModal}>
 				<img
 					className={styles['close__btn-image']}
@@ -67,17 +73,20 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 					alt='Иконка закрытия модального окна'
 				/>
 			</button>
-
+			{/* Заголовок формы */}
 			<h2 className={styles['title-form']}>
 				{registry ? 'Регистрация' : 'Вход'}
 			</h2>
-
+			{/* Форма Formik */}
 			<Formik
 				key={registry ? 'register' : 'login'}
 				initialValues={initialValues}
 				validationSchema={validationSchema}
 				onSubmit={async (values, { setSubmitting, resetForm }) => {
 					if (registry) {
+						{
+							/* Регистрация пользователя */
+						}
 						const { error } = await supabase.auth.signUp({
 							email: values.email,
 							password: values.password ?? '',
@@ -95,6 +104,9 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 							okRegistry(setRegistry, setLoading, resetForm)
 						}
 					} else {
+						{
+							/* Вход пользователя */
+						}
 						const { data, error } = await supabase.auth.signInWithPassword({
 							email: values.email,
 							password: values.password ?? '',
@@ -115,18 +127,20 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 			>
 				{({ isValid, dirty }) => (
 					<Form noValidate className={styles['modal__form']}>
+						{/* Контейнер формы */}
 						<div className={styles['modal__form-container']}>
 							<Login styles={styles} />
-
+							{/* Дополнительное поле для регистрации */}
 							{registry && <Register styles={styles} />}
 						</div>
+						{/* Кнопка отправки формы */}
 						<button
-							className={`${styles['form__container-submit']} ${styles['registry']}`}
+							className={`${styles['form__submit-btn']} ${styles['registry']}`}
 							type='submit'
 							disabled={!(isValid && dirty)}
 							onClick={() => setLoading(true)}
 						>
-							<span className={styles['container__submit-text']}>
+							<span className={styles['form__submit-text']}>
 								{loading ? (
 									<Preolader />
 								) : registry ? (
@@ -142,5 +156,4 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 		</div>
 	)
 }
-
 export default ModalProfile
