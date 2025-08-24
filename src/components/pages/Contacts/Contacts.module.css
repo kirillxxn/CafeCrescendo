@@ -108,8 +108,6 @@
 /* Медиа-запросы */
 @media (max-width: 768px) {
 	.contacts__section-container {
-		display: flex;
-		flex-direction: column;
 		gap: 40px;
 		padding: 0 20px;
 	}

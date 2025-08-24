@@ -104,29 +104,7 @@
 .btn-next:active {
 	opacity: 0.7;
 }
-.btn-hide {
-	position: absolute;
-	bottom: 10%;
-	left: 36%;
-	width: 30%;
-	padding: 20px;
-	cursor: pointer;
-	background-color: transparent;
-	border: 1px white solid;
-	background-color: #d9d9d97c;
-	backdrop-filter: blur(20px);
-	border-radius: 40px;
-	transition: all 0.05s ease-in-out;
-	transition: box-shadow 0.3s ease-in-out;
-	box-shadow: 1px 2px 20px 3px black;
-}
-.btn-hide-slider:hover {
-	backdrop-filter: blur(5px);
-	box-shadow: 10px 10px 10px 3px black;
-}
-.btn-hide-slider:active {
-	opacity: 0.7;
-}
+
 @media (max-width: 768px) {
 	.ourcafe__section {
 		margin-top: 20px;
@@ -140,5 +118,25 @@
 	}
 	.btn__next-image {
 		width: 30px;
+	}
+}
+@media (max-width: 375px) {
+	.ourcafe__section {
+		margin-top: 0px;
+	}
+	.container__subtitle {
+		transform: translateY(-70px);
+	}
+	.btn__prev-image {
+		width: 20px;
+	}
+	.btn__next-image {
+		width: 20px;
+	}
+	.container__btn {
+		position: absolute;
+		bottom: 50px;
+		left: 50%;
+		width: 40%;
 	}
 }

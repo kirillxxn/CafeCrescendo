@@ -91,42 +91,41 @@ const Header = () => {
 							</li>
 						</ul>
 					</nav>
-					<div className={styles['header__container-button']}>
-						<button
-							onClick={() => modalProfileRef.current?.openModal()}
-							className={styles['container-button']}
-						>
-							{isLoggedIn ? (
-								<img
-									className={styles['button-image']}
-									src={avatarIconLogged}
-									alt='Иконка личного кабинета'
-								/>
-							) : (
-								<img
-									className={styles['button-image']}
-									src={avatarIcon}
-									alt='Иконка личного кабинета'
-								/>
-							)}
-							<p className={styles['button-text']}>
-								{user ? user.name : 'Профиль'}
-							</p>
-						</button>
 
-						<button
-							onClick={() => modalBasketRef.current?.openModal()}
-							className={styles['container-button']}
-						>
+					<button
+						onClick={() => modalProfileRef.current?.openModal()}
+						className={styles['container-button']}
+					>
+						{isLoggedIn ? (
 							<img
 								className={styles['button-image']}
-								src={basketIcon}
-								alt='Иконка корзины'
+								src={avatarIconLogged}
+								alt='Иконка личного кабинета'
 							/>
-							<p className={styles['button-text']}>Корзина</p>
-							<div className={styles['basket-counter']}>{counter}</div>
-						</button>
-					</div>
+						) : (
+							<img
+								className={styles['button-image']}
+								src={avatarIcon}
+								alt='Иконка личного кабинета'
+							/>
+						)}
+						<p className={styles['button-text']}>
+							{user ? user.name : 'Профиль'}
+						</p>
+					</button>
+
+					<button
+						onClick={() => modalBasketRef.current?.openModal()}
+						className={styles['container-button']}
+					>
+						<img
+							className={styles['button-image']}
+							src={basketIcon}
+							alt='Иконка корзины'
+						/>
+						<p className={styles['button-text']}>Корзина</p>
+						<div className={styles['basket-counter']}>{counter}</div>
+					</button>
 				</div>
 			</header>
 			<ProfileModals ref={modalProfileRef} />
