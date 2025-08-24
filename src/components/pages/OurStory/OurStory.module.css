@@ -107,22 +107,19 @@
 
 @media (max-width: 1200px) {
 	.full-text {
-		transform: translateY(450px);
-		width: 80%;
+		width: 90%;
 	}
 	.container__btn {
-		bottom: 20%;
+		bottom: -40%;
 	}
-	.hide {
-		bottom: 30%;
-	}
+
 	.prev {
-		left: 0%;
+		left: -5%;
 		top: 45%;
 	}
 
 	.next {
-		right: 0%;
+		right: -5%;
 		top: 45%;
 	}
 }

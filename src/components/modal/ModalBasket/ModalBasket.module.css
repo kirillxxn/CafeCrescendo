@@ -200,11 +200,6 @@
 	color: black;
 }
 @media (max-width: 1200px) {
-	.basket__empty {
-		position: absolute;
-		top: 50%;
-		left: 30%;
-	}
 }
 @media (max-width: 768px) {
 	.basket__empty {

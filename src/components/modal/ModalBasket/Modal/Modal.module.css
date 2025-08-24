@@ -35,8 +35,8 @@
 }
 @media (max-width: 1200px) {
 	.modalContent {
-		width: 50vh;
-		height: 50vh;
+		width: 60vh;
+		height: 55vh;
 	}
 }
 @media (max-width: 768px) {
