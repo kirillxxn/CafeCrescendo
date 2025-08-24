@@ -200,6 +200,15 @@
 	color: black;
 }
 @media (max-width: 1200px) {
+	.order__buy-address {
+		font-size: 1.1rem;
+	}
+	.result_button-buy {
+		font-size: 0.7rem;
+	}
+	.basket__result-sum {
+		font-size: 1.5rem;
+	}
 }
 @media (max-width: 768px) {
 	.basket__empty {

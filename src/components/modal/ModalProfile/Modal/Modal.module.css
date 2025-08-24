@@ -36,7 +36,7 @@
 @media (max-width: 1200px) {
 	.modalContent {
 		width: 50vh;
-		height: 50vh;
+		height: 60vh;
 	}
 }
 @media (max-width: 768px) {

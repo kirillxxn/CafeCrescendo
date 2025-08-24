@@ -25,6 +25,7 @@
 	font-family: 'Courier New', Courier, monospace;
 	transition: all 0.5s ease-in-out;
 	opacity: 1;
+	color: black;
 }
 
 .select__action-btn:hover {
