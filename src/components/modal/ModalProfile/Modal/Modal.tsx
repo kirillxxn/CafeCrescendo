@@ -1,8 +1,17 @@
 import Modal from 'react-modal'
-import ModalProfile from '../ModalProfile'
 import modalStyles from './Modal.module.css'
-import { useState, forwardRef, useImperativeHandle, useEffect } from 'react'
+import {
+	useState,
+	forwardRef,
+	useImperativeHandle,
+	useEffect,
+	lazy,
+	Suspense,
+} from 'react'
 import type { TModals } from '../TypeModals/TypeModals'
+
+const ModalProfile = lazy(() => import('../ModalProfile'))
+
 Modal.setAppElement('#root')
 const ProfileModal = forwardRef<TModals>((_, ref) => {
 	const [isClosing, setIsClosing] = useState(false)
@@ -73,7 +82,9 @@ ${isClosing ? modalStyles['modal__content--closing'] : ''}
 				describedby: 'profile-modal-description',
 			}}
 		>
-			<ModalProfile closeModal={closeModal} />
+			<Suspense fallback={null}>
+				<ModalProfile closeModal={closeModal} />
+			</Suspense>
 		</Modal>
 	)
 })

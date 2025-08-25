@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import Lightbox from 'yet-another-react-lightbox'
+import { lazy, Suspense, useState } from 'react'
 import 'yet-another-react-lightbox/styles.css'
 import MenuList from './MenuList'
 import styles from './Menu.module.css'
 import { useBasketStore } from '../../store/ BasketStore'
+
+const Lightbox = lazy(() => import('yet-another-react-lightbox'))
+
 type Props = {
 	onAddToBasket: () => void
 }
@@ -59,12 +61,14 @@ const Menu = ({ onAddToBasket }: Props) => {
 					</ul>
 				</nav>
 			</section>
-			<Lightbox
-				open={isLightboxOpen}
-				close={() => setIsLightboxOpen(false)}
-				slides={slides}
-				index={photoIndex}
-			/>
+			<Suspense fallback={null}>
+				<Lightbox
+					open={isLightboxOpen}
+					close={() => setIsLightboxOpen(false)}
+					slides={slides}
+					index={photoIndex}
+				/>
+			</Suspense>
 		</>
 	)
 }

@@ -93,7 +93,6 @@ function App() {
 			</Parallax>
 			<Suspense fallback={null}>
 				<Contacts />
-
 				<Footer />
 			</Suspense>
 		</>

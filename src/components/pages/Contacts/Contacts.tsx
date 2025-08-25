@@ -5,9 +5,11 @@ import telegramIcon from '/src/assets/icons/telegramicon.png'
 import whatsAppIcon from '/src/assets/icons/whatsappicon.png'
 import vkIcon from '/src/assets/icons/vkicon.png'
 import emailIcon from '/src/assets/icons/emailicon.png'
-import BasketModal from '../../modal/ModalBasket/Modal/Modal'
-import { useRef } from 'react'
+import { lazy, Suspense, useRef } from 'react'
 import type { TModals } from '../../modal/ModalProfile/TypeModals/TypeModals'
+
+const BasketModal = lazy(() => import('../../modal/ModalBasket/Modal/Modal'))
+
 const Contacts = () => {
 	const modalBasketRef = useRef<TModals>(null)
 	return (
@@ -118,7 +120,9 @@ const Contacts = () => {
 				</div>
 			</section>
 			{/* Модальное окно корзины */}
-			<BasketModal ref={modalBasketRef} />
+			<Suspense fallback={null}>
+				<BasketModal ref={modalBasketRef} />
+			</Suspense>
 		</>
 	)
 }

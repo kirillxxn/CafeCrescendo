@@ -1,10 +1,13 @@
-import UserInfo from '../../ModalProfile/Profile/UserInfo'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { validateOrder } from '../../ModalProfile/Forms/Validate/FormFormik'
 import toast from 'react-hot-toast'
 import { useUserStore } from '../../../store/UserStore'
 import { useBasketStore } from '../../../store/ BasketStore'
 import styles from '../ModalBasket.module.css'
+import { lazy, Suspense } from 'react'
+
+const UserInfo = lazy(() => import('../../ModalProfile/Profile/UserInfo'))
+
 type TBuyOrderProps = {
 	buy: boolean
 	closeModal: () => void
@@ -23,7 +26,11 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 	}
 	return (
 		<div className={styles['buy-order']}>
-			{isLoggedIn && <UserInfo user={user} />}
+			{isLoggedIn && (
+				<Suspense fallback={null}>
+					<UserInfo user={user} />
+				</Suspense>
+			)}
 			<Formik
 				initialValues={{
 					phone: '',

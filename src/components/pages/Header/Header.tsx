@@ -1,14 +1,16 @@
-import { useRef } from 'react'
+import { useRef, lazy, Suspense } from 'react'
 import Logo from '../Logo/Logo'
 import styles from './Header.module.css'
-import ProfileModals from '../../modal/ModalProfile/Modal/Modal'
-import BasketModal from '../../modal/ModalBasket/Modal/Modal'
 import type { TModals } from '../../modal/ModalProfile/TypeModals/TypeModals'
 import { useUserStore } from '../../store/UserStore'
 import avatarIcon from '/src/assets/icons/profileicon.png'
 import avatarIconLogged from '/src/assets/icons/avatar.png'
 import basketIcon from '/src/assets/icons/basketicon.png'
 import { useBasketStore } from '../../store/ BasketStore'
+
+const ProfileModals = lazy(() => import('../../modal/ModalProfile/Modal/Modal'))
+const BasketModal = lazy(() => import('../../modal/ModalBasket/Modal/Modal'))
+
 const Header = () => {
 	const { user, isLoggedIn } = useUserStore()
 	const modalProfileRef = useRef<TModals>(null)
@@ -122,8 +124,10 @@ const Header = () => {
 					</button>
 				</div>
 			</header>
-			<ProfileModals ref={modalProfileRef} />
-			<BasketModal ref={modalBasketRef} />
+			<Suspense fallback={null}>
+				<ProfileModals ref={modalProfileRef} />
+				<BasketModal ref={modalBasketRef} />
+			</Suspense>
 		</>
 	)
 }

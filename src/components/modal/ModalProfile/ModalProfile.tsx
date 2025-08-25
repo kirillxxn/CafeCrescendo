@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { useUserStore } from '../../store/UserStore'
 import {
 	validateLoginSchema,
@@ -10,13 +10,15 @@ import { okSignIn } from './scripts/buttonAction'
 import { okRegistry } from './scripts/buttonAction'
 import styles from './ModalProfile.module.css'
 import { Formik, Form } from 'formik'
-import Login from './Forms/Login/Login'
-import Register from './Forms/Register/Register'
 import toast from 'react-hot-toast'
 import Preolader from '../../pages/Preloader/Preloader'
-import Profile from './Profile/Profile'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
 import translateError from './Forms/Validate/ErrorMessages'
+
+const Login = lazy(() => import('./Forms/Login/Login'))
+const Register = lazy(() => import('./Forms/Register/Register'))
+const Profile = lazy(() => import('./Profile/Profile'))
+
 type ModalProfileProps = {
 	closeModal: () => void
 }
@@ -40,7 +42,11 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 		/* Если пользователь авторизован */
 	}
 	if (isLoggedIn) {
-		return <Profile closeModal={closeModal} user={user} logout={logout} />
+		return (
+			<Suspense fallback={null}>
+				<Profile closeModal={closeModal} user={user} logout={logout} />
+			</Suspense>
+		)
 	}
 	return (
 		<div className={styles['modal']}>
@@ -129,9 +135,15 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 					<Form noValidate className={styles['modal__form']}>
 						{/* Контейнер формы */}
 						<div className={styles['modal__form-container']}>
-							<Login styles={styles} />
+							<Suspense fallback={null}>
+								<Login styles={styles} />
+							</Suspense>
 							{/* Дополнительное поле для регистрации */}
-							{registry && <Register styles={styles} />}
+							{registry && (
+								<Suspense fallback={null}>
+									<Register styles={styles} />
+								</Suspense>
+							)}
 						</div>
 						{/* Кнопка отправки формы */}
 						<button

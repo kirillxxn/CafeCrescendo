@@ -6,7 +6,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { validateUpdatePassword } from '../Forms/Validate/FormFormik'
 import { supabase } from '../../../auth/supabase/supabaseClient'
 import toast from 'react-hot-toast'
-import UserInfo from './UserInfo'
+import { lazy, Suspense } from 'react'
+
+const UserInfo = lazy(() => import('./UserInfo'))
+
 type ProfileProps = {
 	closeModal: () => void
 	user: User | null
@@ -33,7 +36,9 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 					alt='Картинка профиля'
 				/>
 				{/* Информация о пользователе */}
-				<UserInfo user={user} />
+				<Suspense fallback={null}>
+					<UserInfo user={user} />
+				</Suspense>
 				{/* Форма смены пароля */}
 				<Formik
 					initialValues={{ password: '' }}

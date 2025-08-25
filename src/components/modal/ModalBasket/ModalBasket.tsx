@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import { useBasketStore } from '../../store/ BasketStore'
 import styles from './ModalBasket.module.css'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
-import BuyOrder from './BuyOrder/BuyOrder'
+
+const BuyOrder = lazy(() => import('./BuyOrder/BuyOrder'))
+
 export type ModalBasketProps = {
 	closeModal: () => void
 }
@@ -30,12 +32,14 @@ const ModalBasket = ({ closeModal }: ModalBasketProps) => {
 				{buy ? 'Оформление заказа' : 'Корзина'}
 			</h2>
 			{buy ? (
-				<BuyOrder
-					buy={buy}
-					closeModal={closeModal}
-					total={total}
-					handleBuyButton={handleBuyButton}
-				/>
+				<Suspense fallback={null}>
+					<BuyOrder
+						buy={buy}
+						closeModal={closeModal}
+						total={total}
+						handleBuyButton={handleBuyButton}
+					/>
+				</Suspense>
 			) : items.length === 0 ? (
 				<div className={styles['modal-basket__empty']}>
 					<span className={styles['modal-basket__empty-text']}>

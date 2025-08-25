@@ -1,8 +1,17 @@
 import Modal from 'react-modal'
 import type { TModals } from '../../ModalProfile/TypeModals/TypeModals'
 import modalStyles from './Modal.module.css'
-import { useEffect, useState, forwardRef, useImperativeHandle } from 'react'
-import ModalBasket from '../ModalBasket'
+import {
+	useEffect,
+	useState,
+	forwardRef,
+	useImperativeHandle,
+	lazy,
+	Suspense,
+} from 'react'
+
+const ModalBasket = lazy(() => import('../ModalBasket'))
+
 Modal.setAppElement('#root')
 const BasketModal = forwardRef<TModals>((_, ref) => {
 	const [isClosing, setIsClosing] = useState(false)
@@ -73,7 +82,9 @@ ${isClosing ? modalStyles['modal__content--closing'] : ''}
 				describedby: 'basket-modal-description',
 			}}
 		>
-			<ModalBasket closeModal={closeModal} />
+			<Suspense fallback={null}>
+				<ModalBasket closeModal={closeModal} />
+			</Suspense>
 		</Modal>
 	)
 })
