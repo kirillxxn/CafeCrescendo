@@ -7,6 +7,7 @@ import { validateUpdatePassword } from '../Forms/Validate/FormFormik'
 import { supabase } from '../../../auth/supabase/supabaseClient'
 import toast from 'react-hot-toast'
 import { lazy, Suspense } from 'react'
+import Preloader from '../../../pages/Preloader/Preloader'
 
 const UserInfo = lazy(() => import('./UserInfo'))
 
@@ -36,7 +37,7 @@ const Profile = ({ closeModal, user, logout }: ProfileProps) => {
 					alt='Картинка профиля'
 				/>
 				{/* Информация о пользователе */}
-				<Suspense fallback={null}>
+				<Suspense fallback={<Preloader component='Загрузка пользователя' />}>
 					<UserInfo user={user} />
 				</Suspense>
 				{/* Форма смены пароля */}

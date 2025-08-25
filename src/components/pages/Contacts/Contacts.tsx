@@ -7,6 +7,7 @@ import vkIcon from '/src/assets/icons/vkicon.png'
 import emailIcon from '/src/assets/icons/emailicon.png'
 import { lazy, Suspense, useRef } from 'react'
 import type { TModals } from '../../modal/ModalProfile/TypeModals/TypeModals'
+import Preloader from '../Preloader/Preloader'
 
 const BasketModal = lazy(() => import('../../modal/ModalBasket/Modal/Modal'))
 
@@ -120,7 +121,7 @@ const Contacts = () => {
 				</div>
 			</section>
 			{/* Модальное окно корзины */}
-			<Suspense fallback={null}>
+			<Suspense fallback={<Preloader component='Загрузка корзины' />}>
 				<BasketModal ref={modalBasketRef} />
 			</Suspense>
 		</>

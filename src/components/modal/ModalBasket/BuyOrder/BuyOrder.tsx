@@ -5,6 +5,7 @@ import { useUserStore } from '../../../store/UserStore'
 import { useBasketStore } from '../../../store/ BasketStore'
 import styles from '../ModalBasket.module.css'
 import { lazy, Suspense } from 'react'
+import Preloader from '../../../pages/Preloader/Preloader'
 
 const UserInfo = lazy(() => import('../../ModalProfile/Profile/UserInfo'))
 
@@ -27,7 +28,7 @@ const BuyOrder = ({ closeModal, total, handleBuyButton }: TBuyOrderProps) => {
 	return (
 		<div className={styles['buy-order']}>
 			{isLoggedIn && (
-				<Suspense fallback={null}>
+				<Suspense fallback={<Preloader component='Загрузка пользователя' />}>
 					<UserInfo user={user} />
 				</Suspense>
 			)}

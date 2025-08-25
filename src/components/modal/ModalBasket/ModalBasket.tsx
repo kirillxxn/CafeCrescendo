@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from 'react'
 import { useBasketStore } from '../../store/ BasketStore'
 import styles from './ModalBasket.module.css'
 import closeButtonImg from '/src/assets/icons/closebutton.png'
+import Preloader from '../../pages/Preloader/Preloader'
 
 const BuyOrder = lazy(() => import('./BuyOrder/BuyOrder'))
 
@@ -32,7 +33,7 @@ const ModalBasket = ({ closeModal }: ModalBasketProps) => {
 				{buy ? 'Оформление заказа' : 'Корзина'}
 			</h2>
 			{buy ? (
-				<Suspense fallback={null}>
+				<Suspense fallback={<Preloader component='Загрузка заказа' />}>
 					<BuyOrder
 						buy={buy}
 						closeModal={closeModal}

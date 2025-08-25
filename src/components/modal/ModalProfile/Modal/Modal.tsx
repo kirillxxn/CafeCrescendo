@@ -9,6 +9,7 @@ import {
 	Suspense,
 } from 'react'
 import type { TModals } from '../TypeModals/TypeModals'
+import Preloader from '../../../pages/Preloader/Preloader'
 
 const ModalProfile = lazy(() => import('../ModalProfile'))
 
@@ -82,7 +83,7 @@ ${isClosing ? modalStyles['modal__content--closing'] : ''}
 				describedby: 'profile-modal-description',
 			}}
 		>
-			<Suspense fallback={null}>
+			<Suspense fallback={<Preloader component='Загрузка профиля' />}>
 				<ModalProfile closeModal={closeModal} />
 			</Suspense>
 		</Modal>

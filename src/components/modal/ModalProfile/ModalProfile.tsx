@@ -43,7 +43,7 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 	}
 	if (isLoggedIn) {
 		return (
-			<Suspense fallback={null}>
+			<Suspense fallback={<Preolader component='Загрузка профиля' />}>
 				<Profile closeModal={closeModal} user={user} logout={logout} />
 			</Suspense>
 		)
@@ -135,12 +135,12 @@ const ModalProfile = ({ closeModal }: ModalProfileProps) => {
 					<Form noValidate className={styles['modal__form']}>
 						{/* Контейнер формы */}
 						<div className={styles['modal__form-container']}>
-							<Suspense fallback={null}>
+							<Suspense fallback={<Preolader />}>
 								<Login styles={styles} />
 							</Suspense>
 							{/* Дополнительное поле для регистрации */}
 							{registry && (
-								<Suspense fallback={null}>
+								<Suspense fallback={<Preolader />}>
 									<Register styles={styles} />
 								</Suspense>
 							)}

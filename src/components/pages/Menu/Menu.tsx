@@ -3,6 +3,7 @@ import 'yet-another-react-lightbox/styles.css'
 import MenuList from './MenuList'
 import styles from './Menu.module.css'
 import { useBasketStore } from '../../store/ BasketStore'
+import Preloader from '../Preloader/Preloader'
 
 const Lightbox = lazy(() => import('yet-another-react-lightbox'))
 
@@ -61,7 +62,7 @@ const Menu = ({ onAddToBasket }: Props) => {
 					</ul>
 				</nav>
 			</section>
-			<Suspense fallback={null}>
+			<Suspense fallback={<Preloader component='Загрузка изображений' />}>
 				<Lightbox
 					open={isLightboxOpen}
 					close={() => setIsLightboxOpen(false)}

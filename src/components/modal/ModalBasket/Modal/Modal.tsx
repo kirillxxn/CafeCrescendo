@@ -9,6 +9,7 @@ import {
 	lazy,
 	Suspense,
 } from 'react'
+import Preloader from '../../../pages/Preloader/Preloader'
 
 const ModalBasket = lazy(() => import('../ModalBasket'))
 
@@ -82,7 +83,7 @@ ${isClosing ? modalStyles['modal__content--closing'] : ''}
 				describedby: 'basket-modal-description',
 			}}
 		>
-			<Suspense fallback={null}>
+			<Suspense fallback={<Preloader component='Загрузка корзины' />}>
 				<ModalBasket closeModal={closeModal} />
 			</Suspense>
 		</Modal>
