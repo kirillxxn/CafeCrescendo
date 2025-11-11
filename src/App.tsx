@@ -45,7 +45,7 @@ function App() {
 			<Parallax scale={[0.962, 0.5]} opacity={[1, 0]} easing='easeInBack'>
 				<HomePage />
 			</Parallax>
-			<Parallax speed={-12} easing='easeInQuad'>
+			<Parallax speed={-6} easing='easeInQuad'>
 				<Menu onAddToBasket={handleBasket} />
 			</Parallax>
 			<Parallax
