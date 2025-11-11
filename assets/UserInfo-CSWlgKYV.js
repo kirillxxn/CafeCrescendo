@@ -1,1 +1,0 @@
-import{j as s}from"./index-DSaIzWRo.js";import{s as e}from"./ModalProfile.module-BI4GlYxw.js";const i=({user:a})=>s.jsx(s.Fragment,{children:s.jsxs("div",{className:e["user-info"],children:[s.jsx("span",{className:e["user__info-name"],children:a?.name||"Инкогнито"}),s.jsx("span",{className:e["user__info-email"],children:a?.email})]})});export{i as default};
